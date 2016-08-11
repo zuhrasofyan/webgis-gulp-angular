@@ -18,7 +18,7 @@
     return directive;
 
     /** @ngInject */
-    function CarouselController($scope) {
+    function CarouselController() {
       var vm = this;
 
       var atok = [{
