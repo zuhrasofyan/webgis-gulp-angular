@@ -21,9 +21,11 @@
     return directive;
 
     /** @ngInject */
-    function NavbarController(moment) {
+    function NavbarController(moment, $scope, $location) {
       var vm = this;
-
+      $scope.isActive = function (viewLocation) { 
+        return viewLocation === $location.path();
+      };
       // "vm.creationDate" is available by directive option "bindToController: true"
       vm.relativeDate = moment(vm.creationDate).fromNow();
     }
