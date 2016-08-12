@@ -18,7 +18,10 @@
     "moment": "~2.10.6",
     "animate.css": "~3.4.0",
     "angular": "~1.5.3",
-    "angular-slick-carousel": "^3.1.7"
+    "angular-slick-carousel": "^3.1.7",
+    "font-awesome": "fontawesome#^4.6.3",
+    "ol3": "ol3-bower#^3.17.1",
+    "angular-openlayers-directive": "^1.15.2"
   },
   "devDependencies": {
     "angular-mocks": "~1.5.3"
@@ -37,6 +40,7 @@
   },
   "resolutions": {
     "jquery": "~2.1.4",
-    "angular": "~1.5.3"
+    "angular": "~1.5.3",
+    "angular-sanitize": "~1.5.3"
   }
 }
