@@ -4,6 +4,15 @@
     <acme-navbar></acme-navbar>
   </div>
 
-  
+  halo <i class="fa fa-list-alt"></i>
+  <openlayers ol-center="main.bandaAceh" height="400"></openlayers>
+  <h1>Center map</h1>
+    <form>
+        Latitude : <input type="number" step="any" ng-model="main.bandaAceh.lat" />
+        Longitude : <input type="number" step="any" ng-model="main.bandaAceh.lon" />
+        Zoom : <input type="number" step="any" ng-model="main.bandaAceh.zoom" />
+    </form>
+    <h2>Center object</h2>
+    <pre>{{ main.bandaAceh | json }}</pre>
 
 </div>

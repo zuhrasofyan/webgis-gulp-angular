@@ -18,7 +18,7 @@
         url: '/about',
         templateUrl: 'app/about/about.html',
         controller: 'AboutPageController',
-        controllerAs: 'aboutPage'
+        controllerAs: 'about'
       });
 
     $urlRouterProvider.otherwise('/');
