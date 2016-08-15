@@ -8,7 +8,10 @@
   <openlayers ol-center="main.bandaAceh" ol-defaults="main.defaults" custom-layers="true" height="400" >
     <ol-layer ol-layer-properties="layer" ng-repeat="layer in main.layers|filter:{active:true}"></ol-layer>
   </openlayers>
-  <h1>Peta Pusat Kota Banda Aceh</h1>
+  <label ng-repeat="layer in main.layers">
+    <input type="checkbox" name="response" ng-value="true" ng-model="layer.active"> {{layer.name}}
+  </label>
+  <h1>Peta Kota Banda Aceh</h1>
     <form>
         Latitude : <input type="number" step="any" ng-model="main.bandaAceh.lat" />
         Longitude : <input type="number" step="any" ng-model="main.bandaAceh.lon" />
