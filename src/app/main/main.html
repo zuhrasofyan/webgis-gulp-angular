@@ -6,17 +6,16 @@
 
   <!-- halo <i class="fa fa-list-alt"></i> -->
   <openlayers ol-center="main.bandaAceh" ol-defaults="main.defaults" custom-layers="true" height="400">
-    <ol-layer ol-layer-properties="layer" ng-repeat="layer in main.layers|filter:{active:true}" ng-if="main.tampil"></ol-layer>
+    <ol-layer ol-layer-properties="layer" ng-repeat="layer in main.layers|filter:{active:true}"></ol-layer>
     <ol-layer ol-layer-properties="tematik" ng-repeat="tematik in main.tematik|filter:{active:true}"></ol-layer>
     <ol-layer ol-layer-properties="rencana" ng-repeat="rencana in main.rencana|filter:{active:true}"></ol-layer>
   </openlayers>
   <h2>Main Layer</h2>
-  <input type="checkbox" ng-value="true" ng-model="main.tampil"> turn on/off all basemap
+  <input type="checkbox" ng-value="true" ng-model="main.tampil" ng-click="main.test()"> turn on/off all basemap
   <br>
-  <button ng-model="main.layers" ng-click="main.test()">tekan untuk update</button>
-  <br>
+<!--   <br>
   <pre>{{main.layers | json}}</pre>
-  <br>
+  <br> -->
 
   <label ng-repeat="layer in main.layers">
     <input type="checkbox" name="response" ng-value="true" ng-model="layer.active"> {{layer.name}}
