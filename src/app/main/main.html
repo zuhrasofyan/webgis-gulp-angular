@@ -5,11 +5,32 @@
   </div>
 
   <!-- halo <i class="fa fa-list-alt"></i> -->
-  <openlayers ol-center="main.bandaAceh" ol-defaults="main.defaults" custom-layers="true" height="400" >
-    <ol-layer ol-layer-properties="layer" ng-repeat="layer in main.layers|filter:{active:true}"></ol-layer>
+  <openlayers ol-center="main.bandaAceh" ol-defaults="main.defaults" custom-layers="true" height="400">
+    <ol-layer ol-layer-properties="layer" ng-repeat="layer in main.layers|filter:{active:true}" ng-if="main.tampil"></ol-layer>
+    <ol-layer ol-layer-properties="tematik" ng-repeat="tematik in main.tematik|filter:{active:true}"></ol-layer>
+    <ol-layer ol-layer-properties="rencana" ng-repeat="rencana in main.rencana|filter:{active:true}"></ol-layer>
   </openlayers>
+  <h2>Main Layer</h2>
+  <input type="checkbox" ng-value="true" ng-model="main.tampil"> turn on/off all basemap
+  <br>
+  <button ng-model="main.layers" ng-click="main.test()">tekan untuk update</button>
+  <br>
+  <pre>{{main.layers | json}}</pre>
+  <br>
+
   <label ng-repeat="layer in main.layers">
     <input type="checkbox" name="response" ng-value="true" ng-model="layer.active"> {{layer.name}}
+  </label>
+  <h2>Tematik Layer</h2>
+
+
+
+  <label ng-repeat="tematik in main.tematik">
+    <input type="checkbox" name="response" ng-value="true" ng-model="tematik.active"> {{tematik.name}}
+  </label>
+  <h2>Perencanaan Layer</h2>
+  <label ng-repeat="rencana in main.rencana">
+    <input type="checkbox" name="response" ng-value="true" ng-model="rencana.active"> {{rencana.name}}
   </label>
   <h1>Peta Kota Banda Aceh</h1>
     <form>
@@ -18,6 +39,6 @@
         Zoom : <input type="number" step="any" ng-model="main.bandaAceh.zoom" />
     </form>
     <h2>Objek JSON</h2>
-    <pre>{{ main.bandaAceh | json }}</pre>
-
+    <pre>{{ main.rencana | json }}</pre>
+    
 </div>
