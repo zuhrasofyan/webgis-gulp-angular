@@ -9,8 +9,7 @@
   function MainController($scope, $http, olData) {
     var vm = this;
 
-    vm.tampil = true;
-
+    
     //set base coordinate
     vm.bandaAceh = {
         lat: 5.551,
@@ -26,14 +25,39 @@
       }
     };
 
-    function test(){
-      console.log(vm.layers[1].active);
+    //TODO: use one function and reuse it for different toggle layers
+    //toggle all for basic layers
+    vm.basicCheckBox = true;
+    function toggleBasicMap(){
       var i = 0;
       for (i=0; i<vm.layers.length; i++) {
-        vm.layers[i].active = vm.tampil;
+        vm.layers[i].active = vm.basicCheckBox;
       }
     };
-    vm.test = test;
+    vm.toggleBasicMap = toggleBasicMap;
+
+    //toggle all for tematik layers
+    vm.tematikCheckBox = false;
+    function toggleTematikMap(){
+      var i = 0;
+      for (i=0; i<vm.tematik.length; i++) {
+        vm.tematik[i].active = vm.tematikCheckBox;
+      }
+    };
+    vm.toggleTematikMap = toggleTematikMap;
+
+    //toggle all for perencanaan layers
+    vm.rencanaCheckBox = false;
+    function toggleRencanaMap(){
+      var i = 0;
+      for (i=0; i<vm.rencana.length; i++) {
+        vm.rencana[i].active = vm.rencanaCheckBox;
+      }
+    };
+    vm.toggleRencanaMap = toggleRencanaMap;
+
+
+
     //test get http data from API 
     /*$http.get('https://jsonplaceholder.typicode.com/posts').then(function (response){
       vm.getJson = response.data;
@@ -44,6 +68,7 @@
     vm.layers = [
       {
         name: 'land',
+        desc: 'Land',
         active: true,
         source: {
             type: 'TileWMS',
@@ -54,6 +79,7 @@
       },
       {
         name: 'perumahan',
+        desc: 'Perumahan',
         active: true,
         source: {
             type: 'TileWMS',
@@ -64,6 +90,7 @@
       },
       {
         name: 'bangunan',
+        desc: 'Bangunan',
         active: true,
         source: {
             type: 'TileWMS',
@@ -74,6 +101,7 @@
       },
       {
         name: 'laut',
+        desc: 'Laut',
         active: true,
         source: {
             type: 'TileWMS',
@@ -84,6 +112,7 @@
       },
       {
         name: 'tambak',
+        desc: 'Tambak',
         active: true,
         source: {
             type: 'TileWMS',
@@ -94,6 +123,7 @@
       },
       {
         name: 'sungai',
+        desc: 'Sungai',
         active: true,
         source: {
             type: 'TileWMS',
@@ -104,6 +134,7 @@
       },
       {
         name: 'hutan',
+        desc: 'Hutan',
         active: true,
         source: {
             type: 'TileWMS',
@@ -114,6 +145,7 @@
       },
       {
         name: 'taman',
+        desc: 'Taman',
         active: true,
         source: {
             type: 'TileWMS',
@@ -124,6 +156,7 @@
       }, 
       {
         name: 'lapangan',
+        desc: 'Lapangan',
         active: true,
         source: {
             type: 'TileWMS',
@@ -134,6 +167,7 @@
       },    
       {
         name: 'jalan',
+        desc: 'Jalan',
         active: true,
         source: {
             type: 'TileWMS',
@@ -144,6 +178,7 @@
       }, 
       {
         name: 'lokasi',
+        desc: 'Lokasi',
         active: true,
         source: {
             type: 'TileWMS',
@@ -158,6 +193,7 @@
     vm.tematik = [
       {
         name: 'jml_kk_2011',
+        desc: 'Jumlah KK 2011',
         active: false,
         source: {
             type: 'TileWMS',
@@ -168,6 +204,7 @@
       },
       {
         name: 'total_pddk_2013',
+        desc: 'Total Penduduk 2013',
         active: false,
         source: {
             type: 'TileWMS',
@@ -178,6 +215,7 @@
       },
       {
         name: 'total_pddk_2014',
+        desc: 'Total Penduduk 2014',
         active: false,
         source: {
             type: 'TileWMS',
@@ -188,6 +226,7 @@
       },
       {
         name: 'landuse_2011',
+        desc: 'Landuse 2011',
         active: false,
         source: {
             type: 'TileWMS',
@@ -202,6 +241,7 @@
     vm.rencana = [
       {
         name: 'pola_ruang',
+        desc: 'Pola Ruang',
         active: false,
         source: {
             type: 'TileWMS',
@@ -212,6 +252,7 @@
       },
       {
         name: 'kawasan_strategis',
+        desc: 'Kawasan Strategis',
         active: false,
         source: {
             type: 'TileWMS',
@@ -222,6 +263,7 @@
       },
       {
         name: 'pusat_pelayanan',
+        desc: 'Pusat Pelayanan',
         active: false,
         source: {
             type: 'TileWMS',

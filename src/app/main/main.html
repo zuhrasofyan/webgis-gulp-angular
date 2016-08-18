@@ -10,26 +10,29 @@
     <ol-layer ol-layer-properties="tematik" ng-repeat="tematik in main.tematik|filter:{active:true}"></ol-layer>
     <ol-layer ol-layer-properties="rencana" ng-repeat="rencana in main.rencana|filter:{active:true}"></ol-layer>
   </openlayers>
+
   <h2>Main Layer</h2>
-  <input type="checkbox" ng-value="true" ng-model="main.tampil" ng-click="main.test()"> turn on/off all basemap
+  <input type="checkbox" ng-value="true" ng-model="main.basicCheckBox" ng-click="main.toggleBasicMap()"> turn on/off all basemap
   <br>
-<!--   <br>
+  <!--   <br>
   <pre>{{main.layers | json}}</pre>
   <br> -->
-
   <label ng-repeat="layer in main.layers">
-    <input type="checkbox" name="response" ng-value="true" ng-model="layer.active"> {{layer.name}}
+    <input type="checkbox" name="response" ng-value="true" ng-model="layer.active"> {{layer.desc}}
   </label>
+
   <h2>Tematik Layer</h2>
-
-
-
+  <input type="checkbox" ng-value="true" ng-model="main.tematikCheckBox" ng-click="main.toggleTematikMap()"> turn on/off all Tematik map
+  <br>
   <label ng-repeat="tematik in main.tematik">
-    <input type="checkbox" name="response" ng-value="true" ng-model="tematik.active"> {{tematik.name}}
+    <input type="checkbox" name="response" ng-value="true" ng-model="tematik.active"> {{tematik.desc}}
   </label>
+
   <h2>Perencanaan Layer</h2>
+  <input type="checkbox" ng-model="main.rencanaCheckBox" ng-click="main.toggleRencanaMap()"> turn on/off all Rencana map
+  <br>
   <label ng-repeat="rencana in main.rencana">
-    <input type="checkbox" name="response" ng-value="true" ng-model="rencana.active"> {{rencana.name}}
+    <input type="checkbox" name="response" ng-value="true" ng-model="rencana.active"> {{rencana.desc}}
   </label>
   <h1>Peta Kota Banda Aceh</h1>
     <form>
@@ -38,6 +41,6 @@
         Zoom : <input type="number" step="any" ng-model="main.bandaAceh.zoom" />
     </form>
     <h2>Objek JSON</h2>
-    <pre>{{ main.rencana | json }}</pre>
+    <pre>{{ main.bandaAceh | json }}</pre>
     
 </div>
