@@ -9,6 +9,7 @@
     <ol-layer ol-layer-properties="layer" ng-repeat="layer in main.layers|filter:{active:true}"></ol-layer>
     <ol-layer ol-layer-properties="tematik" ng-repeat="tematik in main.tematik|filter:{active:true}"></ol-layer>
     <ol-layer ol-layer-properties="rencana" ng-repeat="rencana in main.rencana|filter:{active:true}"></ol-layer>
+    <ol-layer ol-layer-properties="bing" ng-repeat="bing in main.bing|filter:{active:true}"></ol-layer>
   </openlayers>
 
   <h2>Main Layer</h2>
@@ -34,6 +35,12 @@
   <label ng-repeat="rencana in main.rencana">
     <input type="checkbox" name="response" ng-value="true" ng-model="rencana.active"> {{rencana.desc}}
   </label>
+  
+  <h2>Bing</h2>
+  <label ng-repeat="bing in main.bing">
+    <input type="checkbox" name="response" ng-value="true" ng-model="bing.active"> {{bing.name}}
+  </label>
+
   <h1>Peta Kota Banda Aceh</h1>
     <form>
         Latitude : <input type="number" step="any" ng-model="main.bandaAceh.lat" />

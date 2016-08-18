@@ -33,7 +33,8 @@
       for (i=0; i<vm.layers.length; i++) {
         vm.layers[i].active = vm.basicCheckBox;
       }
-    };
+    }
+
     vm.toggleBasicMap = toggleBasicMap;
 
     //toggle all for tematik layers
@@ -43,7 +44,8 @@
       for (i=0; i<vm.tematik.length; i++) {
         vm.tematik[i].active = vm.tematikCheckBox;
       }
-    };
+    }
+
     vm.toggleTematikMap = toggleTematikMap;
 
     //toggle all for perencanaan layers
@@ -53,7 +55,7 @@
       for (i=0; i<vm.rencana.length; i++) {
         vm.rencana[i].active = vm.rencanaCheckBox;
       }
-    };
+    }
     vm.toggleRencanaMap = toggleRencanaMap;
 
 
@@ -274,6 +276,18 @@
       }
     ];
 
+    vm.bing = [{
+        name: 'bing',
+        active: false,
+        source: {
+            name: 'Bing Maps',
+            type: 'BingMaps',
+            key: 'AlShs5Jq3KqQxpuRNEtxI4_LL5H4-okI9vxBBE_TZo2TNtJNe2Kl2le-rJ4F9jS7',
+            imagerySet: 'Road'
+        },
+        zIndex: 11
+      }
+    ];
   }
   
 })();
