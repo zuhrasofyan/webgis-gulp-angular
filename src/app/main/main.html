@@ -12,29 +12,60 @@
     <ol-layer ol-layer-properties="bing" ng-repeat="bing in main.bing|filter:{active:true}"></ol-layer>
   </openlayers>
 
-  <h2>Main Layer</h2>
-  <input type="checkbox" ng-value="true" ng-model="main.basicCheckBox" ng-click="main.toggleBasicMap()"> turn on/off all basemap
-  <br>
-  <!--   <br>
-  <pre>{{main.layers | json}}</pre>
-  <br> -->
-  <label ng-repeat="layer in main.layers">
-    <input type="checkbox" name="response" ng-value="true" ng-model="layer.active"> {{layer.desc}}
-  </label>
+  <h2>Peta Dasar</h2>
+  <div class="main-layer">
+    <div ng-repeat="layer in main.layers">
+      <label><input type="checkbox" name="response" ng-value="true" ng-model="layer.active"> {{layer.desc}}</label>
+    </div>
+    <div class="check-all">
+      <label>
+        <input type="checkbox" ng-value="true" ng-model="main.basicCheckBox" ng-click="main.toggleBasicMap()"> Centang / matikan semua peta dasar 
+      </label>
+    </div>
+  </div>
 
-  <h2>Tematik Layer</h2>
-  <input type="checkbox" ng-value="true" ng-model="main.tematikCheckBox" ng-click="main.toggleTematikMap()"> turn on/off all Tematik map
-  <br>
-  <label ng-repeat="tematik in main.tematik">
-    <input type="checkbox" name="response" ng-value="true" ng-model="tematik.active"> {{tematik.desc}}
-  </label>
+  <h2>Peta Tematik</h2>
+  <div class="tematik-layer">
+    <div ng-repeat="tematik in main.tematik">
+      <div class="cb-tematik">
+        <label>
+          <input type="checkbox" name="response" ng-value="true" ng-model="tematik.active"> {{tematik.desc}} 
+        </label>
+      </div>
+      <div class="range-tematik">
+        <label>
+          <input type="range" min="0" max="1" step="0.01" ng-model="tematik.opacity">
+        </label>
+      </div>
+    </div>
+    <div class="check-all">
+      <label>
+        <input type="checkbox" ng-value="true" ng-model="main.tematikCheckBox" ng-click="main.toggleTematikMap()"> Centang / matikan semua peta tematik
+      </label>
+    </div>
+  </div>
 
-  <h2>Perencanaan Layer</h2>
-  <input type="checkbox" ng-model="main.rencanaCheckBox" ng-click="main.toggleRencanaMap()"> turn on/off all Rencana map
-  <br>
-  <label ng-repeat="rencana in main.rencana">
-    <input type="checkbox" name="response" ng-value="true" ng-model="rencana.active"> {{rencana.desc}}
-  </label>
+  <h2>Peta Perencanaan</h2>
+  <div class="rencana-layer">
+    <div ng-repeat="rencana in main.rencana">
+      <div class="cb-rencana">
+        <label>
+          <input type="checkbox" name="response" ng-value="true" ng-model="rencana.active"> {{rencana.desc}}
+        </label>
+      </div>
+      <div class="range-rencana">
+        <label>
+          <input type="range" min="0" max="1" step="0.01" ng-model="rencana.opacity">
+        </label>
+      </div>
+    </div>
+    <div class="check-all">
+      <label>
+        <input type="checkbox" ng-model="main.rencanaCheckBox" ng-click="main.toggleRencanaMap()"> Centang / matikan semua peta perencanaan
+      </label>
+    </div>
+  </div>
+  
   
   <h2>Bing</h2>
   <label ng-repeat="bing in main.bing">

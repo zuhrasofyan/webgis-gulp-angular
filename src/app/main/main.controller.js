@@ -197,6 +197,7 @@
         name: 'jml_kk_2011',
         desc: 'Jumlah KK 2011',
         active: false,
+        opacity: 1,
         source: {
             type: 'TileWMS',
             url: 'http://bappeda.bandaacehkota.go.id/geoserver/uptb_gis_bna/wms',
@@ -208,6 +209,7 @@
         name: 'total_pddk_2013',
         desc: 'Total Penduduk 2013',
         active: false,
+        opacity: 1,
         source: {
             type: 'TileWMS',
             url: 'http://bappeda.bandaacehkota.go.id/geoserver/uptb_gis_bna/wms',
@@ -219,6 +221,7 @@
         name: 'total_pddk_2014',
         desc: 'Total Penduduk 2014',
         active: false,
+        opacity: 1,
         source: {
             type: 'TileWMS',
             url: 'http://bappeda.bandaacehkota.go.id/geoserver/uptb_gis_bna/wms',
@@ -230,6 +233,7 @@
         name: 'landuse_2011',
         desc: 'Landuse 2011',
         active: false,
+        opacity: 1,
         source: {
             type: 'TileWMS',
             url: 'http://bappeda.bandaacehkota.go.id/geoserver/uptb_gis_bna/wms',
@@ -245,6 +249,7 @@
         name: 'pola_ruang',
         desc: 'Pola Ruang',
         active: false,
+        opacity: 1,
         source: {
             type: 'TileWMS',
             url: 'http://bappeda.bandaacehkota.go.id/geoserver/uptb_gis_bna/wms',
@@ -256,6 +261,7 @@
         name: 'kawasan_strategis',
         desc: 'Kawasan Strategis',
         active: false,
+        opacity: 1,
         source: {
             type: 'TileWMS',
             url: 'http://bappeda.bandaacehkota.go.id/geoserver/uptb_gis_bna/wms',
@@ -267,6 +273,7 @@
         name: 'pusat_pelayanan',
         desc: 'Pusat Pelayanan',
         active: false,
+        opacity: 1,
         source: {
             type: 'TileWMS',
             url: 'http://bappeda.bandaacehkota.go.id/geoserver/uptb_gis_bna/wms',
