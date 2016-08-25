@@ -9,7 +9,7 @@
   function MainController($scope, $http, olData) {
     var vm = this;
 
-    
+
     //set base coordinate
     vm.bandaAceh = {
         lat: 5.551,
@@ -60,7 +60,7 @@
 
 
 
-    //test get http data from API 
+    //test get http data from API
     /*$http.get('https://jsonplaceholder.typicode.com/posts').then(function (response){
       vm.getJson = response.data;
     });*/
@@ -155,7 +155,7 @@
             params:{'LAYERS': 'uptb_gis_bna:taman_2011', 'TILED': true}
         },
         zIndex: 8
-      }, 
+      },
       {
         name: 'lapangan',
         desc: 'Lapangan',
@@ -166,7 +166,7 @@
             params:{'LAYERS': 'uptb_gis_bna:lapangan_2011', 'TILED': true}
         },
         zIndex: 9
-      },    
+      },
       {
         name: 'jalan',
         desc: 'Jalan',
@@ -177,7 +177,7 @@
             params:{'LAYERS': 'uptb_gis_bna:jalan_line_wgs0', 'TILED': true}
         },
         zIndex: 10
-      }, 
+      },
       {
         name: 'lokasi',
         desc: 'Lokasi',
@@ -185,13 +185,13 @@
         source: {
             type: 'TileWMS',
             url: 'http://bappeda.bandaacehkota.go.id/geoserver/uptb_gis_bna/wms',
-            params:{'LAYERS': 'uptb_gis_bna:lokasi_tabel', 'TILED': true}
+            params:{"LAYERS": "uptb_gis_bna:lokasi_tabel2", "TILED": true}
         },
         zIndex: 11
       }
     ];
 
-    //List all tematik layers jml_kk_2011, total_pddk_2013, total_pddk_2014, 
+    //List all tematik layers jml_kk_2011, total_pddk_2013, total_pddk_2014,
     vm.tematik = [
       {
         name: 'jml_kk_2011',
@@ -285,6 +285,7 @@
 
     vm.bing = [{
         name: 'bing',
+        desc: 'Jalan',
         active: false,
         source: {
             name: 'Bing Maps',
@@ -292,9 +293,48 @@
             key: 'AlShs5Jq3KqQxpuRNEtxI4_LL5H4-okI9vxBBE_TZo2TNtJNe2Kl2le-rJ4F9jS7',
             imagerySet: 'Road'
         },
-        zIndex: 11
+        zIndex: 10
+      },
+      {
+        name: 'aerial_bing',
+        desc: 'Satelit',
+        active: false,
+        source: {
+            name: 'Bing Aerial Maps',
+            type: 'BingMaps',
+            key: 'AlShs5Jq3KqQxpuRNEtxI4_LL5H4-okI9vxBBE_TZo2TNtJNe2Kl2le-rJ4F9jS7',
+            imagerySet: 'Aerial'
+        },
+        zIndex: 10
       }
     ];
+
+    /*vm.citraSatelit = [
+      {
+        name: 'citra_satelit',
+        desc: 'Citra Satelit',
+        active: false,
+        opacity: 1,
+        source: {
+            type: 'TileWMS',
+            url: 'http://bappeda.bandaacehkota.go.id/geoserver/uptb_gis_bna/wms',
+            params:{'LAYERS': 'uptb_gis_bna:WorldView-1_BandaAceh_15Jan2015_CD1', 'TILED': true}
+        },
+        zIndex: 11
+      },
+      {
+        name: 'citra_satelit2',
+        desc: 'Citra Satelit',
+        active: false,
+        opacity: 1,
+        source: {
+            type: 'TileWMS',
+            url: 'http://bappeda.bandaacehkota.go.id/geoserver/uptb_gis_bna/wms',
+            params:{'LAYERS': 'uptb_gis_bna:WorldView-1_BandaAceh_15Jan2015_CD2', 'TILED': true}
+        },
+        zIndex: 11
+      }
+    ];*/
   }
-  
+
 })();

@@ -10,6 +10,7 @@
     <ol-layer ol-layer-properties="tematik" ng-repeat="tematik in main.tematik|filter:{active:true}"></ol-layer>
     <ol-layer ol-layer-properties="rencana" ng-repeat="rencana in main.rencana|filter:{active:true}"></ol-layer>
     <ol-layer ol-layer-properties="bing" ng-repeat="bing in main.bing|filter:{active:true}"></ol-layer>
+    <!--ol-layer ol-layer-properties="satelit" ng-repeat="satelit in main.citraSatelit|filter:{active:true}"></ol-layer-->
   </openlayers>
 
   <h2>Peta Dasar</h2>
@@ -19,7 +20,7 @@
     </div>
     <div class="check-all">
       <label>
-        <input type="checkbox" ng-value="true" ng-model="main.basicCheckBox" ng-click="main.toggleBasicMap()"> Centang / matikan semua peta dasar 
+        <input type="checkbox" ng-value="true" ng-model="main.basicCheckBox" ng-click="main.toggleBasicMap()"> Centang / matikan semua peta dasar
       </label>
     </div>
   </div>
@@ -29,7 +30,7 @@
     <div ng-repeat="tematik in main.tematik">
       <div class="cb-tematik">
         <label>
-          <input type="checkbox" name="response" ng-value="true" ng-model="tematik.active"> {{tematik.desc}} 
+          <input type="checkbox" name="response" ng-value="true" ng-model="tematik.active"> {{tematik.desc}}
         </label>
       </div>
       <div class="range-tematik">
@@ -65,12 +66,17 @@
       </label>
     </div>
   </div>
-  
-  
+
+
   <h2>Bing</h2>
   <label ng-repeat="bing in main.bing">
-    <input type="checkbox" name="response" ng-value="true" ng-model="bing.active"> {{bing.name}}
+    <input type="checkbox" name="response" ng-value="true" ng-model="bing.active"> {{bing.desc}}
   </label>
+
+  <!--h2>Satelit</h2>
+  <label ng-repeat="satelit in main.citraSatelit">
+    <input type="checkbox" name="response" ng-value="true" ng-model="satelit.active"> {{satelit.name}}
+  </label-->
 
   <h1>Peta Kota Banda Aceh</h1>
     <form>
@@ -80,5 +86,5 @@
     </form>
     <h2>Objek JSON</h2>
     <pre>{{ main.bandaAceh | json }}</pre>
-    
+
 </div>
