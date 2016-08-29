@@ -14,7 +14,12 @@
     vm.bandaAceh = {
         lat: 5.551,
         lon: 95.322,
-        zoom: 15
+        zoom: 15,
+        label: {
+          message: vm.lengkap,
+          show: false,
+          showOnMouseOver: true
+        }
     };
     //set default view configuration
     vm.defaults = {
@@ -84,10 +89,17 @@
         $http.get(myurl).success(
           function (data, status) {
             var items = [];
-            var properties = data.features[0].properties;
-            var nama = properties.nama_lokas;
-            var desa = properties.desa;
-            vm.lengkap = 'the datas: ' + nama + '  ' + desa;
+            console.log(data);
+            //var properties = data.features[0].properties;
+            if (data.features[0]) {
+
+              var properties = data.features[0].properties;
+              var nama = properties.nama_lokas;
+              var desa = properties.desa;
+              vm.lengkap = 'Detail Data : ' + nama + '  ' + desa;
+            } else {
+              vm.lengkap = 'no data'
+            }
             //console.log('the datas: ' + nama + '  ' + desa);
           }
         );
