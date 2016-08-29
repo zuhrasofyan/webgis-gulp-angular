@@ -177,7 +177,11 @@
             params:{'LAYERS': 'uptb_gis_bna:jalan_line_wgs0', 'TILED': true}
         },
         zIndex: 10
-      },
+      }
+    ];
+
+    //separate point layer as different layer
+    vm.lokasi = [
       {
         name: 'lokasi',
         desc: 'Lokasi',
@@ -190,7 +194,6 @@
         zIndex: 11
       }
     ];
-
     //List all tematik layers jml_kk_2011, total_pddk_2013, total_pddk_2014,
     vm.tematik = [
       {
@@ -335,6 +338,10 @@
         zIndex: 11
       }
     ];*/
+    vm.showPopUp = showPopUp;
+    function showPopUp(){
+      alert('hehehe');
+    }
   }
 
 })();

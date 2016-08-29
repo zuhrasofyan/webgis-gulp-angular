@@ -5,8 +5,9 @@
   </div>
 
   <!-- halo <i class="fa fa-list-alt"></i> -->
-  <openlayers ol-center="main.bandaAceh" ol-defaults="main.defaults" custom-layers="true" height="400">
+  <openlayers ol-center="main.bandaAceh" ol-defaults="main.defaults" custom-layers="true" height="400" ng-click="main.showPopUp()">
     <ol-layer ol-layer-properties="layer" ng-repeat="layer in main.layers|filter:{active:true}"></ol-layer>
+    <ol-layer ol-layer-properties="lokasi" ng-repeat="lokasi in main.lokasi|filter:{active:true}"><ol-marker></ol-marker></ol-layer>
     <ol-layer ol-layer-properties="tematik" ng-repeat="tematik in main.tematik|filter:{active:true}"></ol-layer>
     <ol-layer ol-layer-properties="rencana" ng-repeat="rencana in main.rencana|filter:{active:true}"></ol-layer>
     <ol-layer ol-layer-properties="bing" ng-repeat="bing in main.bing|filter:{active:true}"></ol-layer>
@@ -22,6 +23,13 @@
       <label>
         <input type="checkbox" ng-value="true" ng-model="main.basicCheckBox" ng-click="main.toggleBasicMap()"> Centang / matikan semua peta dasar
       </label>
+    </div>
+  </div>
+
+  <h2>Peta Lokasi</h2>
+  <div class="main-layer">
+    <div ng-repeat="lokasi in main.lokasi">
+      <label><input type="checkbox" name="response" ng-value="true" ng-model="lokasi.active"> {{lokasi.desc}}</label>
     </div>
   </div>
 

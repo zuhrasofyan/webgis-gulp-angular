@@ -1,0 +1,21 @@
+<div class="container">
+
+  <div>
+    <acme-navbar></acme-navbar>
+  </div>
+
+  <!-- halo <i class="fa fa-list-alt"></i> -->
+  <pre>
+    {{local.lengkap}}
+  </pre>
+
+  <openlayers ol-center="local.bandaAceh" ol-defaults="local.defaults" custom-layers="true" height="400">
+    <ol-layer ol-layer-properties="lokasi" ng-repeat="lokasi in local.lokasi"><ol-marker ol-marker-properties="" ng-click="showDetails(local.lokasi)"></ol-marker></ol-layer>
+  </openlayers>
+
+
+
+
+
+
+</div>
