@@ -60,9 +60,9 @@
       }
     ];
 
-    var map = new ol.Map({
-      target: document.getElementById('angular-openlayers-map')
-    });
+    // var map = new ol.Map({
+    //   target: document.getElementById('angular-openlayers-map')
+    // });
 
 
 

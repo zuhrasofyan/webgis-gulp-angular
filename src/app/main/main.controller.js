@@ -9,6 +9,8 @@
   function MainController($scope, $http, olData) {
     var vm = this;
 
+    //set initial data for popup-label
+    vm.isiLabel = {};
 
     //set base coordinate
     vm.bandaAceh = {
@@ -22,6 +24,9 @@
           maxZoom: 20,
           minZoom: 14,
           extent: [10605714.11, 615365.85, 10617256.10, 625990.60]
+      },
+      events: {
+        map: ['singleclick']
       }
     };
 
@@ -338,10 +343,76 @@
         zIndex: 11
       }
     ];*/
-    vm.showPopUp = showPopUp;
-    function showPopUp(){
-      alert('hehehe');
-    }
+
+
+    //add event onclick to show detail information for each point
+    $scope.$on('openlayers.map.singleclick', function(event, data) {
+
+      //get projection data
+      var prj = ol.proj.transform([ data.coord[0], data.coord[1] ], data.projection, 'EPSG:3857').map(function(c) {
+          return c;
+      });
+
+      var prettyCoord = ol.coordinate.toStringHDMS(prj);
+
+      //get lattitude and longitude coordinate. lat = latLon[1]; lon = latLon[0];
+      var latLon = ol.proj.transform(prj,'EPSG:3857', 'EPSG:4326');
+
+      //hack view not using angular way to use OL3 getResolution()
+      //initialize manual map view to retrieve zoom level, resolution and then get the  feature info JSON data from geoserver url based on this coordinate
+      var view = new ol.View({
+          center: [0, 0],
+          zoom: vm.bandaAceh.zoom
+      });
+      var viewResolution = /** @type {number} */ (view.getResolution());
+
+      //hack location not using angular way to use OL3 getGetFeatureInfoUrl()
+      var wmsLokasi = new ol.source.TileWMS({
+          url: 'http://bappeda.bandaacehkota.go.id/geoserver/uptb_gis_bna/wms',
+          params: {'LAYERS': 'uptb_gis_bna:lokasi_tabel', 'TILED': true},
+          serverType: 'geoserver'
+      });
+      var myurl = wmsLokasi.getGetFeatureInfoUrl(
+              prj, viewResolution, 'EPSG:3857',
+              {'INFO_FORMAT': 'application/json'});
+
+      vm.url=myurl;
+
+      $http.get(myurl).success(
+        function (data, status) {
+          var items = [];
+
+          //if there is data.features returned from geoserver then
+          if (data.features[0]) {
+
+            //show point data lengkap
+            var properties = data.features[0].properties;
+            var nama = properties.nama_lokas;
+            var desa = properties.desa;
+            vm.lengkap =  nama + '  ' + desa + '<br>' + prettyCoord;
+
+            //place the popup label on the map
+            vm.isiLabel = {
+                lat: latLon[1],
+                lon: latLon[0],
+                label: {
+                  message: vm.lengkap,
+                  show: true,
+                  showOnMouseClick: true,
+                  showOnMouseHover: true
+                }
+            };
+
+          } else {
+            vm.lengkap = 'no data';
+            vm.isiLabel = {};
+          }
+
+        }
+      );
+
+
+    });
   }
 
 })();
