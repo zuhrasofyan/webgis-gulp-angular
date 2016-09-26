@@ -6,15 +6,33 @@
 
   <!-- halo <i class="fa fa-list-alt"></i> -->
   <pre>
-    {{local.lengkap}}
+    {{local.isiLabel}}
   </pre>
 
   <openlayers ol-center="local.bandaAceh" ol-defaults="local.defaults" custom-layers="true" height="400">
-    <ol-layer ol-layer-properties="lokasi" ng-repeat="lokasi in local.lokasi"><ol-marker ol-marker-properties="" ng-click="showDetails(local.lokasi)"></ol-marker></ol-layer>
+    <div id="popup"></div>
+    <ol-layer ol-layer-properties="lokasi" ng-repeat="lokasi in local.lokasi">
+      <!-- <div id="legend">
+        <img src="http://bappeda.bandaacehkota.go.id/geoserver/wms?REQUEST=GetLegendGraphic&VERSION=1.0.0&FORMAT=image/png&WIDTH=20&HEIGHT=20&LAYER=uptb_gis_bna:lokasi_tabel">
+      </div> -->
+      <div id="map-legend">
+        <img class="img-legend" style="height:100%;" src="http://bappeda.bandaacehkota.go.id/geoserver/wms?REQUEST=GetLegendGraphic&VERSION=1.0.0&FORMAT=image/png&WIDTH=20&HEIGHT=20&LAYER={{local.lokasi[0].layerName}}"/>
+      </div>
+
+    </ol-layer>
+    <ol-marker ol-marker-properties="local.isiLabel"></ol-marker>
+
+    <!-- <ol-layer ol-layer-properties="static">
+      <img class="img-legend pull-right" style="position:absolute;" src="http://bappeda.bandaacehkota.go.id/geoserver/wms?REQUEST=GetLegendGraphic&VERSION=1.0.0&FORMAT=image/png&WIDTH=20&HEIGHT=20&LAYER={{local.lokasi[0].layerName}}">
+    </ol-layer> -->
+
+
+
   </openlayers>
 
 
-
+<div class="dsad" style="height:400px;">
+</div>
 
 
 

@@ -7,8 +7,11 @@
 
   /** @ngInject */
   function LocalGeoController($scope, $http, olData) {
+
     var vm = this;
 
+    //set initial data for popup-label
+    vm.isiLabel = {};
 
     //set base coordinate
     vm.bandaAceh = {
@@ -21,6 +24,7 @@
           showOnMouseOver: true
         }
     };
+
     //set default view configuration
     vm.defaults = {
       view: {
@@ -33,6 +37,8 @@
       }
     };
 
+
+
     //test get http data from API
     /*$http.get('https://jsonplaceholder.typicode.com/posts').then(function (response){
       vm.getJson = response.data;
@@ -43,39 +49,47 @@
       {
         name: 'lokasi',
         desc: 'Lokasi',
+        layerName: 'uptb_gis_bna:lokasi_tabel2',
         active: true,
         source: {
             type: 'TileWMS',
             url: 'http://120.10.11.18:8080/geoserver/uptb_gis_bna/wms',
-            params:{"LAYERS": "uptb_gis_bna:lokasi_tabel2", "TILED": true}
+            params:{"LAYERS": "uptb_gis_bna:lokasi_tabel2", "TILED": true},
         },
         zIndex: 11
       }
     ];
 
+    var map = new ol.Map({
+      target: document.getElementById('angular-openlayers-map')
+    });
 
-    vm.showDetails = showPopUp;
-    function showPopUp(lo){
-      alert(lo);
-    }
 
-    vm.markers = [];
+
+    var staticPosition = ol.proj.transform([ 10609085.704948753, 618922.4317438678 ], 'EPSG:3857', 'EPSG:3857').map(function(c) {
+        return c;
+    });
+
 
     $scope.$on('openlayers.map.singleclick', function(event, data) {
-      console.log(data);
+
+        //get projection data
         var prj = ol.proj.transform([ data.coord[0], data.coord[1] ], data.projection, 'EPSG:3857').map(function(c) {
             return c;
         });
+        var prettyCoord = ol.coordinate.toStringHDMS(prj);
+
+        //get lattitude and longitude coordinate. lat = latLon[1]; lon = latLon[0];
+        var latLon = ol.proj.transform(prj,'EPSG:3857', 'EPSG:4326');
+
+        //initialize manual map view to retrieve zoom level, resolution and then get the  feature info JSON data from geoserver url based on this coordinate
         var view = new ol.View({
             center: [0, 0],
             zoom: vm.bandaAceh.zoom
         });
-        //console.log(view);
         var viewResolution = /** @type {number} */ (view.getResolution());
-        //console.log('view resoultion: ' + viewResolution);
-        //console.log(prj);
         var wmsLokasi = new ol.source.TileWMS({
-            url: 'http://bappeda.bandaacehkota.go.id/geoserver/uptb_gis_bna/wms',
+            url: 'http://120.10.11.18:8080/geoserver/uptb_gis_bna/wms',
             params: {'LAYERS': 'uptb_gis_bna:lokasi_tabel', 'TILED': true},
             serverType: 'geoserver'
         });
@@ -88,23 +102,35 @@
 
         $http.get(myurl).success(
           function (data, status) {
-            var items = [];
-            console.log(data);
-            //var properties = data.features[0].properties;
+
+            //if there is data.features returned from geoserver then
             if (data.features[0]) {
 
+              //show point data lengkap
               var properties = data.features[0].properties;
               var nama = properties.nama_lokas;
               var desa = properties.desa;
-              vm.lengkap = 'Detail Data : ' + nama + '  ' + desa;
+              vm.lengkap =  nama + '  ' + desa + '<br>' + prettyCoord;
+
+              //place the popup label on the map
+              vm.isiLabel = {
+                  lat: latLon[1],
+                  lon: latLon[0],
+                  label: {
+                    message: vm.lengkap,
+                    show: true,
+                    showOnMouseClick: true,
+                    showOnMouseHover: true
+                  }
+              };
+
             } else {
-              vm.lengkap = 'no data'
+              vm.lengkap = 'no data';
+              vm.isiLabel = {};
             }
-            //console.log('the datas: ' + nama + '  ' + desa);
+
           }
         );
-        //console.log(viewRes);
-
 
     });
 
