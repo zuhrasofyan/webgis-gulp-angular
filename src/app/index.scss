@@ -129,6 +129,15 @@ $fa-font-path: "../../bower_components/font-awesome/fonts";
     max-width: calc(100% - 1.3em);
 }
 
+//show map menu on top of the map
+#map-menu {
+  position:absolute;
+  z-index: 10100;
+  // width: 200px;
+  // height: 200px;
+  // background-color: white;
+}
+
 /**
  *  Do not remove the comments below. It's the markers used by gulp-inject to inject
  *  all your sass files automatically

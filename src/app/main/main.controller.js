@@ -474,7 +474,12 @@
       );
 
 
-    });
+    }); //end onClick
+
+    vm.isVisible = false;
+    vm.showMapMenu = function () {
+      vm.isVisible = vm.isVisible ? false : true;
+    };
   }
 
 })();

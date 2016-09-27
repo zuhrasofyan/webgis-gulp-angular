@@ -4,6 +4,14 @@
 <!-- halo <i class="fa fa-list-alt"></i> -->
 <div class="container-map" style=" height:92vh; background-color:blue">
   <openlayers ol-center="main.bandaAceh" ol-defaults="main.defaults" custom-layers="true" height="100%">
+    <div class="row">
+      <div id="map-menu" class="col-xs-4 col-xs-offset-8 sidebar sidebar-right pull-right">
+        <div class="panel-group">
+          
+        </div>
+      </div>
+    </div>
+
     <!-- <ol-control ol-control-properties="main.rotateNorth"></ol-control>
     <ol-control ol-control-properties="main.testButton"></ol-control> -->
     <ol-control name="{{ control.name }}" ol-control-properties="control.btn" ng-repeat="control in main.controls|filter: {active: true}"></ol-control>
@@ -100,4 +108,9 @@
   <h2>Objek JSON</h2>
   <pre>{{ main.bandaAceh | json }}</pre>
 
+  <input type="button" name="btnShowMapMenu" value="show map menu" ng-click="main.showMapMenu()">
+  <br>
+  <div class="blele" ng-show="main.isVisible">
+    hahahha
+  </div>
 </div>
