@@ -30,6 +30,12 @@
       }
     };
 
+    //show custom buttons
+    // vm.controls = [
+    //   {name: zoom2, active: true},
+    //   {name: sssss, active: true}
+    // ];
+
     //TODO: use one function and reuse it for different toggle layers
     //toggle all for basic layers
     vm.basicCheckBox = true;
@@ -69,7 +75,63 @@
     /*$http.get('https://jsonplaceholder.typicode.com/posts').then(function (response){
       vm.getJson = response.data;
     });*/
+    vm.controls = [
+        { name: 'zoom', active: true },
+        { name: 'fullscreen', active: true }
+    ];
 
+    var testButtonControl = function(opt_options) {
+      var options = opt_options || {};
+      var button = document.createElement('button');
+      button.innerHTML = 'T';
+      var addAlert = function(e) {
+          alert('hey!');
+      };
+      button.addEventListener('click', addAlert);
+      var element = document.createElement('div');
+      element.className = 'test-button ol-unselectable ol-control';
+      element.appendChild(button);
+      ol.control.Control.call(this, {
+          element: element,
+          target: options.target
+      });
+    };
+    ol.inherits(testButtonControl, ol.control.Control);
+    vm.testButton= {
+        control: new testButtonControl()
+    };
+
+
+    var rotateNorthControl = function(opt_options) {
+        var options = opt_options || {};
+        var rotation = 0;
+        var button = document.createElement('button');
+        button.innerHTML = 'N';
+        var this_ = this;
+        var handleRotateNorth = function(e) {
+            rotation += 90;
+            this_.getMap().getView().setRotation(rotation);
+        };
+        button.addEventListener('click', handleRotateNorth, false);
+        button.addEventListener('touchstart', handleRotateNorth, false);
+        var element = document.createElement('div');
+        element.className = 'rotate-north ol-unselectable ol-control';
+        element.appendChild(button);
+        ol.control.Control.call(this, {
+            element: element,
+            target: options.target
+        });
+    };
+    ol.inherits(rotateNorthControl, ol.control.Control);
+
+    vm.rotateNorth= {
+        control: new rotateNorthControl()
+    };
+
+    vm.controls = [
+      {name: 'rotateNorth', active:true, btn: vm.rotateNorth},
+      {name: 'testButton', active:true, btn: vm.testButton}
+    ];
 
     //List all basic layers land,perumahan,bangunan,laut,tambak,sungai,hutan,taman,lapangan,jalan,lokasi
     vm.layers = [

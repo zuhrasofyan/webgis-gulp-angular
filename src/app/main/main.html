@@ -1,14 +1,12 @@
-<div class="container">
-
-  <div>
-    <acme-navbar></acme-navbar>
-  </div>
-
-  <pre>
-    {{main.lengkap}}
-  </pre>
-  <!-- halo <i class="fa fa-list-alt"></i> -->
-  <openlayers ol-center="main.bandaAceh" ol-defaults="main.defaults" custom-layers="true" height="400">
+<div>
+  <acme-navbar></acme-navbar>
+</div>
+<!-- halo <i class="fa fa-list-alt"></i> -->
+<div class="container-map" style=" height:92vh; background-color:blue">
+  <openlayers ol-center="main.bandaAceh" ol-defaults="main.defaults" custom-layers="true" height="100%">
+    <!-- <ol-control ol-control-properties="main.rotateNorth"></ol-control>
+    <ol-control ol-control-properties="main.testButton"></ol-control> -->
+    <ol-control name="{{ control.name }}" ol-control-properties="control.btn" ng-repeat="control in main.controls|filter: {active: true}"></ol-control>
     <ol-layer ol-layer-properties="layer" ng-repeat="layer in main.layers|filter:{active:true}"></ol-layer>
     <ol-layer ol-layer-properties="lokasi" ng-repeat="lokasi in main.lokasi|filter:{active:true}">
       <ol-marker ol-marker-properties="main.isiLabel"></ol-marker>
@@ -18,7 +16,9 @@
     <ol-layer ol-layer-properties="bing" ng-repeat="bing in main.bing|filter:{active:true}"></ol-layer>
     <!--ol-layer ol-layer-properties="satelit" ng-repeat="satelit in main.citraSatelit|filter:{active:true}"></ol-layer-->
   </openlayers>
+</div>
 
+<div class="container">
   <h2>Peta Dasar</h2>
   <div class="main-layer">
     <div ng-repeat="layer in main.layers">
@@ -92,12 +92,12 @@
   </label-->
 
   <h1>Peta Kota Banda Aceh</h1>
-    <form>
-        Latitude : <input type="number" step="any" ng-model="main.bandaAceh.lat" />
-        Longitude : <input type="number" step="any" ng-model="main.bandaAceh.lon" />
-        Zoom : <input type="number" step="any" ng-model="main.bandaAceh.zoom" />
-    </form>
-    <h2>Objek JSON</h2>
-    <pre>{{ main.bandaAceh | json }}</pre>
+  <form>
+      Latitude : <input type="number" step="any" ng-model="main.bandaAceh.lat" />
+      Longitude : <input type="number" step="any" ng-model="main.bandaAceh.lon" />
+      Zoom : <input type="number" step="any" ng-model="main.bandaAceh.zoom" />
+  </form>
+  <h2>Objek JSON</h2>
+  <pre>{{ main.bandaAceh | json }}</pre>
 
 </div>
