@@ -122,17 +122,30 @@ $fa-font-path: "../../bower_components/font-awesome/fonts";
     left: .5em;
     max-width: calc(100% - 1.3em);
 }
-.test-button {
-    text-align: right;
-    top: 100px;
-    left: .5em;
-    max-width: calc(100% - 1.3em);
+
+//styling the button group on the top left of the map
+.layer-menu-button {
+  position: absolute;
+  z-index: 100010;
+  text-align: right;
+  top: 10px;
+  left: 8px;
+  //max-width: calc(100% - 1.3em);
+  .btn-group {
+    .menu-button {
+      //background-color: rgba(54, 25, 25, .75);
+    }
+  }
 }
+
 
 //show map menu on top of the map
 #map-menu {
   position:absolute;
-  z-index: 10100;
+  z-index: 100011;
+  top: 40px;
+  margin-left: 8px;
+  //left: 8px;
   // width: 200px;
   // height: 200px;
   // background-color: white;
@@ -155,6 +168,11 @@ $fa-font-path: "../../bower_components/font-awesome/fonts";
   }
 }
 
+//override openlayers control style
+.ol-zoom {
+     left: unset;
+     right: 8px;
+  }
 
 
 

@@ -75,38 +75,25 @@
     /*$http.get('https://jsonplaceholder.typicode.com/posts').then(function (response){
       vm.getJson = response.data;
     });*/
+
+    //button controls on the map
     vm.controls = [
         { name: 'zoom', active: true },
         { name: 'fullscreen', active: true }
     ];
 
-    var testButtonControl = function(opt_options) {
-      var options = opt_options || {};
-      var button = document.createElement('button');
-      button.innerHTML = 'T';
-      var addAlert = function(e) {
-          alert('hey!');
-      };
-      button.addEventListener('click', addAlert);
-      var element = document.createElement('div');
-      element.className = 'test-button ol-unselectable ol-control';
-      element.appendChild(button);
-      ol.control.Control.call(this, {
-          element: element,
-          target: options.target
-      });
-    };
-    ol.inherits(testButtonControl, ol.control.Control);
-    vm.testButton= {
-        control: new testButtonControl()
+    //show map-layers-menu
+    vm.isVisible = false;
+    vm.showMapMenu = function () {
+      vm.isVisible = vm.isVisible ? false : true;
     };
 
-
+    //inject rotate north button to directive
     var rotateNorthControl = function(opt_options) {
         var options = opt_options || {};
         var rotation = 0;
         var button = document.createElement('button');
-        button.innerHTML = 'N';
+        button.innerHTML = '<i class="fa fa-rotate-right"></i>';
         var this_ = this;
         var handleRotateNorth = function(e) {
             rotation += 90;
@@ -476,10 +463,9 @@
 
     }); //end onClick
 
-    vm.isVisible = false;
-    vm.showMapMenu = function () {
-      vm.isVisible = vm.isVisible ? false : true;
-    };
+
+    //status of each collapsible accordion
+    //TODO: dynamic status.open
     vm.status = {
       open: false,
       open2: false,
@@ -489,7 +475,7 @@
       isCustomHeaderOpen: false,
       isFirstOpen: true,
       isFirstDisabled: false
-    }
+    };
   }
 
 })();

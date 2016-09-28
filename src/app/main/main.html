@@ -4,8 +4,8 @@
 <!-- halo <i class="fa fa-list-alt"></i> -->
 <div class="container-map" style=" height:92vh; background-color:blue">
   <openlayers ol-center="main.bandaAceh" ol-defaults="main.defaults" custom-layers="true" height="100%">
-    <div class="row">
-      <div id="map-menu" class="col-xs-4 col-xs-offset-8 sidebar sidebar-right pull-right">
+    <div class="row" ng-show="main.isVisible">
+      <div id="map-menu" class="col-xs-4 sidebar sidebar-right">
         <div class="panel-group panel-no-margin">
           <uib-accordion>
             <div uib-accordion-group class="panel-default" is-open="main.status.open">
@@ -98,9 +98,20 @@
       </div>
     </div>
 
-    <!-- <ol-control ol-control-properties="main.rotateNorth"></ol-control>
-    <ol-control ol-control-properties="main.testButton"></ol-control> -->
-    <ol-control name="{{ control.name }}" ol-control-properties="control.btn" ng-repeat="control in main.controls|filter: {active: true}"></ol-control>
+    <ol-control ol-control-properties="main.rotateNorth"></ol-control>
+    <!-- <ol-control ol-control-properties="main.testButton"></ol-control> -->
+    <div class="layer-menu-button">
+      <div class="btn-group" role="group">
+        <button type="button" title="Tampilkan Menu Layer" name="btnShowMapMenu" class="btn btn-default btn-sm menu-button" ng-click="main.showMapMenu()"><i class="fa fa-list-ul"></i> Menu Layer</button>
+        <button type="button" title="Cari Tempat di Peta" name="btnSearch" class="btn btn-default btn-sm menu-button">Cari <i class="fa fa-search"></i> </button>
+        <button type="button" title="Tampilkan Lokasi Tempat" name="btnShowLokasi" class="btn btn-default btn-sm menu-button"><i class="fa fa-map-marker"></i> Menu Lokasi</button>
+        <button type="button" title="Fullscreen" name="btnFullScreen" class="btn btn-info btn-sm menu-button"><i class="fa fa-expand"></i></button>
+        <button type="button" title="Putar Peta 90 derajat" name="btnRotate" class="btn btn-info btn-sm menu-button"><i class="fa fa-refresh"></i></button>
+        <button type="button" title="Longitude Titik Tengah Peta" name="btnLon" class="btn btn-info btn-sm disabled menu-button">Lon: {{main.bandaAceh.lon}}</button>
+        <button type="button" title="Lattitude Titik Tengah Peta" name="btnLat" class="btn btn-info btn-sm disabled menu-button">Lat: {{main.bandaAceh.lat}}</button>
+      </div>
+
+    </div>
     <ol-layer ol-layer-properties="layer" ng-repeat="layer in main.layers|filter:{active:true}"></ol-layer>
     <ol-layer ol-layer-properties="lokasi" ng-repeat="lokasi in main.lokasi|filter:{active:true}">
       <ol-marker ol-marker-properties="main.isiLabel"></ol-marker>
@@ -113,7 +124,7 @@
 </div>
 
 <div class="container">
-  
+
   <!--h2>Satelit</h2>
   <label ng-repeat="satelit in main.citraSatelit">
     <input type="checkbox" name="response" ng-value="true" ng-model="satelit.active"> {{satelit.name}}
@@ -130,7 +141,7 @@
 
   <input type="button" name="btnShowMapMenu" value="show map menu" ng-click="main.showMapMenu()">
   <br>
-  <div class="blele" ng-show="main.isVisible">
+  <div class="blele">
     hahahha
   </div>
 </div>
