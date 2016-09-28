@@ -480,6 +480,16 @@
     vm.showMapMenu = function () {
       vm.isVisible = vm.isVisible ? false : true;
     };
+    vm.status = {
+      open: false,
+      open2: false,
+      open3: false,
+      open4: false,
+      open5: false,
+      isCustomHeaderOpen: false,
+      isFirstOpen: true,
+      isFirstDisabled: false
+    }
   }
 
 })();

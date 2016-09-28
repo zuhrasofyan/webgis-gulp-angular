@@ -138,6 +138,26 @@ $fa-font-path: "../../bower_components/font-awesome/fonts";
   // background-color: white;
 }
 
+//override some styling in default panel.scss
+.panel-no-margin {
+  .panel-group {
+    .panel {
+      + .panel {
+        margin-top: 0px;
+      }
+    }
+    .panel-title {
+      a:hover, a:focus {
+        color: black;
+        text-decoration: none;
+      }
+    }
+  }
+}
+
+
+
+
 /**
  *  Do not remove the comments below. It's the markers used by gulp-inject to inject
  *  all your sass files automatically
