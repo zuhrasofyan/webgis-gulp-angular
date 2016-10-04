@@ -21,7 +21,8 @@
     "angular-slick-carousel": "^3.1.7",
     "font-awesome": "fontawesome#^4.6.3",
     "ol3": "ol3-bower#^3.17.1",
-    "angular-openlayers-directive": "^1.15.2"
+    "angular-openlayers-directive": "^1.15.2",
+    "angular-file-saver": "^1.1.2"
   },
   "devDependencies": {
     "angular-mocks": "~1.5.3"
