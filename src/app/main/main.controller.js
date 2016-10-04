@@ -82,7 +82,7 @@
 
     //button controls on the map
     vm.controls = [
-        { name: 'zoom', active: true },
+        { name: 'zoom', active: false },
         { name: 'fullscreen', active: true },
         {name: 'scaleline', active: true},
         {name: 'mouseposition', active: true},
@@ -129,10 +129,21 @@
         control: new rotateNorthControl()
     };
 
-    // function testClick() {
-    //   return alert('haha');
-    // }
-    // vm.testClick = testClick;
+    function btnZoomIn() {
+      if (vm.bandaAceh.zoom < vm.defaults.view.maxZoom) {
+        vm.bandaAceh.zoom = vm.bandaAceh.zoom+1;
+      }
+
+    }
+    vm.btnZoomIn = btnZoomIn;
+
+    function btnZoomOut() {
+      if (vm.bandaAceh.zoom > vm.defaults.view.minZoom) {
+        vm.bandaAceh.zoom = vm.bandaAceh.zoom-1;
+      }
+    }
+
+    vm.btnZoomOut = btnZoomOut;
 
     //save map as image
     function saveAsPNG() {
@@ -140,8 +151,8 @@
       //console.log(canvas);
       canvas.toBlob(function (blob) {
         //console.log(blob);
-        saveAs(blob, 'map.jpg');
-      }, 'image/jpeg');
+        saveAs(blob, 'map.png');
+      }, 'image/png');
     }
     vm.saveAsPNG = saveAsPNG;
 

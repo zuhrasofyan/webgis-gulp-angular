@@ -176,7 +176,7 @@ $fa-font-path: "../../bower_components/font-awesome/fonts";
   }
 
 .ol-full-screen.ol-control {
-  top: 75px;
+  top: 35px;
   background-color: rgba(255,255,255,0);
 
   .ol-full-screen-false, .ol-full-screen-true {
@@ -224,6 +224,21 @@ $fa-font-path: "../../bower_components/font-awesome/fonts";
   top: 10px;
   left: 302px;
 }
+.zoom-in-map {
+  border-radius: 0px;
+  position: absolute;
+  z-index: 100100;
+  top: 10px;
+  left: 335px;
+}
+.zoom-out-map {
+  border-radius: 0px;
+  position: absolute;
+  z-index: 100100;
+  top: 10px;
+  left: 364px;
+}
+
 /**
  *  Do not remove the comments below. It's the markers used by gulp-inject to inject
  *  all your sass files automatically

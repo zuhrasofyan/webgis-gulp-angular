@@ -115,6 +115,8 @@
       </div>
     </div>
     <button type="button" title="Simpan Peta" name="btnSave" class="btn btn-info btn-sm save-map" ng-click="main.saveAsPNG()"><i class="fa fa-download"></i></button>
+    <button type="button" title="Zoom In Peta" name="btnZoomIn" class="btn btn-info btn-sm zoom-in-map" ng-click="main.btnZoomIn()"><b>+</b></button>
+    <button type="button" title="Zoom Out Peta" name="btnZoomOut" class="btn btn-info btn-sm zoom-out-map" ng-click="main.btnZoomOut()"><b>-</b></button>
     <ol-layer ol-layer-properties="layer" ng-repeat="layer in main.layers|filter:{active:true}"></ol-layer>
     <ol-layer ol-layer-properties="lokasi" ng-repeat="lokasi in main.lokasi|filter:{active:true}">
       <ol-marker ol-marker-properties="main.isiLabel"></ol-marker>
