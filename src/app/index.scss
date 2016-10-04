@@ -134,6 +134,7 @@ $fa-font-path: "../../bower_components/font-awesome/fonts";
   .btn-group {
     .menu-button {
       //background-color: rgba(54, 25, 25, .75);
+      border-radius: 0px;
     }
   }
 }
@@ -174,8 +175,55 @@ $fa-font-path: "../../bower_components/font-awesome/fonts";
      right: 8px;
   }
 
+.ol-full-screen.ol-control {
+  top: 75px;
+  background-color: rgba(255,255,255,0);
 
+  .ol-full-screen-false, .ol-full-screen-true {
+    border-radius: 0px;
+    //padding: 5px 10px;
+    font-size: 12;
+    line-height:1.5;
+    color: #ffffff;
+    background-color: #5bc0de;
+    border-color: #46b8da;
+  }
+}
 
+// .ol-control {
+//   background-color: rgba (255,255,255,0);
+//   //background-color: none;
+//   border-radius: 0px;
+//   padding:0px;
+//
+// }
+.rotate-north {
+  position: absolute;
+  z-index: 100100;
+  top: 10px;
+  left: 270px;
+}
+
+.ol-unselectable {
+  .btn-sm {
+    border-radius: 0px;
+  }
+}
+
+.full-screen {
+  position: absolute;
+  z-index: 100100;
+  top: 10px;
+  left: 300px;
+}
+
+.save-map {
+  border-radius: 0px;
+  position: absolute;
+  z-index: 100100;
+  top: 10px;
+  left: 302px;
+}
 /**
  *  Do not remove the comments below. It's the markers used by gulp-inject to inject
  *  all your sass files automatically

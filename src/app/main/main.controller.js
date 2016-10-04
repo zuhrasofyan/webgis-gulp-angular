@@ -27,7 +27,11 @@
       },
       events: {
         map: ['singleclick']
-      }
+      },
+      controls: {zoom: false},
+      interactions: {
+                mouseWheelZoom: false
+            },
     };
 
     //show custom buttons
@@ -79,7 +83,11 @@
     //button controls on the map
     vm.controls = [
         { name: 'zoom', active: true },
-        { name: 'fullscreen', active: true }
+        { name: 'fullscreen', active: true },
+        {name: 'scaleline', active: true},
+        {name: 'mouseposition', active: true},
+        {name: 'overviewmap', active: true},
+        {name: 'zoomtoextent', active: false}
     ];
 
     //show map-layers-menu
@@ -92,33 +100,56 @@
     var rotateNorthControl = function(opt_options) {
         var options = opt_options || {};
         var rotation = 0;
-        var button = document.createElement('button');
+        var button = document.createElement('div');
+        button.className = "btn btn-info btn-sm";
         button.innerHTML = '<i class="fa fa-rotate-right"></i>';
         var this_ = this;
         var handleRotateNorth = function(e) {
             rotation += 90;
             this_.getMap().getView().setRotation(rotation);
+            // console.log(this_.getMap().getView().getCenter());
+            // console.log(this_.getMap().getLayers());
+            // console.log(options.target);
         };
         button.addEventListener('click', handleRotateNorth, false);
         button.addEventListener('touchstart', handleRotateNorth, false);
         var element = document.createElement('div');
-        element.className = 'rotate-north ol-unselectable ol-control';
+        element.className = 'rotate-north ol-unselectable';
+        element.setAttribute('title', 'Rotate 90 degree');
         element.appendChild(button);
         ol.control.Control.call(this, {
             element: element,
             target: options.target
         });
     };
+
     ol.inherits(rotateNorthControl, ol.control.Control);
 
-    vm.rotateNorth= {
+    vm.rotateNorth = {
         control: new rotateNorthControl()
     };
 
-    vm.controls = [
-      {name: 'rotateNorth', active:true, btn: vm.rotateNorth},
-      {name: 'testButton', active:true, btn: vm.testButton}
-    ];
+    // function testClick() {
+    //   return alert('haha');
+    // }
+    // vm.testClick = testClick;
+
+    //save map as image
+    function saveAsPNG() {
+      var canvas = document.getElementsByTagName('canvas')[0];
+      //console.log(canvas);
+      canvas.toBlob(function (blob) {
+        //console.log(blob);
+        saveAs(blob, 'map.jpg');
+      }, 'image/jpeg');
+    }
+    vm.saveAsPNG = saveAsPNG;
+
+
+    // vm.controls = [
+    //   {name: 'rotateNorth', active:true, btn: vm.rotateNorth},
+    //   {name: 'testButton', active:true, btn: vm.testButton}
+    // ];
 
     //List all basic layers land,perumahan,bangunan,laut,tambak,sungai,hutan,taman,lapangan,jalan,lokasi
     vm.layers = [
@@ -397,6 +428,13 @@
     //add event onclick to show detail information for each point
     $scope.$on('openlayers.map.singleclick', function(event, data) {
 
+      //var coordi = data.feature.getGeometry().getCoordinates();
+      // olData.getMap().then(function(map){
+      //   var layers3 = map.getLayers();
+      //   console.log(layers3);
+      //   map.setCenter(new ol.LonLat(10611585.430831643,618635.9224546722));
+      //   //map.getView().
+      // });
       //get projection data
       var prj = ol.proj.transform([ data.coord[0], data.coord[1] ], data.projection, 'EPSG:3857').map(function(c) {
           return c;
@@ -438,7 +476,7 @@
             var properties = data.features[0].properties;
             var nama = properties.nama_lokas;
             var desa = properties.desa;
-            vm.lengkap =  nama + '  ' + desa + '<br>' + prettyCoord;
+            vm.lengkap =  nama + '  ' + desa + '<br>' + prj;
 
             //place the popup label on the map
             vm.isiLabel = {
@@ -476,6 +514,7 @@
       isFirstOpen: true,
       isFirstDisabled: false
     };
+
   }
 
 })();
