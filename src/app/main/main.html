@@ -97,9 +97,21 @@
               <uib-accordion-heading>
                 Peta Satelit <i class="pull-right fa" ng-class="{'fa-chevron-down': main.status.open5, 'fa-chevron-right': !main.status.open5}"></i>
               </uib-accordion-heading>
-              <label ng-repeat="bing in main.bing">
-                <input type="checkbox" name="response" ng-value="true" ng-model="bing.active"> {{bing.desc}}
-              </label>
+              <div class="bing-layer">
+                <div ng-repeat="bing in main.bing">
+                  <div class="cb-bing">
+                    <label>
+                      <input type="checkbox" name="response" ng-value="true" ng-model="bing.active"> {{bing.desc}}
+                    </label>
+                  </div>
+                  <div class="range-bing">
+                    <label>
+                      <input type="range" min="0" max="1" step="0.01" ng-model="bing.opacity">
+                    </label>
+                  </div>
+                </div>
+              </div>
+
             </div>
           </uib-accordion>
         </div>

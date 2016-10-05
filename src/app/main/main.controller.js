@@ -396,6 +396,7 @@
         name: 'bing',
         desc: 'Jalan',
         active: false,
+        opacity: 1,
         source: {
             name: 'Bing Maps',
             type: 'BingMaps',
@@ -408,6 +409,7 @@
         name: 'aerial_bing',
         desc: 'Satelit',
         active: false,
+        opacity: 1,
         source: {
             name: 'Bing Aerial Maps',
             type: 'BingMaps',
