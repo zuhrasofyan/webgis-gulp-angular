@@ -4,11 +4,30 @@
 <!-- halo <i class="fa fa-list-alt"></i> -->
 <div class="container-map" style=" height:92vh; background-color:blue">
   <openlayers ol-center="main.bandaAceh" ol-defaults="main.defaults" custom-layers="true" height="100%">
-    <div class="row" ng-show="main.isVisible">
-      <div id="map-menu" class="col-xs-4 sidebar sidebar-right">
+    <div class="row" ng-show="main.lokasiMenuIsVisible">
+      <div id="map-lokasi-menu" class="col-xs-4 sidebar sidebar-right">
         <div class="panel-group panel-no-margin">
           <uib-accordion>
             <div uib-accordion-group class="panel-default" is-open="main.status.open">
+              <uib-accordion-heading>
+                Peta Lokasi <i class="pull-right fa" ng-class="{'fa-chevron-down': main.status.open2, 'fa-chevron-right': !main.status.open2}"></i>
+              </uib-accordion-heading>
+              <div class="main-layer">
+                <div ng-repeat="lokasi in main.lokasi">
+                  <label><input type="checkbox" name="response" ng-value="true" ng-model="lokasi.active"> {{lokasi.desc}}</label>
+                </div>
+              </div>
+            </div>
+          </uib-accordion>
+        </div>
+      </div>
+    </div>
+
+    <div class="row" ng-show="main.layerMenuIsVisible">
+      <div id="map-menu" class="col-xs-4 sidebar sidebar-right">
+        <div class="panel-group panel-no-margin">
+          <uib-accordion>
+            <div uib-accordion-group class="panel-default" is-open="main.status.open2">
               <uib-accordion-heading>
                 Peta Dasar <i class="pull-right fa" ng-class="{'fa-chevron-down': main.status.open, 'fa-chevron-right': !main.status.open}"></i>
               </uib-accordion-heading>
@@ -20,17 +39,6 @@
                   <label>
                     <input type="checkbox" ng-value="true" ng-model="main.basicCheckBox" ng-click="main.toggleBasicMap()"> Centang / matikan semua peta dasar
                   </label>
-                </div>
-              </div>
-            </div>
-
-            <div uib-accordion-group class="panel-default" is-open="main.status.open2">
-              <uib-accordion-heading>
-                Peta Lokasi <i class="pull-right fa" ng-class="{'fa-chevron-down': main.status.open2, 'fa-chevron-right': !main.status.open2}"></i>
-              </uib-accordion-heading>
-              <div class="main-layer">
-                <div ng-repeat="lokasi in main.lokasi">
-                  <label><input type="checkbox" name="response" ng-value="true" ng-model="lokasi.active"> {{lokasi.desc}}</label>
                 </div>
               </div>
             </div>
@@ -106,7 +114,7 @@
       <div class="btn-group" role="group" id="btn-group-menu">
         <button type="button" title="Tampilkan Menu Layer" name="btnShowMapMenu" class="btn btn-default btn-sm menu-button" ng-click="main.showMapMenu()"><i class="fa fa-list-ul"></i> Menu Layer</button>
         <button type="button" title="Cari Tempat di Peta" name="btnSearch" class="btn btn-default btn-sm menu-button">Cari <i class="fa fa-search"></i> </button>
-        <button type="button" title="Tampilkan Lokasi Tempat" name="btnShowLokasi" class="btn btn-default btn-sm menu-button"><i class="fa fa-map-marker"></i> Menu Lokasi</button>
+        <button type="button" title="Tampilkan Lokasi Tempat" name="btnShowLokasi" class="btn btn-default btn-sm menu-button" ng-click="main.showMapLokasiMenu()"><i class="fa fa-map-marker"></i> Menu Lokasi</button>
         <!-- <button type="button" title="Fullscreen" name="btnFullScreen" class="btn btn-info btn-sm menu-button"><i class="fa fa-expand"></i></button>
         <button ol-control-properties="main.rotateNorth" type="button" id="putar" title="Putar Peta 90 derajat" name="btnRotate" class="btn btn-info btn-sm menu-button ol-control" ng-click="main.handleRotateNorth"><i class="fa fa-refresh"></i></button>
         <button type="button" title="Simpan Peta" name="btnSave" class="btn btn-info btn-sm menu-button"><i class="fa fa-download"></i></button>

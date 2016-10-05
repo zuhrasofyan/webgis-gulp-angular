@@ -141,7 +141,7 @@ $fa-font-path: "../../bower_components/font-awesome/fonts";
 
 
 //show map menu on top of the map
-#map-menu {
+#map-menu, #map-lokasi-menu {
   position:absolute;
   z-index: 100011;
   top: 40px;
@@ -174,9 +174,11 @@ $fa-font-path: "../../bower_components/font-awesome/fonts";
      left: unset;
      right: 8px;
   }
-
-.ol-full-screen.ol-control {
+.ol-rotate {
   top: 35px;
+}
+.ol-full-screen.ol-control {
+  top: 8px;
   background-color: rgba(255,255,255,0);
 
   .ol-full-screen-false, .ol-full-screen-true {
@@ -188,6 +190,22 @@ $fa-font-path: "../../bower_components/font-awesome/fonts";
     background-color: #5bc0de;
     border-color: #46b8da;
   }
+}
+
+.ol-mouse-position {
+  top:auto;
+  bottom: 5px;
+
+}
+
+.ol-scale-line {
+  left: 40px;
+  z-index: 10000001;
+}
+
+.ol-overviewmap {
+  z-index: 10000000;
+  bottom:5px;
 }
 
 // .ol-control {

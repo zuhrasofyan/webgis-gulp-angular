@@ -28,7 +28,10 @@
       events: {
         map: ['singleclick']
       },
-      controls: {zoom: false},
+      controls: {
+        zoom: false,
+        attribution: false
+      },
       interactions: {
                 mouseWheelZoom: false
             },
@@ -91,9 +94,16 @@
     ];
 
     //show map-layers-menu
-    vm.isVisible = false;
+    vm.layerMenuIsVisible = false;
     vm.showMapMenu = function () {
-      vm.isVisible = vm.isVisible ? false : true;
+      vm.lokasiMenuIsVisible = false;
+      vm.layerMenuIsVisible = vm.layerMenuIsVisible ? false : true;
+    };
+
+    vm.lokasiMenuIsVisible = false;
+    vm.showMapLokasiMenu = function () {
+      vm.layerMenuIsVisible = false;
+      vm.lokasiMenuIsVisible = vm.lokasiMenuIsVisible ? false : true;
     };
 
     //inject rotate north button to directive
