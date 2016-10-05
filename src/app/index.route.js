@@ -8,17 +8,17 @@
   /** @ngInject */
   function routerConfig($stateProvider, $urlRouterProvider) {
     $stateProvider
-      .state('home', {
+      .state('main', {
         url: '/',
         templateUrl: 'app/main/main.html',
         controller: 'MainController',
         controllerAs: 'main'
       })
-      .state('about',{
-        url: '/about',
-        templateUrl: 'app/about/about.html',
-        controller: 'AboutPageController',
-        controllerAs: 'about'
+      .state("about",{
+        url: "/about",
+        templateUrl: "app/about/about.html",
+        controller: "AboutPageController",
+        controllerAs: "about"
       })
       .state('local', {
         url: '/local',
