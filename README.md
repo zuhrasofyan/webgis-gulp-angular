@@ -35,6 +35,7 @@ Webgis Bappeda Kota with swiip generator angular
 * font-awesome
 * ol3
 * angular-openlayers-directive
+* angular-file-saver
 
 copyright &copy; Bappeda Kota Banda Aceh 2016
 
