@@ -23,100 +23,109 @@
       </div>
     </div>
 
-    <div class="row" ng-show="main.layerMenuIsVisible">
-      <div id="map-menu" class="col-xs-4 sidebar sidebar-right">
-        <div class="panel-group panel-no-margin">
-          <uib-accordion>
-            <div uib-accordion-group class="panel-default" is-open="main.status.open2">
-              <uib-accordion-heading>
-                Peta Dasar <i class="pull-right fa" ng-class="{'fa-chevron-down': main.status.open2, 'fa-chevron-right': !main.status.open2}"></i>
-              </uib-accordion-heading>
-              <div class="main-layer">
-                <div ng-repeat="layer in main.layers">
-                  <label><input type="checkbox" name="response" ng-value="true" ng-model="layer.active"> {{layer.desc}}</label>
-                </div>
-                <div class="check-all">
-                  <label>
-                    <input type="checkbox" ng-value="true" ng-model="main.basicCheckBox" ng-click="main.toggleBasicMap()"> Centang / matikan semua peta dasar
-                  </label>
-                </div>
-              </div>
-            </div>
+    <div id="map-menu" class="panel panel-primary" ng-show="main.layerMenuIsVisible">
+      <div class="panel-heading">Jenis Peta</div>
+      <div class="panel-footer">
+        <div class="rowsy">
+          <div  class="sidebar sidebar-right">
+            <div class="panel-group panel-no-margin">
+              <uib-accordion>
+                <div uib-accordion-group class="panel-info" is-open="main.status.open2">
+                  <uib-accordion-heading>
+                    Peta Dasar <i class="pull-right fa" ng-class="{'fa-chevron-down': main.status.open2, 'fa-chevron-right': !main.status.open2}"></i>
+                  </uib-accordion-heading>
+                  <div class="main-layer">
+                    <div ng-repeat="layer in main.layers">
+                      <label><input type="checkbox" name="response" ng-value="true" ng-model="layer.active"> {{layer.desc}}</label>
+                    </div>
+                    <div class="check-all">
+                      <label>
+                        <input type="checkbox" ng-value="true" ng-model="main.basicCheckBox" ng-click="main.toggleBasicMap()"> Centang / matikan semua peta dasar
+                      </label>
+                    </div>
+                    <div class="" style="height:300px">
 
-            <div uib-accordion-group class="panel-default" is-open="main.status.open3">
-              <uib-accordion-heading>
-                Peta Tematik <i class="pull-right fa" ng-class="{'fa-chevron-down': main.status.open3, 'fa-chevron-right': !main.status.open3}"></i>
-              </uib-accordion-heading>
-              <div class="tematik-layer">
-                <div ng-repeat="tematik in main.tematik">
-                  <div class="cb-tematik">
-                    <label>
-                      <input type="checkbox" name="response" ng-value="true" ng-model="tematik.active"> {{tematik.desc}}
-                    </label>
-                  </div>
-                  <div class="range-tematik">
-                    <label>
-                      <input type="range" min="0" max="1" step="0.01" ng-model="tematik.opacity">
-                    </label>
+                    </div>
                   </div>
                 </div>
-                <div class="check-all">
-                  <label>
-                    <input type="checkbox" ng-value="true" ng-model="main.tematikCheckBox" ng-click="main.toggleTematikMap()"> Centang / matikan semua peta tematik
-                  </label>
-                </div>
-              </div>
-            </div>
 
-            <div uib-accordion-group class="panel-default" is-open="main.status.open4">
-              <uib-accordion-heading>
-                Peta Perencanaan <i class="pull-right fa" ng-class="{'fa-chevron-down': main.status.open4, 'fa-chevron-right': !main.status.open4}"></i>
-              </uib-accordion-heading>
-              <div class="rencana-layer">
-                <div ng-repeat="rencana in main.rencana">
-                  <div class="cb-rencana">
-                    <label>
-                      <input type="checkbox" name="response" ng-value="true" ng-model="rencana.active"> {{rencana.desc}}
-                    </label>
-                  </div>
-                  <div class="range-rencana">
-                    <label>
-                      <input type="range" min="0" max="1" step="0.01" ng-model="rencana.opacity">
-                    </label>
+                <div uib-accordion-group class="panel-info" is-open="main.status.open3">
+                  <uib-accordion-heading>
+                    Peta Tematik <i class="pull-right fa" ng-class="{'fa-chevron-down': main.status.open3, 'fa-chevron-right': !main.status.open3}"></i>
+                  </uib-accordion-heading>
+                  <div class="tematik-layer">
+                    <div ng-repeat="tematik in main.tematik">
+                      <div class="cb-tematik">
+                        <label>
+                          <input type="checkbox" name="response" ng-value="true" ng-model="tematik.active"> {{tematik.desc}}
+                        </label>
+                      </div>
+                      <div class="range-tematik">
+                        <label>
+                          <input type="range" min="0" max="1" step="0.01" ng-model="tematik.opacity">
+                        </label>
+                      </div>
+                    </div>
+                    <div class="check-all">
+                      <label>
+                        <input type="checkbox" ng-value="true" ng-model="main.tematikCheckBox" ng-click="main.toggleTematikMap()"> Centang / matikan semua peta tematik
+                      </label>
+                    </div>
                   </div>
                 </div>
-                <div class="check-all">
-                  <label>
-                    <input type="checkbox" ng-model="main.rencanaCheckBox" ng-click="main.toggleRencanaMap()"> Centang / matikan semua peta perencanaan
-                  </label>
-                </div>
-              </div>
-            </div>
 
-            <div uib-accordion-group class="panel-default" is-open="main.status.open5">
-              <uib-accordion-heading>
-                Peta Satelit <i class="pull-right fa" ng-class="{'fa-chevron-down': main.status.open5, 'fa-chevron-right': !main.status.open5}"></i>
-              </uib-accordion-heading>
-              <div class="bing-layer">
-                <div ng-repeat="bing in main.bing">
-                  <div class="cb-bing">
-                    <label>
-                      <input type="checkbox" name="response" ng-value="true" ng-model="bing.active"> {{bing.desc}}
-                    </label>
-                  </div>
-                  <div class="range-bing">
-                    <label>
-                      <input type="range" min="0" max="1" step="0.01" ng-model="bing.opacity">
-                    </label>
+                <div uib-accordion-group class="panel-info" is-open="main.status.open4">
+                  <uib-accordion-heading>
+                    Peta Perencanaan <i class="pull-right fa" ng-class="{'fa-chevron-down': main.status.open4, 'fa-chevron-right': !main.status.open4}"></i>
+                  </uib-accordion-heading>
+                  <div class="rencana-layer">
+                    <div ng-repeat="rencana in main.rencana">
+                      <div class="cb-rencana">
+                        <label>
+                          <input type="checkbox" name="response" ng-value="true" ng-model="rencana.active"> {{rencana.desc}}
+                        </label>
+                      </div>
+                      <div class="range-rencana">
+                        <label>
+                          <input type="range" min="0" max="1" step="0.01" ng-model="rencana.opacity">
+                        </label>
+                      </div>
+                    </div>
+                    <div class="check-all">
+                      <label>
+                        <input type="checkbox" ng-model="main.rencanaCheckBox" ng-click="main.toggleRencanaMap()"> Centang / matikan semua peta perencanaan
+                      </label>
+                    </div>
                   </div>
                 </div>
-              </div>
 
+                <div uib-accordion-group class="panel-info" is-open="main.status.open5" style="border-style:solid">
+                  <uib-accordion-heading>
+                    Peta Satelit <i class="pull-right fa" ng-class="{'fa-chevron-down': main.status.open5, 'fa-chevron-right': !main.status.open5}"></i>
+                  </uib-accordion-heading>
+                  <div class="bing-layer">
+                    <div ng-repeat="bing in main.bing">
+                      <div class="cb-bing">
+                        <label>
+                          <input type="checkbox" name="response" ng-value="true" ng-model="bing.active"> {{bing.desc}}
+                        </label>
+                      </div>
+                      <div class="range-bing">
+                        <label>
+                          <input type="range" min="0" max="1" step="0.01" ng-model="bing.opacity">
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+              </uib-accordion>
             </div>
-          </uib-accordion>
+          </div>
         </div>
       </div>
     </div>
+
 
 
 
