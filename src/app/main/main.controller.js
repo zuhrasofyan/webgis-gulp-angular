@@ -298,7 +298,7 @@
         source: {
             type: 'TileWMS',
             url: 'http://bappeda.bandaacehkota.go.id/geoserver/uptb_gis_bna/wms',
-            params:{"LAYERS": "uptb_gis_bna:lokasi_tabel2", "TILED": true}
+            params:{"LAYERS": "uptb_gis_bna:lokasi_utama", "TILED": true}
         },
         zIndex: 11
       }
@@ -492,11 +492,7 @@
       var viewResolution = /** @type {number} */ (view.getResolution());
 
       //hack location not using angular way to use OL3 getGetFeatureInfoUrl()
-      var wmsLokasi = new ol.source.TileWMS({
-          url: 'http://bappeda.bandaacehkota.go.id/geoserver/uptb_gis_bna/wms',
-          params: {'LAYERS': 'uptb_gis_bna:lokasi_tabel', 'TILED': true},
-          serverType: 'geoserver'
-      });
+      var wmsLokasi = new ol.source.TileWMS(vm.lokasi[0].source);
       var myurl = wmsLokasi.getGetFeatureInfoUrl(
               prj, viewResolution, 'EPSG:3857',
               {'INFO_FORMAT': 'application/json'});
