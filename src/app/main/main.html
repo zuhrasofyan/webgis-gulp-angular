@@ -4,24 +4,30 @@
 <!-- halo <i class="fa fa-list-alt"></i> -->
 <div class="container-map" style=" height:92vh; background-color:blue">
   <openlayers ol-center="main.bandaAceh" ol-defaults="main.defaults" custom-layers="true" height="100%">
-    <div class="row" ng-show="main.lokasiMenuIsVisible">
-      <div id="map-lokasi-menu" class="col-xs-4 sidebar sidebar-right">
-        <div class="panel-group panel-no-margin">
-          <uib-accordion>
-            <div uib-accordion-group class="panel-default" is-open="main.status.open">
-              <uib-accordion-heading>
-                Peta Lokasi <i class="pull-right fa" ng-class="{'fa-chevron-down': main.status.open, 'fa-chevron-right': !main.status.open}"></i>
-              </uib-accordion-heading>
-              <div class="main-layer">
-                <div ng-repeat="lokasi in main.lokasi">
-                  <label><input type="checkbox" name="response" ng-value="true" ng-model="lokasi.active"> {{lokasi.desc}}</label>
+
+
+    <div id="map-lokasi-menu" class="panel panel-primary" ng-show="main.lokasiMenuIsVisible">
+      <div class="panel-heading">Jenis Lokasi</div>
+      <div class="panel-footer">
+        <div class="sidebar sidebar-right">
+          <div class="panel-group panel-no-margin">
+            <uib-accordion>
+              <div uib-accordion-group class="panel-info" is-open="main.status.open">
+                <uib-accordion-heading>
+                  Lokasi Dasar <i class="pull-right fa" ng-class="{'fa-chevron-down': main.status.open, 'fa-chevron-right': !main.status.open}"></i>
+                </uib-accordion-heading>
+                <div class="main-layer">
+                  <div ng-repeat="lokasi in main.lokasi">
+                    <label><input type="checkbox" name="response" ng-value="true" ng-model="lokasi.active"> {{lokasi.desc}}</label>
+                  </div>
                 </div>
               </div>
-            </div>
-          </uib-accordion>
+            </uib-accordion>
+          </div>
         </div>
       </div>
     </div>
+
 
     <div id="map-menu" class="panel panel-primary" ng-show="main.layerMenuIsVisible">
       <div class="panel-heading">Jenis Peta</div>
@@ -163,8 +169,9 @@
     <input type="checkbox" name="response" ng-value="true" ng-model="satelit.active"> {{satelit.name}}
   </label-->
 
-<form>
+<!-- <form>
     Latitude : <input type="number" step="any" ng-model="main.bandaAceh.lat" />
     Longitude : <input type="number" step="any" ng-model="main.bandaAceh.lon" />
     Zoom : <input type="number" step="any" ng-model="main.bandaAceh.zoom" />
-</form>
+    Mouse Position : <pre ng:bind="main.mousePosition | json"></pre>
+</form> -->

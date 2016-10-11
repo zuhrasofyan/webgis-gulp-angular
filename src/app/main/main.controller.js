@@ -26,7 +26,7 @@
           extent: [10605714.11, 615365.85, 10617256.10, 625990.60]
       },
       events: {
-        map: ['singleclick']
+        map: ['singleclick', 'pointermove']
       },
       controls: {
         zoom: false,
@@ -36,6 +36,9 @@
                 mouseWheelZoom: false
             },
     };
+
+    vm.mousePosition = {};
+    vm.projection = 'EPSG:3857';
 
     //show custom buttons
     // vm.controls = [
@@ -88,7 +91,7 @@
         { name: 'zoom', active: false },
         { name: 'fullscreen', active: true },
         {name: 'scaleline', active: true},
-        {name: 'mouseposition', active: true},
+        {name: 'mouseposition', active: false},
         {name: 'overviewmap', active: true},
         {name: 'zoomtoextent', active: false}
     ];
@@ -290,7 +293,7 @@
     vm.lokasi = [
       {
         name: 'lokasi',
-        desc: 'Lokasi',
+        desc: 'Lokasi Penting',
         active: true,
         source: {
             type: 'TileWMS',
@@ -446,7 +449,19 @@
         zIndex: 11
       }
     ];*/
+    //add mouse position listener
+    $scope.$on('openlayers.map.pointermove', function(event, data){
+      //console.log(data.coord);
+      if (vm.projection === data.projection) {
+        $scope.$apply(function(){
+          vm.mousePosition = data.coord;
 
+        });
+      } else {
+        vm.mousePosition = '000';
+      }
+
+    });
 
     //add event onclick to show detail information for each point
     $scope.$on('openlayers.map.singleclick', function(event, data) {
