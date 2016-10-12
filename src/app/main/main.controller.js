@@ -6,7 +6,7 @@
     .controller('MainController', MainController);
 
   /** @ngInject */
-  function MainController($scope, $http, olData) {
+  function MainController($scope, $http, olData, lokasiService) {
     var vm = this;
 
     //set initial data for popup-label
@@ -289,20 +289,9 @@
       }
     ];
 
-    //separate point layer as different layer
-    vm.lokasi = [
-      {
-        name: 'lokasi',
-        desc: 'Lokasi Penting',
-        active: true,
-        source: {
-            type: 'TileWMS',
-            url: 'http://bappeda.bandaacehkota.go.id/geoserver/uptb_gis_bna/wms',
-            params:{"LAYERS": "uptb_gis_bna:lokasi_utama", "TILED": true}
-        },
-        zIndex: 11
-      }
-    ];
+    //get lokasi layer from lokasiService
+    vm.lokasi = lokasiService.data;
+
     //List all tematik layers jml_kk_2011, total_pddk_2013, total_pddk_2014,
     vm.tematik = [
       {
