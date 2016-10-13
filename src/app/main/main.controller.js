@@ -6,7 +6,7 @@
     .controller('MainController', MainController);
 
   /** @ngInject */
-  function MainController($scope, $http, olData, lokasiService, komponenPetaService, tematikService, rencanaService) {
+  function MainController($scope, $http, olData, lokasiService, komponenPetaService, tematikService, rencanaService, otherBasemapService) {
     var vm = this;
 
     //set initial data for popup-label
@@ -142,62 +142,11 @@
     vm.tematik = tematikService.data;
     //get rencana peta layers from rencanaService
     vm.rencana = rencanaService.data;
+    //get other basemap layers from otherBasemapService
+    vm.bing = otherBasemapService.bing;
 
 
-    vm.bing = [{
-        name: 'bing',
-        desc: 'Jalan',
-        active: false,
-        opacity: 1,
-        source: {
-            name: 'Bing Maps',
-            type: 'BingMaps',
-            key: 'AlShs5Jq3KqQxpuRNEtxI4_LL5H4-okI9vxBBE_TZo2TNtJNe2Kl2le-rJ4F9jS7',
-            imagerySet: 'Road'
-        },
-        zIndex: 12
-      },
-      {
-        name: 'aerial_bing',
-        desc: 'Satelit',
-        active: false,
-        opacity: 1,
-        source: {
-            name: 'Bing Aerial Maps',
-            type: 'BingMaps',
-            key: 'AlShs5Jq3KqQxpuRNEtxI4_LL5H4-okI9vxBBE_TZo2TNtJNe2Kl2le-rJ4F9jS7',
-            imagerySet: 'Aerial'
-        },
-        zIndex: 12
-      }
-    ];
 
-    /*vm.citraSatelit = [
-      {
-        name: 'citra_satelit',
-        desc: 'Citra Satelit',
-        active: false,
-        opacity: 1,
-        source: {
-            type: 'TileWMS',
-            url: 'http://bappeda.bandaacehkota.go.id/geoserver/uptb_gis_bna/wms',
-            params:{'LAYERS': 'uptb_gis_bna:WorldView-1_BandaAceh_15Jan2015_CD1', 'TILED': true}
-        },
-        zIndex: 11
-      },
-      {
-        name: 'citra_satelit2',
-        desc: 'Citra Satelit',
-        active: false,
-        opacity: 1,
-        source: {
-            type: 'TileWMS',
-            url: 'http://bappeda.bandaacehkota.go.id/geoserver/uptb_gis_bna/wms',
-            params:{'LAYERS': 'uptb_gis_bna:WorldView-1_BandaAceh_15Jan2015_CD2', 'TILED': true}
-        },
-        zIndex: 11
-      }
-    ];*/
     //add mouse position listener
     $scope.$on('openlayers.map.pointermove', function(event, data){
       //console.log(data.coord);
