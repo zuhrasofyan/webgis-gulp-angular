@@ -6,7 +6,7 @@
     .controller('MainController', MainController);
 
   /** @ngInject */
-  function MainController($scope, $http, olData, lokasiService, komponenPetaService, tematikService) {
+  function MainController($scope, $http, olData, lokasiService, komponenPetaService, tematikService, rencanaService) {
     var vm = this;
 
     //set initial data for popup-label
@@ -39,12 +39,6 @@
 
     vm.mousePosition = {};
     vm.projection = 'EPSG:3857';
-
-    //show custom buttons
-    // vm.controls = [
-    //   {name: zoom2, active: true},
-    //   {name: sssss, active: true}
-    // ];
 
     //test get http data from API
     /*$http.get('https://jsonplaceholder.typicode.com/posts').then(function (response){
@@ -146,46 +140,9 @@
     vm.lokasi = lokasiService.data;
     //get tematik peta layers from tematikService
     vm.tematik = tematikService.data;
+    //get rencana peta layers from rencanaService
+    vm.rencana = rencanaService.data;
 
-    //List all perencanaan layers pola_ruang,kawasan_strategis,pusat_pelayanan
-    vm.rencana = [
-      {
-        name: 'pola_ruang',
-        desc: 'Pola Ruang',
-        active: false,
-        opacity: 1,
-        source: {
-            type: 'TileWMS',
-            url: 'http://bappeda.bandaacehkota.go.id/geoserver/uptb_gis_bna/wms',
-            params:{'LAYERS': 'uptb_gis_bna:pola_ruang_banda_aceh_utm', 'TILED': true}
-        },
-        zIndex: 13
-      },
-      {
-        name: 'kawasan_strategis',
-        desc: 'Kawasan Strategis',
-        active: false,
-        opacity: 1,
-        source: {
-            type: 'TileWMS',
-            url: 'http://bappeda.bandaacehkota.go.id/geoserver/uptb_gis_bna/wms',
-            params:{'LAYERS': 'uptb_gis_bna:kawasan strategis1', 'TILED': true}
-        },
-        zIndex: 13
-      },
-      {
-        name: 'pusat_pelayanan',
-        desc: 'Pusat Pelayanan',
-        active: false,
-        opacity: 1,
-        source: {
-            type: 'TileWMS',
-            url: 'http://bappeda.bandaacehkota.go.id/geoserver/uptb_gis_bna/wms',
-            params:{'LAYERS': 'uptb_gis_bna:struktur_ruang', 'TILED': true}
-        },
-        zIndex: 13
-      }
-    ];
 
     vm.bing = [{
         name: 'bing',
