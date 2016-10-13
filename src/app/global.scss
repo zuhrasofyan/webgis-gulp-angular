@@ -33,7 +33,7 @@ body {
 //show map menu on top of the map
 #map-menu, #map-lokasi-menu {
   position:absolute;
-  z-index: 100011;
+  z-index: 100100;
   top: 40px;
   margin-left: 8px;
   min-width: 400px;
@@ -104,7 +104,7 @@ body {
     position:absolute;
     right:10px;
     bottom:10px;
-    z-index:10000;
+    z-index:100099;
     width:100px;
     height:100px;
     background-color:#FFFFFF;
@@ -189,7 +189,7 @@ body {
 //styling the button group on the top left of the map
 .layer-menu-button {
   position: absolute;
-  z-index: 100010;
+  z-index: 100100;
   text-align: right;
   top: 10px;
   left: 8px;
@@ -234,11 +234,11 @@ body {
 
 .ol-scale-line {
   left: 40px;
-  z-index: 10001;
+  z-index: 100100;
 }
 
 .ol-overviewmap {
-  z-index: 10000;
+  z-index: 100099;
   bottom:5px;
   .ol-overviewmap-map {
     margin-bottom: 25px;
