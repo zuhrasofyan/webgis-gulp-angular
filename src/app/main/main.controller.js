@@ -215,6 +215,7 @@
     //add event onclick to show detail information for each point
     $scope.$on('openlayers.map.singleclick', function(event, data) {
 
+      //use this type of code to setcenter to a new coordinate and place marker (eg from user input or from searchbox)
       //var coordi = data.feature.getGeometry().getCoordinates();
       // olData.getMap().then(function(map){
       //   var layers3 = map.getLayers();
@@ -223,6 +224,17 @@
       //   //map.getView().
       // });
       //get projection data
+
+      //use this type of code to get data from each layer based on the name
+      // olData.getMap().then(function(map){
+      //   var layers = map.getLayers();
+      //   layers.forEach(function(layer) {
+      //     if (layer.get('name') === 'landuse_2011') {
+      //       console.log ('haha');
+      //     }
+      //   });
+      // });
+
       var prj = ol.proj.transform([ data.coord[0], data.coord[1] ], data.projection, 'EPSG:3857').map(function(c) {
           return c;
       });
