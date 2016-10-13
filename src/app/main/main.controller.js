@@ -155,7 +155,7 @@
             key: 'AlShs5Jq3KqQxpuRNEtxI4_LL5H4-okI9vxBBE_TZo2TNtJNe2Kl2le-rJ4F9jS7',
             imagerySet: 'Road'
         },
-        zIndex: 10
+        zIndex: 12
       },
       {
         name: 'aerial_bing',
@@ -168,7 +168,7 @@
             key: 'AlShs5Jq3KqQxpuRNEtxI4_LL5H4-okI9vxBBE_TZo2TNtJNe2Kl2le-rJ4F9jS7',
             imagerySet: 'Aerial'
         },
-        zIndex: 10
+        zIndex: 12
       }
     ];
 
