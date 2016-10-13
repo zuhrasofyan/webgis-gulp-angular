@@ -6,7 +6,7 @@
     .controller('MainController', MainController);
 
   /** @ngInject */
-  function MainController($scope, $http, olData, lokasiService, komponenPetaService) {
+  function MainController($scope, $http, olData, lokasiService, komponenPetaService, tematikService) {
     var vm = this;
 
     //set initial data for popup-label
@@ -140,61 +140,12 @@
     //   {name: 'testButton', active:true, btn: vm.testButton}
     // ];
 
+    //get komponen peta layers from komponenPetaService
     vm.layers = komponenPetaService.data;
-    //get lokasi layer from lokasiService
+    //get lokasi (Points) layer from lokasiService
     vm.lokasi = lokasiService.data;
-
-    //List all tematik layers jml_kk_2011, total_pddk_2013, total_pddk_2014,
-    vm.tematik = [
-      {
-        name: 'jml_kk_2011',
-        desc: 'Jumlah KK 2011',
-        active: false,
-        opacity: 1,
-        source: {
-            type: 'TileWMS',
-            url: 'http://bappeda.bandaacehkota.go.id/geoserver/uptb_gis_bna/wms',
-            params:{'LAYERS': 'uptb_gis_bna:tematik_jml_kk', 'TILED': true}
-        },
-        zIndex: 12
-      },
-      {
-        name: 'total_pddk_2013',
-        desc: 'Total Penduduk 2013',
-        active: false,
-        opacity: 1,
-        source: {
-            type: 'TileWMS',
-            url: 'http://bappeda.bandaacehkota.go.id/geoserver/uptb_gis_bna/wms',
-            params:{'LAYERS': 'uptb_gis_bna:total_pddk_2013', 'TILED': true}
-        },
-        zIndex: 12
-      },
-      {
-        name: 'total_pddk_2014',
-        desc: 'Total Penduduk 2014',
-        active: false,
-        opacity: 1,
-        source: {
-            type: 'TileWMS',
-            url: 'http://bappeda.bandaacehkota.go.id/geoserver/uptb_gis_bna/wms',
-            params:{'LAYERS': 'uptb_gis_bna:total_pddk_2014', 'TILED': true}
-        },
-        zIndex: 12
-      },
-      {
-        name: 'landuse_2011',
-        desc: 'Landuse 2011',
-        active: false,
-        opacity: 1,
-        source: {
-            type: 'TileWMS',
-            url: 'http://bappeda.bandaacehkota.go.id/geoserver/uptb_gis_bna/wms',
-            params:{'LAYERS': 'uptb_gis_bna:landuse_20110', 'TILED': true}
-        },
-        zIndex: 12
-      }
-    ];
+    //get tematik peta layers from tematikService
+    vm.tematik = tematikService.data;
 
     //List all perencanaan layers pola_ruang,kawasan_strategis,pusat_pelayanan
     vm.rencana = [

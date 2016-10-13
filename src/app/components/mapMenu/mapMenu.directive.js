@@ -19,7 +19,7 @@
     return directive;
 
     /** @ngInject */
-    function MapMenuController($scope, $location, komponenPetaService) {
+    function MapMenuController($scope, $location, komponenPetaService, tematikService) {
       var vm = this;
 
       //status of each collapsible accordion
@@ -36,6 +36,7 @@
       };
 
       vm.layers = komponenPetaService.data;
+      vm.tematik = tematikService.data; 
 
       //TODO: use one function and reuse it for different toggle layers
       //toggle all for basic layers
