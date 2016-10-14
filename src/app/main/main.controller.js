@@ -6,7 +6,7 @@
     .controller('MainController', MainController);
 
   /** @ngInject */
-  function MainController($scope, $http, olData, lokasiService, komponenPetaService, tematikService, rencanaService, otherBasemapService, baseDataService) {
+  function MainController($scope, $http, olData, lokasiService, basemapDataService, tematikService, rencanaService, baseDataService) {
     var vm = this;
 
     //set initial data for popup-label
@@ -50,7 +50,7 @@
     // ];
 
     //get komponen peta layers from komponenPetaService
-    vm.layers = komponenPetaService.data;
+    //vm.layers = basemapDataService.data;
     //get lokasi (Points) layer from lokasiService
     vm.lokasi = lokasiService.data;
     //get tematik peta layers from tematikService
@@ -58,7 +58,7 @@
     //get rencana peta layers from rencanaService
     vm.rencana = rencanaService.data;
     //get other basemap layers from otherBasemapService
-    vm.bing = otherBasemapService.bing;
+    vm.basemaps = basemapDataService.data;
 
 
 

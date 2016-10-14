@@ -37,33 +37,7 @@
       }
     ];
 
-    /*this.citraSatelit = [
-      {
-        name: 'citra_satelit',
-        desc: 'Citra Satelit',
-        active: false,
-        opacity: 1,
-        source: {
-            type: 'TileWMS',
-            url: 'http://bappeda.bandaacehkota.go.id/geoserver/uptb_gis_bna/wms',
-            params:{'LAYERS': 'uptb_gis_bna:WorldView-1_BandaAceh_15Jan2015_CD1', 'TILED': true}
-        },
-        zIndex: 11
-      },
-      {
-        name: 'citra_satelit2',
-        desc: 'Citra Satelit',
-        active: false,
-        opacity: 1,
-        source: {
-            type: 'TileWMS',
-            url: 'http://bappeda.bandaacehkota.go.id/geoserver/uptb_gis_bna/wms',
-            params:{'LAYERS': 'uptb_gis_bna:WorldView-1_BandaAceh_15Jan2015_CD2', 'TILED': true}
-        },
-        zIndex: 11
-      }
-    ];*/
-
+    
   }
 
 })();
