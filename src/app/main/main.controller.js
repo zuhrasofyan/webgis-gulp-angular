@@ -6,39 +6,18 @@
     .controller('MainController', MainController);
 
   /** @ngInject */
-  function MainController($scope, $http, olData, lokasiService, komponenPetaService, tematikService, rencanaService, otherBasemapService) {
+  function MainController($scope, $http, olData, lokasiService, komponenPetaService, tematikService, rencanaService, otherBasemapService, baseDataService) {
     var vm = this;
 
     //set initial data for popup-label
     vm.isiLabel = {};
 
     //set base coordinate
-    vm.bandaAceh = {
-        lat: 5.551,
-        lon: 95.322,
-        zoom: 15
-    };
+    vm.bandaAceh = baseDataService.bandaAceh;
     //set default view configuration
-    vm.defaults = {
-      view: {
-          maxZoom: 20,
-          minZoom: 14,
-          extent: [10605714.11, 615365.85, 10617256.10, 625990.60]
-      },
-      events: {
-        map: ['singleclick', 'pointermove']
-      },
-      controls: {
-        zoom: false,
-        attribution: false
-      },
-      interactions: {
-                mouseWheelZoom: false
-            },
-    };
-
+    vm.defaults = baseDataService.defaults;
     vm.mousePosition = {};
-    vm.projection = 'EPSG:3857';
+    vm.projection = baseDataService.projection;
 
     //test get http data from API
     /*$http.get('https://jsonplaceholder.typicode.com/posts').then(function (response){
@@ -46,14 +25,7 @@
     });*/
 
     //button controls on the map
-    vm.controls = [
-        { name: 'zoom', active: false },
-        { name: 'fullscreen', active: true },
-        {name: 'scaleline', active: true},
-        {name: 'mouseposition', active: false},
-        {name: 'overviewmap', active: true},
-        {name: 'zoomtoextent', active: false}
-    ];
+    vm.controls = baseDataService.controls;
 
     //show map-layers-menu
     vm.layerMenuIsVisible = false;
