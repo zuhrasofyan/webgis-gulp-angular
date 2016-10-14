@@ -117,7 +117,7 @@
             url: 'http://bappeda.bandaacehkota.go.id/geoserver/uptb_gis_bna/wms',
             params:{'LAYERS': 'uptb_gis_bna:jalan_line_wgs0', 'TILED': true}
         },
-        zIndex: 10
+        zIndex: 12
       }
     ];
 
