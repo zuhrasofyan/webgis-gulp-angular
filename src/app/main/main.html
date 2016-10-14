@@ -9,23 +9,15 @@
 
     <map-menu ng-show="main.layerMenuIsVisible"></map-menu>
 
-    <ol-control ol-control-properties="main.rotateNorth"></ol-control>
     <ol-control name="{{ control.name }}" ng-repeat="control in main.controls|filter: {active: true}"></ol-control>
     <div class="layer-menu-button">
       <div class="btn-group" role="group" id="btn-group-menu">
         <button type="button" title="Tampilkan Menu Layer" name="btnShowMapMenu" class="btn btn-default btn-sm menu-button" ng-click="main.showMapMenu()"><i class="fa fa-list-ul"></i> Menu Layer</button>
         <button type="button" title="Cari Tempat di Peta" name="btnSearch" class="btn btn-default btn-sm menu-button">Cari <i class="fa fa-search"></i> </button>
-        <button type="button" title="Tampilkan Lokasi Tempat" name="btnShowLokasi" class="btn btn-default btn-sm menu-button" ng-click="main.showMapLokasiMenu()"><i class="fa fa-map-marker"></i> Menu Lokasi</button>
-        <!-- <button type="button" title="Fullscreen" name="btnFullScreen" class="btn btn-info btn-sm menu-button"><i class="fa fa-expand"></i></button>
-        <button ol-control-properties="main.rotateNorth" type="button" id="putar" title="Putar Peta 90 derajat" name="btnRotate" class="btn btn-info btn-sm menu-button ol-control" ng-click="main.handleRotateNorth"><i class="fa fa-refresh"></i></button>
-        <button type="button" title="Simpan Peta" name="btnSave" class="btn btn-info btn-sm menu-button"><i class="fa fa-download"></i></button>
-        <button type="button" title="Longitude Titik Tengah Peta" name="btnLon" class="btn btn-info btn-sm disabled menu-button">Lon: {{main.bandaAceh.lon}}</button>
-        <button type="button" title="Lattitude Titik Tengah Peta" name="btnLat" class="btn btn-info btn-sm disabled menu-button">Lat: {{main.bandaAceh.lat}}</button> -->
+        <!--button type="button" title="Tampilkan Lokasi Tempat" name="btnShowLokasi" class="btn btn-default btn-sm menu-button" ng-click="main.showMapLokasiMenu()"><i class="fa fa-map-marker"></i> Menu Lokasi</button-->
       </div>
     </div>
-    <button type="button" title="Simpan Peta" name="btnSave" class="btn btn-info btn-sm save-map" ng-click="main.saveAsPNG()"><i class="fa fa-download"></i></button>
-    <button type="button" title="Zoom In Peta" name="btnZoomIn" class="btn btn-info btn-sm zoom-in-map" ng-click="main.btnZoomIn()"><b>+</b></button>
-    <button type="button" title="Zoom Out Peta" name="btnZoomOut" class="btn btn-info btn-sm zoom-out-map" ng-click="main.btnZoomOut()"><b>-</b></button>
+    <map-small-buttons></map-small-buttons>
 
     <ol-layer ol-layer-properties="layer" ng-repeat="layer in main.layers|filter:{active:true}"></ol-layer>
     <ol-layer ol-layer-properties="lokasi" ng-repeat="lokasi in main.lokasi|filter:{active:true}">
