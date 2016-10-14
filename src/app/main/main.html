@@ -5,161 +5,26 @@
 <div class="container-map" style=" height:92vh; background-color:blue">
   <openlayers ol-center="main.bandaAceh" ol-defaults="main.defaults" custom-layers="true" height="100%">
 
+    <map-lokasi-menu ng-show="main.lokasiMenuIsVisible"></map-lokasi-menu>
 
-    <div id="map-lokasi-menu" class="panel panel-primary" ng-show="main.lokasiMenuIsVisible">
-      <div class="panel-heading">Jenis Lokasi</div>
-      <div class="panel-footer">
-        <div class="sidebar sidebar-right">
-          <div class="panel-group panel-no-margin">
-            <uib-accordion>
-              <div uib-accordion-group class="panel-info" is-open="main.status.open">
-                <uib-accordion-heading>
-                  Lokasi Dasar <i class="pull-right fa" ng-class="{'fa-chevron-down': main.status.open, 'fa-chevron-right': !main.status.open}"></i>
-                </uib-accordion-heading>
-                <div class="main-layer">
-                  <div ng-repeat="lokasi in main.lokasi">
-                    <label><input type="checkbox" name="response" ng-value="true" ng-model="lokasi.active"> {{lokasi.desc}}</label>
-                  </div>
-                </div>
-              </div>
-            </uib-accordion>
-          </div>
-        </div>
-      </div>
-    </div>
+    <map-menu ng-show="main.layerMenuIsVisible"></map-menu>
 
-
-    <div id="map-menu" class="panel panel-primary" ng-show="main.layerMenuIsVisible">
-      <div class="panel-heading">Jenis Peta</div>
-      <div class="panel-footer">
-        <div class="rowsy">
-          <div  class="sidebar sidebar-right">
-            <div class="panel-group panel-no-margin">
-              <uib-accordion>
-                <div uib-accordion-group class="panel-info" is-open="main.status.open2">
-                  <uib-accordion-heading>
-                    Peta Dasar <i class="pull-right fa" ng-class="{'fa-chevron-down': main.status.open2, 'fa-chevron-right': !main.status.open2}"></i>
-                  </uib-accordion-heading>
-                  <div class="main-layer">
-                    <div ng-repeat="layer in main.layers">
-                      <label><input type="checkbox" name="response" ng-value="true" ng-model="layer.active"> {{layer.desc}}</label>
-                    </div>
-                    <div class="check-all">
-                      <label>
-                        <input type="checkbox" ng-value="true" ng-model="main.basicCheckBox" ng-click="main.toggleBasicMap()"> Centang / matikan semua peta dasar
-                      </label>
-                    </div>
-                    <div class="" style="height:300px">
-
-                    </div>
-                  </div>
-                </div>
-
-                <div uib-accordion-group class="panel-info" is-open="main.status.open3">
-                  <uib-accordion-heading>
-                    Peta Tematik <i class="pull-right fa" ng-class="{'fa-chevron-down': main.status.open3, 'fa-chevron-right': !main.status.open3}"></i>
-                  </uib-accordion-heading>
-                  <div class="tematik-layer">
-                    <div ng-repeat="tematik in main.tematik">
-                      <div class="cb-tematik">
-                        <label>
-                          <input type="checkbox" name="response" ng-value="true" ng-model="tematik.active"> {{tematik.desc}}
-                        </label>
-                      </div>
-                      <div class="range-tematik">
-                        <label>
-                          <input type="range" min="0" max="1" step="0.01" ng-model="tematik.opacity">
-                        </label>
-                      </div>
-                    </div>
-                    <div class="check-all">
-                      <label>
-                        <input type="checkbox" ng-value="true" ng-model="main.tematikCheckBox" ng-click="main.toggleTematikMap()"> Centang / matikan semua peta tematik
-                      </label>
-                    </div>
-                  </div>
-                </div>
-
-                <div uib-accordion-group class="panel-info" is-open="main.status.open4">
-                  <uib-accordion-heading>
-                    Peta Perencanaan <i class="pull-right fa" ng-class="{'fa-chevron-down': main.status.open4, 'fa-chevron-right': !main.status.open4}"></i>
-                  </uib-accordion-heading>
-                  <div class="rencana-layer">
-                    <div ng-repeat="rencana in main.rencana">
-                      <div class="cb-rencana">
-                        <label>
-                          <input type="checkbox" name="response" ng-value="true" ng-model="rencana.active"> {{rencana.desc}}
-                        </label>
-                      </div>
-                      <div class="range-rencana">
-                        <label>
-                          <input type="range" min="0" max="1" step="0.01" ng-model="rencana.opacity">
-                        </label>
-                      </div>
-                    </div>
-                    <div class="check-all">
-                      <label>
-                        <input type="checkbox" ng-model="main.rencanaCheckBox" ng-click="main.toggleRencanaMap()"> Centang / matikan semua peta perencanaan
-                      </label>
-                    </div>
-                  </div>
-                </div>
-
-                <div uib-accordion-group class="panel-info" is-open="main.status.open5" style="border-style:solid">
-                  <uib-accordion-heading>
-                    Peta Satelit <i class="pull-right fa" ng-class="{'fa-chevron-down': main.status.open5, 'fa-chevron-right': !main.status.open5}"></i>
-                  </uib-accordion-heading>
-                  <div class="bing-layer">
-                    <div ng-repeat="bing in main.bing">
-                      <div class="cb-bing">
-                        <label>
-                          <input type="checkbox" name="response" ng-value="true" ng-model="bing.active"> {{bing.desc}}
-                        </label>
-                      </div>
-                      <div class="range-bing">
-                        <label>
-                          <input type="range" min="0" max="1" step="0.01" ng-model="bing.opacity">
-                        </label>
-                      </div>
-                    </div>
-                  </div>
-
-                </div>
-              </uib-accordion>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-
-
-
-    <ol-control ol-control-properties="main.rotateNorth"></ol-control>
     <ol-control name="{{ control.name }}" ng-repeat="control in main.controls|filter: {active: true}"></ol-control>
     <div class="layer-menu-button">
       <div class="btn-group" role="group" id="btn-group-menu">
         <button type="button" title="Tampilkan Menu Layer" name="btnShowMapMenu" class="btn btn-default btn-sm menu-button" ng-click="main.showMapMenu()"><i class="fa fa-list-ul"></i> Menu Layer</button>
         <button type="button" title="Cari Tempat di Peta" name="btnSearch" class="btn btn-default btn-sm menu-button">Cari <i class="fa fa-search"></i> </button>
-        <button type="button" title="Tampilkan Lokasi Tempat" name="btnShowLokasi" class="btn btn-default btn-sm menu-button" ng-click="main.showMapLokasiMenu()"><i class="fa fa-map-marker"></i> Menu Lokasi</button>
-        <!-- <button type="button" title="Fullscreen" name="btnFullScreen" class="btn btn-info btn-sm menu-button"><i class="fa fa-expand"></i></button>
-        <button ol-control-properties="main.rotateNorth" type="button" id="putar" title="Putar Peta 90 derajat" name="btnRotate" class="btn btn-info btn-sm menu-button ol-control" ng-click="main.handleRotateNorth"><i class="fa fa-refresh"></i></button>
-        <button type="button" title="Simpan Peta" name="btnSave" class="btn btn-info btn-sm menu-button"><i class="fa fa-download"></i></button>
-        <button type="button" title="Longitude Titik Tengah Peta" name="btnLon" class="btn btn-info btn-sm disabled menu-button">Lon: {{main.bandaAceh.lon}}</button>
-        <button type="button" title="Lattitude Titik Tengah Peta" name="btnLat" class="btn btn-info btn-sm disabled menu-button">Lat: {{main.bandaAceh.lat}}</button> -->
+        <!--button type="button" title="Tampilkan Lokasi Tempat" name="btnShowLokasi" class="btn btn-default btn-sm menu-button" ng-click="main.showMapLokasiMenu()"><i class="fa fa-map-marker"></i> Menu Lokasi</button-->
       </div>
     </div>
-    <button type="button" title="Simpan Peta" name="btnSave" class="btn btn-info btn-sm save-map" ng-click="main.saveAsPNG()"><i class="fa fa-download"></i></button>
-    <button type="button" title="Zoom In Peta" name="btnZoomIn" class="btn btn-info btn-sm zoom-in-map" ng-click="main.btnZoomIn()"><b>+</b></button>
-    <button type="button" title="Zoom Out Peta" name="btnZoomOut" class="btn btn-info btn-sm zoom-out-map" ng-click="main.btnZoomOut()"><b>-</b></button>
+    <map-small-buttons></map-small-buttons>
 
-    <ol-layer ol-layer-properties="layer" ng-repeat="layer in main.layers|filter:{active:true}"></ol-layer>
     <ol-layer ol-layer-properties="lokasi" ng-repeat="lokasi in main.lokasi|filter:{active:true}">
       <ol-marker ol-marker-properties="main.isiLabel"></ol-marker>
     </ol-layer>
     <ol-layer ol-layer-properties="tematik" ng-repeat="tematik in main.tematik|filter:{active:true}"></ol-layer>
     <ol-layer ol-layer-properties="rencana" ng-repeat="rencana in main.rencana|filter:{active:true}"></ol-layer>
-    <ol-layer ol-layer-properties="bing" ng-repeat="bing in main.bing|filter:{active:true}"></ol-layer>
+    <ol-layer ol-layer-properties="basemap" ng-repeat="basemap in main.basemaps|filter:{active:true}"></ol-layer>
     <!--ol-layer ol-layer-properties="satelit" ng-repeat="satelit in main.citraSatelit|filter:{active:true}"></ol-layer-->
   </openlayers>
 </div>
