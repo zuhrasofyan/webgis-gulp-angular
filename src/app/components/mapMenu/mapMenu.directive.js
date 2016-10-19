@@ -24,6 +24,7 @@
 
       //status of each collapsible accordion
       //TODO: dynamic status.open
+      //HOW? by list the heading of accordion as an array then use for i in that array to generate status.open[i].
       vm.status = {
         open: false,
         open2: false,
