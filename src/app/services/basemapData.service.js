@@ -48,7 +48,7 @@
         }
     ];
 
-    //List all basic layers land,perumahan,bangunan,laut,tambak,sungai,hutan,taman,lapangan,jalan,lokasi (not use this anymore)
+    //List all basic layers land,perumahan,bangunan,laut,tambak,sungai,hutan,taman,lapangan,jalan,lokasi (use this if you want separate components to display the Bappeda Kota Basemap instead)
     /* this.separateBasemapData = [
       {
         name: 'land',

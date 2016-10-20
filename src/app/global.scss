@@ -1,7 +1,14 @@
 //zuhra: use this file as main file for your css hack!
+// Example custom Google Fonts
+//@import url(https://fonts.googleapis.com/css?family=Lato,400);
+
+// then you make the Font Variables
+//$lato: 'Lato', serif;
 
 body {
 	background-color: #f0f0f0;
+	//implement the font using fvariables anywhere necessary
+	//font-family: $lato;
 }
 
 .angular-openlayers-map {
@@ -15,17 +22,11 @@ body {
 		overflow-y: scroll;
 }
 
-
-.panel-body {
-
-}
-
-
 .check-all {
 	color: $brand-danger;
 }
 
-.cb-tematik, .range-tematik, .cb-rencana, .range-rencana, .cb-bing,  .range-bing {
+.range-input, .cb-input{
 	padding: 0px;
 	display: inline-block;
 }
@@ -44,25 +45,36 @@ body {
 	.panel {
 		border-radius: 0px;
 	}
-	.panel-body {
-		padding: 5px;
-		max-height: 60vh;
-		overflow-y: scroll;
+	.panel-heading {
+		border-radius: 0px;
 	}
 	.panel-footer {
 		padding: 5px;
 		max-height: 70vh;
 		overflow-y:scroll;
-	}
-	.panel-group {
-		.panel {
-			border-radius: 0px;
+		.panel-group {
+			margin-bottom: 0px;
+			.panel {
+				border-radius: 0px;
+			}
+			.panel-info {
+				h4.panel-title {
+					font-size: 14px;
+				}
+			}
+			.panel-collapse {
+				.panel-body {
+					padding-left: 15px;
+					max-height: 60vh;
+					overflow-y: scroll;
+					label {
+						font-weight: normal;
+					}
+				}
+			}
 		}
-		margin-bottom: 0px;
 	}
-	.panel-heading {
-		border-radius: 0px;
-	}
+
 }
 
 #map-menu.panel, #map-lokasi-menu.panel {
