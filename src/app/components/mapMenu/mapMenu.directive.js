@@ -22,67 +22,42 @@
     function MapMenuController($scope, $location, tematikService, rencanaService, basemapDataService) {
       var vm = this;
 
-      //status of each collapsible accordion
-      //TODO: dynamic status.open
-      //HOW? by list the heading of accordion as an array then use for i in that array to generate status.open[i].
-      vm.status = {
-        open: false,
-        open2: false,
-        open3: false,
-        open4: false,
-        open5: false,
-        isCustomHeaderOpen: false,
-        isFirstOpen: true,
-        isFirstDisabled: false
-      };
+      vm.accordionList = [
+        {
+          name: 'Peta Dasar',
+          open: false,
+          data: [],
+          checkAll: false
+        },
+        {
+          name: 'Peta Tematik',
+          open: false,
+          data: tematikService.data,
+          checkAll: false
+        },
+        {
+          name: 'Peta Perencanaan',
+          open: false,
+          data: rencanaService.data,
+          checkAll: false
+        },
+        {
+          name: 'Basemap dan Citra Satelit',
+          open: false,
+          data: basemapDataService.data,
+          checkAll: false
+        }
+      ];
 
-      //list all available layers
-      vm.tematik = tematikService.data;
-      vm.rencana = rencanaService.data;
-      vm.basemaps = basemapDataService.data;
-
-      //TODO: use one function and reuse it for different toggle layers
       //toggle all for basic layers
-      vm.basicCheckBox = true;
-      function toggleBasicMap(){
+      function toggleMap(input){
         var i = 0;
-        for (i=0; i<vm.layers.length; i++) {
-          vm.layers[i].active = vm.basicCheckBox;
+        for (i=0; i<vm.accordionList[input].data.length; i++) {
+          vm.accordionList[input].data[i].active = vm.accordionList[input].checkAll;
         }
       }
+      vm.toggleMap = toggleMap;
 
-      vm.toggleBasicMap = toggleBasicMap;
-
-      //toggle all for tematik layers
-      vm.tematikCheckBox = false;
-      function toggleTematikMap(){
-        var i = 0;
-        for (i=0; i<vm.tematik.length; i++) {
-          vm.tematik[i].active = vm.tematikCheckBox;
-        }
-      }
-
-      vm.toggleTematikMap = toggleTematikMap;
-
-      //toggle all for perencanaan layers
-      vm.rencanaCheckBox = false;
-      function toggleRencanaMap(){
-        var i = 0;
-        for (i=0; i<vm.rencana.length; i++) {
-          vm.rencana[i].active = vm.rencanaCheckBox;
-        }
-      }
-      vm.toggleRencanaMap = toggleRencanaMap;
-
-      //toggle all for basemap layers
-      vm.basemapCheckBox = false;
-      function toggleBasemap(){
-        var i = 0;
-        for (i=0; i<vm.basemaps.length; i++) {
-          vm.basemaps[i].active = vm.basemapCheckBox;
-        }
-      }
-      vm.toggleBasemap = toggleBasemap;
     }
   }
 

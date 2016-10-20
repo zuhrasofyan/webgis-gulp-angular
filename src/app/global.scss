@@ -22,14 +22,11 @@ body {
 		overflow-y: scroll;
 }
 
-
-
-
 .check-all {
 	color: $brand-danger;
 }
 
-.cb-tematik, .range-tematik, .cb-rencana, .range-rencana, .cb-bing,  .range-bing {
+.range-input, .cb-input{
 	padding: 0px;
 	display: inline-block;
 }
