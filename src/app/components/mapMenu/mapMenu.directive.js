@@ -19,7 +19,7 @@
     return directive;
 
     /** @ngInject */
-    function MapMenuController($scope, $location, tematikService, rencanaService, basemapDataService) {
+    function MapMenuController($scope, $location, tematikService, rencanaService, basemapDataService, lokasiService) {
       var vm = this;
 
       vm.accordionList = [
@@ -57,6 +57,30 @@
         }
       }
       vm.toggleMap = toggleMap;
+
+      //location menu
+      vm.status = {
+        open: false,
+        open2: false,
+        isCustomHeaderOpen: false,
+        isFirstOpen: true,
+        isFirstDisabled: false
+      };
+      vm.lokasi = lokasiService.data;
+
+      //show/hidden accordions interactions
+      vm.layerMenuIsVisible = false;
+      vm.showMapMenu = function () {
+        vm.lokasiMenuIsVisible = false;
+        vm.layerMenuIsVisible = vm.layerMenuIsVisible ? false : true;
+      };
+      
+      vm.lokasiMenuIsVisible = false;
+      vm.showMapLokasiMenu = function () {
+        vm.layerMenuIsVisible = false;
+        vm.lokasiMenuIsVisible = vm.lokasiMenuIsVisible ? false : true;
+      };
+
 
     }
   }

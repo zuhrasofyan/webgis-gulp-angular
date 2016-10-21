@@ -27,23 +27,7 @@
     //button controls on the map
     vm.controls = baseDataService.controls;
 
-    //show map-layers-menu
-    vm.layerMenuIsVisible = false;
-    vm.showMapMenu = function () {
-      vm.lokasiMenuIsVisible = false;
-      vm.layerMenuIsVisible = vm.layerMenuIsVisible ? false : true;
-    };
-
-    vm.lokasiMenuIsVisible = false;
-    vm.showMapLokasiMenu = function () {
-      vm.layerMenuIsVisible = false;
-      vm.lokasiMenuIsVisible = vm.lokasiMenuIsVisible ? false : true;
-    };
-
-
-
-
-
+    
     // vm.controls = [
     //   {name: 'rotateNorth', active:true, btn: vm.rotateNorth},
     //   {name: 'testButton', active:true, btn: vm.testButton}
@@ -117,6 +101,7 @@
       var viewResolution = /** @type {number} */ (view.getResolution());
 
       //hack location not using angular way to use OL3 getGetFeatureInfoUrl()
+      //we can add array of active layers to list all getFeatureInfoUrl (but consider the data load when create new ol.source.TileWMS. so if possible find solution for this)
       var wmsLokasi = new ol.source.TileWMS(vm.lokasi[0].source);
       var myurl = wmsLokasi.getGetFeatureInfoUrl(
               prj, viewResolution, 'EPSG:3857',

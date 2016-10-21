@@ -1,5 +1,13 @@
-<div id="map-menu" class="panel panel-primary">
-  <div class="panel-heading">Jenis Peta</div>
+<div class="layer-menu-button">
+  <div class="btn-group" role="group" id="btn-group-menu">
+    <button type="button" title="Tampilkan Menu Layer" name="btnShowMapMenu" class="btn btn-default btn-sm menu-button" ng-click="vm.showMapMenu()"><i class="fa fa-list-ul"></i> Menu Layer</button>
+    <button type="button" title="Cari Tempat di Peta" name="btnSearch" class="btn btn-default btn-sm menu-button">Cari <i class="fa fa-search"></i> </button>
+    <button type="button" title="Tampilkan Lokasi Tempat" name="btnShowLokasi" class="btn btn-default btn-sm menu-button" ng-click="vm.showMapLokasiMenu()"><i class="fa fa-map-marker"></i> Menu Lokasi</button>
+  </div>
+</div>
+
+<div id="map-menu" class="panel panel-primary" ng-show="vm.layerMenuIsVisible">
+  <div class="panel-heading">Jenis Peta <div class="button pull-right fa fa-close" ng-click="vm.showMapMenu()"></div></div>
   <div class="panel-footer">
     <div  class="sidebar sidebar-right">
       <div class="panel-group panel-no-margin">
@@ -38,5 +46,27 @@
       </div>
     </div>
 
+  </div>
+</div>
+
+<div id="map-lokasi-menu" class="panel panel-primary" ng-show="vm.lokasiMenuIsVisible">
+  <div class="panel-heading">Jenis Lokasi <div class="button pull-right fa fa-close" ng-click="vm.showMapLokasiMenu()"></div></div>
+  <div class="panel-footer">
+    <div class="sidebar sidebar-right">
+      <div class="panel-group panel-no-margin">
+        <uib-accordion>
+          <div uib-accordion-group class="panel-info" is-open="vm.status.open">
+            <uib-accordion-heading>
+              Lokasi Dasar <i class="pull-right fa" ng-class="{'fa-chevron-down': vm.status.open, 'fa-chevron-right': !vm.status.open}"></i>
+            </uib-accordion-heading>
+            <div class="main-layer">
+              <div ng-repeat="lokasi in vm.lokasi">
+                <label><input type="checkbox" name="response" ng-value="true" ng-model="lokasi.active"> {{lokasi.desc}}</label>
+              </div>
+            </div>
+          </div>
+        </uib-accordion>
+      </div>
+    </div>
   </div>
 </div>

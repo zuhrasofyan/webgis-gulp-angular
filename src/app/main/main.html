@@ -5,18 +5,9 @@
 <div class="container-map" style=" height:92vh; background-color:blue">
   <openlayers ol-center="main.bandaAceh" ol-defaults="main.defaults" custom-layers="true" height="100%">
 
-    <map-lokasi-menu ng-show="main.lokasiMenuIsVisible"></map-lokasi-menu>
-
-    <map-menu ng-show="main.layerMenuIsVisible"></map-menu>
+    <map-menu></map-menu>
 
     <ol-control name="{{ control.name }}" ng-repeat="control in main.controls|filter: {active: true}"></ol-control>
-    <div class="layer-menu-button">
-      <div class="btn-group" role="group" id="btn-group-menu">
-        <button type="button" title="Tampilkan Menu Layer" name="btnShowMapMenu" class="btn btn-default btn-sm menu-button" ng-click="main.showMapMenu()"><i class="fa fa-list-ul"></i> Menu Layer</button>
-        <button type="button" title="Cari Tempat di Peta" name="btnSearch" class="btn btn-default btn-sm menu-button">Cari <i class="fa fa-search"></i> </button>
-        <button type="button" title="Tampilkan Lokasi Tempat" name="btnShowLokasi" class="btn btn-default btn-sm menu-button" ng-click="main.showMapLokasiMenu()"><i class="fa fa-map-marker"></i> Menu Lokasi</button>
-      </div>
-    </div>
     <map-small-buttons></map-small-buttons>
 
     <ol-layer ol-layer-properties="lokasi" ng-repeat="lokasi in main.lokasi|filter:{active:true}">
