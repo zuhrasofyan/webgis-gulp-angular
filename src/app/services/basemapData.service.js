@@ -17,7 +17,8 @@
             type: 'TileWMS',
             url: 'http://bappeda.bandaacehkota.go.id/geoserver/uptb_gis_bna/wms',
             params:{'LAYERS': 'uptb_gis_bna_basemap_bappeda', 'TILED': true}
-        }
+        },
+        zIndex:-1
       },
       {
           name: 'bing',
@@ -29,7 +30,8 @@
               type: 'BingMaps',
               key: 'AlShs5Jq3KqQxpuRNEtxI4_LL5H4-okI9vxBBE_TZo2TNtJNe2Kl2le-rJ4F9jS7',
               imagerySet: 'Road'
-          }
+          },
+          zIndex: -1
         },
         {
           name: 'aerial_bing',
@@ -41,7 +43,8 @@
               type: 'BingMaps',
               key: 'AlShs5Jq3KqQxpuRNEtxI4_LL5H4-okI9vxBBE_TZo2TNtJNe2Kl2le-rJ4F9jS7',
               imagerySet: 'Aerial'
-          }
+          },
+          zIndex: -1
         }
     ];
 
