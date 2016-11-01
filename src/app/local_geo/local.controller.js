@@ -40,9 +40,9 @@
 
 
     //test get http data from API
-    /*$http.get('https://jsonplaceholder.typicode.com/posts').then(function (response){
+    $http.get('http://bappeda.bandaacehkota.go.id/node_api').then(function (response){
       vm.getJson = response.data;
-    });*/
+    });
 
     //separate point layer as different layer
     vm.lokasi = [
