@@ -9,13 +9,13 @@
 
     <ol-control name="{{ control.name }}" ng-repeat="control in main.controls|filter: {active: true}"></ol-control>
     <map-small-buttons></map-small-buttons>
-
-    <ol-layer ol-layer-properties="lokasi" ng-repeat="lokasi in main.lokasi|filter:{active:true}">
-      <ol-marker ol-marker-properties="main.isiLabel"></ol-marker>
-    </ol-layer>
+    <!--ol-marker ol-marker-properties="he" name="London" lat="5.548906929423808" lon="95.31450748443602"></ol-marker-->
     <ol-layer ol-layer-properties="tematik" ng-repeat="tematik in main.tematik|filter:{active:true}"></ol-layer>
     <ol-layer ol-layer-properties="rencana" ng-repeat="rencana in main.rencana|filter:{active:true}"></ol-layer>
     <ol-layer ol-layer-properties="basemap" ng-repeat="basemap in main.basemaps|filter:{active:true}"></ol-layer>
+    <ol-layer ol-layer-properties="lokasi" ng-repeat="lokasi in main.lokasi|filter:{active:true}">
+      <ol-marker ol-marker-properties="main.isiLabel"></ol-marker>
+    </ol-layer>
     <!--ol-layer ol-layer-properties="satelit" ng-repeat="satelit in main.citraSatelit|filter:{active:true}"></ol-layer-->
   </openlayers>
 </div>

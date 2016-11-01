@@ -19,8 +19,7 @@
             type: 'TileWMS',
             url: 'http://bappeda.bandaacehkota.go.id/geoserver/uptb_gis_bna/wms',
             params:{'LAYERS': 'uptb_gis_bna:pola_ruang_banda_aceh_utm', 'TILED': true}
-        },
-        zIndex: 12
+        }
       },
       {
         name: 'kawasan_strategis',
@@ -31,8 +30,7 @@
             type: 'TileWMS',
             url: 'http://bappeda.bandaacehkota.go.id/geoserver/uptb_gis_bna/wms',
             params:{'LAYERS': 'uptb_gis_bna:kawasan strategis1', 'TILED': true}
-        },
-        zIndex: 12
+        }
       },
       {
         name: 'pusat_pelayanan',
@@ -43,8 +41,7 @@
             type: 'TileWMS',
             url: 'http://bappeda.bandaacehkota.go.id/geoserver/uptb_gis_bna/wms',
             params:{'LAYERS': 'uptb_gis_bna:struktur_ruang', 'TILED': true}
-        },
-        zIndex: 12
+        }
       }
     ];
 
