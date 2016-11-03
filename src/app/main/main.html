@@ -19,26 +19,6 @@
     <!--ol-layer ol-layer-properties="satelit" ng-repeat="satelit in main.citraSatelit|filter:{active:true}"></ol-layer-->
   </openlayers>
 </div>
-<pre>
-  {{main.bankList}}
-</pre>
-<div class="form-group">
-    <label class="col-sm-3 control-label">Default</label>
-    <div class="col-sm-6">
-
-        <ui-select tagging ng-model="main.selected" theme="bootstrap">
-          <ui-select-match placeholder="Cari Lokasi...">{{$select.selected.Nama_Objek}} - {{$select.selected.Nama_Jalan}}</ui-select-match>
-          <ui-select-choices repeat="val in main.bankList | filter: $select.search">
-              <div ng-bind-html="val.Nama_Objek | highlight: $select.search"></div>
-              <small ng-bind-html="val.Nama_Jalan | highlight: $select.search"></small>
-          </ui-select-choices>
-
-        </ui-select>
-        {{main.selected}}
-        <button type="button" name="button" ng-click="main.updateCenter()">Update</button>
-
-    </div>
-</div>
 
 <!-- <h2>Satelit</h2>
 <label ng-repeat="satelit in main.citraSatelit">
