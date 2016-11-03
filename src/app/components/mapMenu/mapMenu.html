@@ -55,10 +55,10 @@
     <div class="col-md-4 col-sm-5 no-padding">
       <div class="input-group">
         <ui-select tagging ng-model="vm.selected" theme="bootstrap">
-          <ui-select-match placeholder="Cari Lokasi...">{{$select.selected.Nama_Objek}} - {{$select.selected.Nama_Jalan}}</ui-select-match>
-          <ui-select-choices repeat="val in vm.bankList | filter: $select.search">
-              <div ng-bind-html="val.Nama_Objek | highlight: $select.search"></div>
-              <small ng-bind-html="val.Nama_Jalan | highlight: $select.search"></small>
+          <ui-select-match placeholder="Cari Lokasi...">{{$select.selected.Nama_Lokasi}} - {{$select.selected.Alamat}}</ui-select-match>
+          <ui-select-choices group-by="'Kategori'" repeat="val in vm.lokasiList | filter: $select.search">
+              <div ng-bind-html="val.Nama_Lokasi | highlight: $select.search"></div>
+              <small ng-bind-html="val.Sub_Kategori | highlight: $select.search"></small>
           </ui-select-choices>
         </ui-select>
         <span class="input-group-btn">
@@ -70,7 +70,7 @@
     </div>
 
     <div class="col-md-3 col-sm-3">
-      <button type="button" class="btn btn-primary btn-sm menu-button" name="buttonCari" ng-click="vm.updateCenter()">Update</button>
+      <button type="button" class="btn btn-primary btn-sm menu-button" name="buttonCari" ng-click="vm.dropSearchMarker()">Update</button>
     </div>
   </div>
 </div>

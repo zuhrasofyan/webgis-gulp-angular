@@ -73,8 +73,8 @@
       //test add ui-select
       vm.isLoaded = false;
       vm.selected;
-      $http.get('http://bappeda.bandaacehkota.go.id/webgis/autocomplete/test_api_bank.php').then(function (response){
-        vm.bankList = response.data;
+      $http.get('http://bappeda.bandaacehkota.go.id/webgis/autocomplete/api_lokasi.php').then(function (response){
+        vm.lokasiList = response.data;
         //convert array of array response.data as array of object (not needed anymore since already processed into array of object in API)
         //vm.bankList = [];
         //vm.getJsonBank.forEach(function(element){
@@ -84,11 +84,11 @@
 
       vm.searchMarker = {};
 
-      function updateCenter() {
+      function dropSearchMarker() {
         if (vm.selected) {
           var lat = parseFloat(vm.selected.Lintang);
           var lon = parseFloat(vm.selected.Bujur);
-          var message = vm.selected.Nama_Objek
+          var message = vm.selected.Nama_Lokasi + '<br>' + vm.selected.Kategori + ' - ' + vm.selected.Sub_Kategori + '<br>' + vm.selected.Alamat;
           vm.bandaAceh.lat = lat;
           vm.bandaAceh.lon = lon;
           //vm.bandaAceh.label.show = true;
@@ -105,7 +105,7 @@
         }
 
       }
-      vm.updateCenter = updateCenter;
+      vm.dropSearchMarker = dropSearchMarker;
 
       function resetSearch(){
         vm.searchMarker.label.show = false;
