@@ -19,8 +19,9 @@
     return directive;
 
     /** @ngInject */
-    function MapMenuController($scope, $location, tematikService, rencanaService, basemapDataService, lokasiService) {
+    function MapMenuController($scope, $location, $http, baseDataService, tematikService, rencanaService, basemapDataService, lokasiService) {
       var vm = this;
+      vm.bandaAceh = baseDataService.bandaAceh;
 
       vm.accordionList = [
         {
@@ -68,17 +69,74 @@
       };
       vm.lokasi = lokasiService.data;
 
+
+      //test add ui-select
+      vm.isLoaded = false;
+      vm.selected;
+      $http.get('http://bappeda.bandaacehkota.go.id/webgis/autocomplete/test_api_bank.php').then(function (response){
+        vm.bankList = response.data;
+        //convert array of array response.data as array of object (not needed anymore since already processed into array of object in API)
+        //vm.bankList = [];
+        //vm.getJsonBank.forEach(function(element){
+        //  vm.bankList.push(element);
+        //});
+      });
+
+      vm.searchMarker = {};
+
+      function updateCenter() {
+        if (vm.selected) {
+          var lat = parseFloat(vm.selected.Lintang);
+          var lon = parseFloat(vm.selected.Bujur);
+          var message = vm.selected.Nama_Objek
+          vm.bandaAceh.lat = lat;
+          vm.bandaAceh.lon = lon;
+          //vm.bandaAceh.label.show = true;
+          vm.searchMarker = {
+            lat: lat,
+            lon: lon,
+            label: {
+              message: message,
+              show: true
+            }
+          };
+        } else {
+          vm.searchMarker = undefined;
+        }
+
+      }
+      vm.updateCenter = updateCenter;
+
+      function resetSearch(){
+        vm.searchMarker.label.show = false;
+        vm.selected= undefined;
+      }
+      vm.resetSearch = resetSearch;
+
+      //vm.showMarker = false;
+
+
+
       //show/hidden accordions interactions
       vm.layerMenuIsVisible = false;
       vm.showMapMenu = function () {
         vm.lokasiMenuIsVisible = false;
+        vm.cariMenuIsVisible = false;
         vm.layerMenuIsVisible = vm.layerMenuIsVisible ? false : true;
       };
-      
+
       vm.lokasiMenuIsVisible = false;
       vm.showMapLokasiMenu = function () {
         vm.layerMenuIsVisible = false;
+        vm.cariMenuIsVisible = false;
         vm.lokasiMenuIsVisible = vm.lokasiMenuIsVisible ? false : true;
+      };
+
+      vm.cariMenuIsVisible = false;
+      vm.showMapCariMenu = function(){
+        vm.lokasiMenuIsVisible = false;
+        vm.layerMenuIsVisible = false;
+        vm.cariMenuIsVisible = vm.cariMenuIsVisible ? false: true;
       };
 
 

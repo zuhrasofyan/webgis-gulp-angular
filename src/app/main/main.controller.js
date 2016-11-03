@@ -27,7 +27,7 @@
     //button controls on the map
     vm.controls = baseDataService.controls;
 
-    
+
     // vm.controls = [
     //   {name: 'rotateNorth', active:true, btn: vm.rotateNorth},
     //   {name: 'testButton', active:true, btn: vm.testButton}
@@ -44,8 +44,6 @@
     //get other basemap layers from otherBasemapService
     vm.basemaps = basemapDataService.data;
 
-
-
     //add mouse position listener
     $scope.$on('openlayers.map.pointermove', function(event, data){
       //console.log(data.coord);
@@ -60,15 +58,16 @@
 
     });
 
+
     //add event onclick to show detail information for each point
     $scope.$on('openlayers.map.singleclick', function(event, data) {
 
       //use this type of code to setcenter to a new coordinate and place marker (eg from user input or from searchbox)
-      //var coordi = data.feature.getGeometry().getCoordinates();
+      // var coordi = data.feature.getGeometry().getCoordinates();
       // olData.getMap().then(function(map){
       //   var layers3 = map.getLayers();
       //   console.log(layers3);
-      //   map.setCenter(new ol.LonLat(10611585.430831643,618635.9224546722));
+      //   map.setCenter(longi,lati);
       //   //map.getView().
       // });
       //get projection data

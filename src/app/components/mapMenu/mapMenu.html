@@ -1,7 +1,7 @@
 <div class="layer-menu-button">
   <div class="btn-group" role="group" id="btn-group-menu">
     <button type="button" title="Tampilkan Menu Layer" name="btnShowMapMenu" class="btn btn-default btn-sm menu-button" ng-click="vm.showMapMenu()"><i class="fa fa-list-ul"></i> Menu Layer</button>
-    <button type="button" title="Cari Tempat di Peta" name="btnSearch" class="btn btn-default btn-sm menu-button">Cari <i class="fa fa-search"></i> </button>
+    <button type="button" title="Cari Tempat di Peta" name="btnSearch" class="btn btn-default btn-sm menu-button" ng-click="vm.showMapCariMenu()">Cari <i class="fa fa-search"></i> </button>
     <button type="button" title="Tampilkan Lokasi Tempat" name="btnShowLokasi" class="btn btn-default btn-sm menu-button" ng-click="vm.showMapLokasiMenu()"><i class="fa fa-map-marker"></i> Menu Lokasi</button>
   </div>
 </div>
@@ -48,6 +48,33 @@
 
   </div>
 </div>
+
+<div id="map-cari-menu" class="panel" ng-show="vm.cariMenuIsVisible">
+  <div class="form-group">
+
+    <div class="col-md-4 col-sm-5 no-padding">
+      <div class="input-group">
+        <ui-select tagging ng-model="vm.selected" theme="bootstrap">
+          <ui-select-match placeholder="Cari Lokasi...">{{$select.selected.Nama_Objek}} - {{$select.selected.Nama_Jalan}}</ui-select-match>
+          <ui-select-choices repeat="val in vm.bankList | filter: $select.search">
+              <div ng-bind-html="val.Nama_Objek | highlight: $select.search"></div>
+              <small ng-bind-html="val.Nama_Jalan | highlight: $select.search"></small>
+          </ui-select-choices>
+        </ui-select>
+        <span class="input-group-btn">
+              <button type="button" ng-click="vm.resetSearch()" class="btn btn-default">
+                <span class="fa fa-trash"></span>
+              </button>
+            </span>
+      </div>
+    </div>
+
+    <div class="col-md-3 col-sm-3">
+      <button type="button" class="btn btn-primary btn-sm menu-button" name="buttonCari" ng-click="vm.updateCenter()">Update</button>
+    </div>
+  </div>
+</div>
+<ol-marker ol-marker-properties="vm.searchMarker"></ol-marker>
 
 <div id="map-lokasi-menu" class="panel panel-primary" ng-show="vm.lokasiMenuIsVisible">
   <div class="panel-heading">Jenis Lokasi <div class="button pull-right fa fa-close" ng-click="vm.showMapLokasiMenu()"></div></div>

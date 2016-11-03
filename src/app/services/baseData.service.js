@@ -11,7 +11,11 @@
     this.bandaAceh = {
         lat: 5.551,
         lon: 95.322,
-        zoom: 15
+        zoom: 15,
+        label: {
+            message: 'Center of Banda Aceh',
+            show: false
+        }
     };
     //set default view configuration
     this.defaults = {
@@ -29,7 +33,7 @@
       },
       interactions: {
                 mouseWheelZoom: false
-            },
+      }
     };
 
     this.projection = 'EPSG:3857';

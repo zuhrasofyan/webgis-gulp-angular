@@ -77,9 +77,30 @@ body {
 
 }
 
-#map-menu.panel, #map-lokasi-menu.panel {
+#map-menu.panel, #map-lokasi-menu.panel, #map-cari-menu.panel {
 	margin-top: 10px;
 	border-radius: 0px;
+}
+
+#map-cari-menu.panel {
+	background-color: transparent;
+}
+
+#map-cari-menu {
+	position:absolute;
+  z-index: 100100;
+  top: 40px;
+  margin-left: 8px;
+	.form-group {
+		margin-bottom: 0px;
+		.no-padding {
+			padding: 0 !important;
+   		margin: 0 !important;
+		}
+		.btn-sm {
+			margin-top: 3px;
+		}
+	}
 }
 
 //override bootstrap panel style
@@ -280,30 +301,32 @@ body {
 }
 
 .full-screen {
-  position: absolute;
-  z-index: 100100;
   top: 10px;
   left: 300px;
 }
 
+.btn-map {
+	border-radius: 0px;
+	position:absolute;
+	z-index: 100100;
+}
+
 .save-map {
-  border-radius: 0px;
-  position: absolute;
-  z-index: 100100;
   top: 10px;
   left: 302px;
 }
+
 .zoom-in-map {
-  border-radius: 0px;
-  position: absolute;
-  z-index: 100100;
   top: 10px;
   left: 335px;
 }
+
 .zoom-out-map {
-  border-radius: 0px;
-  position: absolute;
-  z-index: 100100;
   top: 10px;
   left: 364px;
+}
+
+.recenter-map {
+	top: 10px;
+	left: 391px;
 }

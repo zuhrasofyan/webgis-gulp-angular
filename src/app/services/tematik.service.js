@@ -18,7 +18,8 @@
             type: 'TileWMS',
             url: 'http://bappeda.bandaacehkota.go.id/geoserver/uptb_gis_bna/wms',
             params:{'LAYERS': 'uptb_gis_bna:tematik_jml_kk', 'TILED': true}
-        }
+        },
+        zIndex: 2
       },
       {
         name: 'total_pddk_2013',
@@ -29,7 +30,8 @@
             type: 'TileWMS',
             url: 'http://bappeda.bandaacehkota.go.id/geoserver/uptb_gis_bna/wms',
             params:{'LAYERS': 'uptb_gis_bna:total_pddk_2013', 'TILED': true}
-        }
+        },
+        zIndex: 2
       },
       {
         name: 'total_pddk_2014',
@@ -40,7 +42,8 @@
             type: 'TileWMS',
             url: 'http://bappeda.bandaacehkota.go.id/geoserver/uptb_gis_bna/wms',
             params:{'LAYERS': 'uptb_gis_bna:total_pddk_2014', 'TILED': true}
-        }
+        },
+        zIndex: 2
       },
       {
         name: 'landuse_2011',
@@ -51,7 +54,8 @@
             type: 'TileWMS',
             url: 'http://bappeda.bandaacehkota.go.id/geoserver/uptb_gis_bna/wms',
             params:{'LAYERS': 'uptb_gis_bna:landuse_20110', 'TILED': true}
-        }
+        },
+        zIndex: 2
       }
     ];
 

@@ -57,6 +57,29 @@
           control: new rotateNorthControl()
       };
 
+      //recenter the map functionality
+      vm.newCenter = '';
+      vm.proxyCenter = {
+        lat: 5.561,
+        lon: 95.330,
+        label: {
+            message: 'this is the default proxy center <br> of Banda Aceh',
+            show: true
+        }
+      };
+      vm.showMarker = false;
+
+      function btnRecenter() {
+        if (vm.newCenter === '' ){
+          vm.newCenter = vm.proxyCenter;
+          vm.bandaAceh.lat = vm.newCenter.lat;
+          vm.bandaAceh.lon = vm.newCenter.lon;
+        } else {
+          vm.newCenter = '';
+        }
+      }
+      vm.btnRecenter = btnRecenter;
+
       function btnZoomIn() {
         if (vm.bandaAceh.zoom < vm.defaults.view.maxZoom) {
           vm.bandaAceh.zoom = vm.bandaAceh.zoom+1;
