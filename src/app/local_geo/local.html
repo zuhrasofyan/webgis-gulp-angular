@@ -5,8 +5,74 @@
 
 <!-- halo <i class="fa fa-list-alt"></i> -->
 <pre>
-  {{local.getJson}}
+  {{local.getJsonBank}}
 </pre>
+<div class="panel panel-default">
+  <div class="panel-body">
+    <div class="isi">
+      <table class="table table-striped">
+        List ATM
+        <div class="" ng-repeat="(key, value) in local.getJson">
+          {{value}} <br>
+          <b>THEN</b>
+          <div class="" ng-repeat="(key, value) in value">
+            {{value}}
+          </div>
+          <b>Atau List ATM</b> <br>
+          <div class="" ng-repeat="array in local.getJson">
+            {{array[0]}}
+          </div>
+        </div>
+        <thead>
+          <tr>
+            <th>Nama ATM</th>
+            <th>Alamat</th>
+            <th>Lintang</th>
+            <th>Bujur</th>
+          </tr>
+          <tr>
+            <th ng-repeat="item in local.getJson[0]">
+              {{$index}}
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="array in local.getJson">
+            <td ng-repeat="item in array">
+              {{item}}
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+    </div>
+  </div>
+</div>
+
+<div class="panel panel-default">
+  <div class="panel-body">
+    <div class="isi">
+      <table class="table table-striped">
+        <b>List Bank</b>
+        <thead>
+          <tr>
+            <th ng-repeat="array in local.getJsonBank[0]">
+              {{$index}}
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="array in local.getJsonBank">
+            <td ng-repeat="item in array">
+              {{item}}
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+    </div>
+  </div>
+</div>
 
 <openlayers ol-center="local.bandaAceh" ol-defaults="local.defaults" custom-layers="true" height="400">
   <div id="popup"></div>

@@ -40,8 +40,11 @@
 
 
     //test get http data from API
-    $http.get('http://bappeda.bandaacehkota.go.id/node_api').then(function (response){
+    $http.get('http://bappeda.bandaacehkota.go.id/webgis/autocomplete/test_api.php').then(function (response){
       vm.getJson = response.data;
+    });
+    $http.get('http://bappeda.bandaacehkota.go.id/webgis/autocomplete/test_api_bank.php').then(function (response){
+      vm.getJsonBank = response.data;
     });
 
     //separate point layer as different layer
@@ -54,7 +57,7 @@
         source: {
             type: 'TileWMS',
             url: 'http://120.10.11.18:8080/geoserver/uptb_gis_bna/wms',
-            params:{"LAYERS": "uptb_gis_bna:lokasi_tabel2", "TILED": true},
+            params:{"LAYERS": "uptb_gis_bna:lokasi_tabel2", "TILED": true}
         },
         zIndex: 11
       }
