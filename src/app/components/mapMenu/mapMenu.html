@@ -49,31 +49,29 @@
   </div>
 </div>
 
-<div id="map-cari-menu" class="panel" ng-show="vm.cariMenuIsVisible">
-  <div class="form-group">
 
-    <div class="col-md-4 col-sm-5 no-padding">
-      <div class="input-group">
-        <ui-select tagging ng-model="vm.selected" theme="bootstrap">
-          <ui-select-match placeholder="Temukan Lokasi...">{{$select.selected.Nama_Lokasi}}</ui-select-match>
-          <ui-select-choices repeat="val in vm.lokasiList | filter: $select.search">
-              <div ng-bind-html="val.Nama_Lokasi | highlight: $select.search"></div>
-              <small ng-bind-html="val.Alamat | highlight: $select.search"></small>
-          </ui-select-choices>
-        </ui-select>
-        <span class="input-group-btn">
-              <button type="button" ng-click="vm.resetSearch()" class="btn btn-default">
-                <span class="fa fa-trash"></span>
-              </button>
-            </span>
-      </div>
-    </div>
 
-    <div class="col-md-3 col-sm-3">
-      <button type="button" class="btn btn-primary btn-sm menu-button" name="buttonCari" ng-click="vm.dropSearchMarker()">Cari!</button>
-    </div>
+
+
+<div id="map-cari-menu" ng-show="vm.cariMenuIsVisible">
+
+  <div angucomplete-alt id="ex1"
+  placeholder="Temukan Lokasi"
+  maxlength="10"
+  pause="100"
+  selected-object="vm.selected"
+  local-data="vm.lokasiList"
+  search-fields="Nama_Lokasi"
+  title-field="Nama_Lokasi"
+  minlength="1"
+  input-class="form-control form-control-small"
+  match-class="highlight" class="col-xs-4 no-padding"></div>
+
+  <div class="col-xs-2">
+    <button type="button" class="btn btn-primary btn-sm menu-button" name="buttonCari" ng-click="vm.dropSearchMarker()">Cari!</button>
   </div>
 </div>
+
 <ol-marker ol-marker-properties="vm.searchMarker"></ol-marker>
 
 <div id="map-lokasi-menu" class="panel panel-primary" ng-show="vm.lokasiMenuIsVisible">

@@ -72,15 +72,15 @@
 
       //search box functionality using ui-select
       vm.isLoaded = false;
-      vm.selected = '';
+      vm.selected = {};
 
       vm.searchMarker = {};
 
       function dropSearchMarker() {
-        if (vm.selected !== '') {
-          var lat = parseFloat(vm.selected.Lintang);
-          var lon = parseFloat(vm.selected.Bujur);
-          var message = vm.selected.Nama_Lokasi + '<br>' + vm.selected.Kategori + ' - ' + vm.selected.Sub_Kategori + '<br>' + vm.selected.Alamat;
+        if (vm.selected) {
+          var lat = parseFloat(vm.selected.originalObject.Lintang);
+          var lon = parseFloat(vm.selected.originalObject.Bujur);
+          var message = vm.selected.originalObject.Nama_Lokasi + '<br>' + vm.selected.originalObject.Kategori + ' - ' + vm.selected.originalObject.Sub_Kategori + '<br>' + vm.selected.originalObject.Alamat;
           vm.bandaAceh.lat = lat;
           vm.bandaAceh.lon = lon;
           //vm.bandaAceh.label.show = true;
@@ -101,7 +101,7 @@
 
       function resetSearch(){
         vm.searchMarker.label.show = false;
-        vm.selected= '';
+        vm.selected= {};
       }
       vm.resetSearch = resetSearch;
 
@@ -139,6 +139,9 @@
         //  vm.bankList.push(element);
         //});
       });
+
+      vm.selectedLokasi = {};
+
 
     }
   }
