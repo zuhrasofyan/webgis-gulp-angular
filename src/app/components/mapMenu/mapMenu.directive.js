@@ -70,22 +70,14 @@
       vm.lokasi = lokasiService.data;
 
 
-      //test add ui-select
+      //search box functionality using ui-select
       vm.isLoaded = false;
-      vm.selected;
-      $http.get('http://bappeda.bandaacehkota.go.id/webgis/autocomplete/api_lokasi.php').then(function (response){
-        vm.lokasiList = response.data;
-        //convert array of array response.data as array of object (not needed anymore since already processed into array of object in API)
-        //vm.bankList = [];
-        //vm.getJsonBank.forEach(function(element){
-        //  vm.bankList.push(element);
-        //});
-      });
+      vm.selected = '';
 
       vm.searchMarker = {};
 
       function dropSearchMarker() {
-        if (vm.selected) {
+        if (vm.selected !== '') {
           var lat = parseFloat(vm.selected.Lintang);
           var lon = parseFloat(vm.selected.Bujur);
           var message = vm.selected.Nama_Lokasi + '<br>' + vm.selected.Kategori + ' - ' + vm.selected.Sub_Kategori + '<br>' + vm.selected.Alamat;
@@ -101,7 +93,7 @@
             }
           };
         } else {
-          vm.searchMarker = undefined;
+          vm.searchMarker = {};
         }
 
       }
@@ -109,7 +101,7 @@
 
       function resetSearch(){
         vm.searchMarker.label.show = false;
-        vm.selected= undefined;
+        vm.selected= '';
       }
       vm.resetSearch = resetSearch;
 
@@ -139,6 +131,14 @@
         vm.cariMenuIsVisible = vm.cariMenuIsVisible ? false: true;
       };
 
+      $http.get('http://bappeda.bandaacehkota.go.id/webgis/api/api_lokasi.php').then(function (response){
+        vm.lokasiList = response.data;
+        //convert array of array response.data as array of object (not needed anymore since already processed into array of object in API)
+        //vm.bankList = [];
+        //vm.getJsonBank.forEach(function(element){
+        //  vm.bankList.push(element);
+        //});
+      });
 
     }
   }
