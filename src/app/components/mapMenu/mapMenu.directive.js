@@ -77,7 +77,7 @@
       vm.searchMarker = {};
 
       function dropSearchMarker() {
-        if (vm.selected) {
+        if (vm.selected && !angular.equals({}, vm.selected)) {
           var lat = parseFloat(vm.selected.originalObject.Lintang);
           var lon = parseFloat(vm.selected.originalObject.Bujur);
           var message = vm.selected.originalObject.Nama_Lokasi + '<br>' + vm.selected.originalObject.Kategori + ' - ' + vm.selected.originalObject.Sub_Kategori + '<br>' + vm.selected.originalObject.Alamat;
@@ -100,13 +100,24 @@
       vm.dropSearchMarker = dropSearchMarker;
 
       function resetSearch(){
-        vm.searchMarker.label.show = false;
-        vm.selected= {};
+        if (!angular.equals({}, vm.searchMarker)){
+          vm.searchMarker.label.show = false;
+          vm.selected= {};
+        }
+        clearInput('input-lokasi');
+
       }
       vm.resetSearch = resetSearch;
 
-      //vm.showMarker = false;
-
+      //clear search inputbox
+      function clearInput(id) {
+        if (id) {
+          $scope.$broadcast('angucomplete-alt:clearInput', id);
+        }
+        else{
+          $scope.$broadcast('angucomplete-alt:clearInput');
+        }
+      }
 
 
       //show/hidden accordions interactions
@@ -139,9 +150,6 @@
         //  vm.bankList.push(element);
         //});
       });
-
-      vm.selectedLokasi = {};
-
 
     }
   }

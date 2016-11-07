@@ -49,27 +49,31 @@
   </div>
 </div>
 
-
-
-
-
 <div id="map-cari-menu" ng-show="vm.cariMenuIsVisible">
 
-  <div angucomplete-alt id="ex1"
-  placeholder="Temukan Lokasi"
-  maxlength="10"
-  pause="100"
-  selected-object="vm.selected"
-  local-data="vm.lokasiList"
-  search-fields="Nama_Lokasi"
-  title-field="Nama_Lokasi"
-  minlength="1"
-  input-class="form-control form-control-small"
-  match-class="highlight" class="col-xs-4 no-padding"></div>
+  <div class="col-xs-4 no-padding">
+    <div angucomplete-alt id="input-lokasi"
+    placeholder="Temukan Lokasi"
+    maxlength="10"
+    pause="100"
+    selected-object="vm.selected"
+    local-data="vm.lokasiList"
+    search-fields="Nama_Lokasi"
+    title-field="Nama_Lokasi"
+    minlength="1"
+    input-class="form-control form-control-small"
+    match-class="highlight" class="no-padding">
 
-  <div class="col-xs-2">
+    </div>
+  </div>
+
+  <div class="col-xs-3 no-padding">
+    <button type="button" ng-click="vm.resetSearch()" class="btn btn-default">
+      <span class="fa fa-trash"></span>
+    </button>
     <button type="button" class="btn btn-primary btn-sm menu-button" name="buttonCari" ng-click="vm.dropSearchMarker()">Cari!</button>
   </div>
+
 </div>
 
 <ol-marker ol-marker-properties="vm.searchMarker"></ol-marker>
