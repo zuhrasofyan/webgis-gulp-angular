@@ -19,7 +19,7 @@
     return directive;
 
     /** @ngInject */
-    function MapSmallButtonsController($scope, baseDataService) {
+    function MapSmallButtonsController($scope, baseDataService, html2canvasAngular) {
       var vm = this;
       vm.bandaAceh = baseDataService.bandaAceh;
       vm.defaults = baseDataService.defaults;
@@ -98,12 +98,13 @@
 
       //save map as image
       function saveAsPNG() {
-        var canvas = document.getElementsByTagName('canvas')[0];
-        //console.log(canvas);
-        canvas.toBlob(function (blob) {
-          //console.log(blob);
-          saveAs(blob, 'map.png');
-        }, 'image/png');
+        html2canvasAngular.renderBody().then(function(canvas){
+          canvas.toBlob(function (blob) {
+            //console.log(blob);
+            saveAs(blob, 'map.png');
+          }, 'image/png');
+          //document.body.appendChild(canvas);
+        });
       }
       vm.saveAsPNG = saveAsPNG;
     }
