@@ -26,24 +26,28 @@
       vm.accordionList = [
         {
           name: 'Peta Dasar',
+          active: true,
           open: false,
           data: [],
           checkAll: false
         },
         {
           name: 'Peta Tematik',
+          active: true,
           open: false,
           data: tematikService.data,
           checkAll: false
         },
         {
           name: 'Peta Perencanaan',
+          active: true,
           open: false,
           data: rencanaService.data,
           checkAll: false
         },
         {
           name: 'Basemap dan Citra Satelit',
+          active: true,
           open: false,
           data: basemapDataService.data,
           checkAll: false

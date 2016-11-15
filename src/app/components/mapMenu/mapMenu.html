@@ -13,7 +13,7 @@
       <div class="panel-group panel-no-margin">
         <uib-accordion>
 
-          <div ng-repeat="accordion in vm.accordionList">
+          <div ng-repeat="accordion in vm.accordionList|filter:{active:true}">
             <div uib-accordion-group class="panel-info" is-open="accordion[$index].open">
               <uib-accordion-heading>
                 {{accordion.name}} <i class="pull-right fa" ng-class="{'fa-chevron-down': accordion[$index].open, 'fa-chevron-right': !accordion[$index].open}"></i>
@@ -54,7 +54,7 @@
   <div class="col-xs-4 no-padding">
     <div angucomplete-alt id="input-lokasi"
     placeholder="Temukan Lokasi"
-    maxlength="10"
+    maxlength="30"
     pause="100"
     selected-object="vm.selected"
     local-data="vm.lokasiList"
