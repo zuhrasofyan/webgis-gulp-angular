@@ -2,7 +2,7 @@
   <acme-navbar></acme-navbar>
 </div>
 <!-- halo <i class="fa fa-list-alt"></i> -->
-<div class="container-map" style=" height:92vh; background-color:blue">
+<div id="print-map" class="container-map" style=" height:92vh; background-color:blue">
   <openlayers ol-center="main.bandaAceh" ol-defaults="main.defaults" custom-layers="true" height="100%">
 
     <map-menu></map-menu>
@@ -16,10 +16,12 @@
     <ol-layer ol-layer-properties="lokasi" ng-repeat="lokasi in main.lokasi|filter:{active:true}">
       <ol-marker ol-marker-properties="main.isiLabel"></ol-marker>
     </ol-layer>
+
     <!--ol-layer ol-layer-properties="satelit" ng-repeat="satelit in main.citraSatelit|filter:{active:true}"></ol-layer-->
   </openlayers>
 </div>
 
+<!--div id="marker" title="marker"></div-->
 
 <!-- <h2>Satelit</h2>
 <label ng-repeat="satelit in main.citraSatelit">
