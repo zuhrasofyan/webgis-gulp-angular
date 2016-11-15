@@ -3,108 +3,96 @@
   <acme-navbar></acme-navbar>
 </div>
 
-<!-- halo <i class="fa fa-list-alt"></i> -->
-<pre>
-  {{local.getJsonBank}}
-</pre>
-<div class="panel panel-default">
-  <div class="panel-body">
-    <div class="isi">
-      <table class="table table-striped">
-        List ATM
-        <div class="" ng-repeat="(key, value) in local.getJson">
-          {{value}} <br>
-          <b>THEN</b>
-          <div class="" ng-repeat="(key, value) in value">
-            {{value}}
-          </div>
-          <b>Atau List ATM</b> <br>
-          <div class="" ng-repeat="array in local.getJson">
-            {{array[0]}}
-          </div>
+  <div class="row" style="padding-left: 15px;">
+    <div class="col-sm-4">
+      <form>
+        <h3>Pengajuan Izin</h3>
+        <div class="form-group">
+          <label for="inputSelectJenis">Jenis Perizinan</label>
+          <select class="form-control" id="inputSelectJenis">
+            <option>Surat Izin Tempat Usaha (SITU)</option>
+            <option>Lainnya</option>
+          </select>
         </div>
-        <thead>
-          <tr>
-            <th>Nama ATM</th>
-            <th>Alamat</th>
-            <th>Lintang</th>
-            <th>Bujur</th>
-          </tr>
-          <tr>
-            <th ng-repeat="item in local.getJson[0]">
-              {{$index}}
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr ng-repeat="array in local.getJson">
-            <td ng-repeat="item in array">
-              {{item}}
-            </td>
-          </tr>
-        </tbody>
-      </table>
+        <div class="form-group">
+          <label for="inputNama">Badan Usaha/Perseorangan</label>
+          <input type="text" class="form-control" id="inputNama" placeholder="Nama Usaha/Perseorangan">
+        </div>
+        <div class="form-group">
+          <label for="inputLat">Ambil Koordinat</label>
+          <div class="row">
+            <div class="col-xs-6">
+              <input type="text" class="form-control col-xs-6" id="inputLat" placeholder="Garis Lintang" ng-model="local.prj[0]" disabled="disabled">
+            </div>
+            <div class="col-xs-6">
+              <input type="text" class="form-control col-xs-6" id="inputLon" placeholder="Garis Bujur" ng-model="local.prj[1]" disabled="disabled">
+            </div>
+          </div>
+          <p class="help-block">Klik pada peta untuk mendapatkan koordinat</p>
+        </div>
+        <div class="form-group">
+          <label for="inputFile">Upload Permohonan</label>
+          <input type="file" id="inputFile">
+          <p class="help-block">Hanya file RAR dan ZIP yang bisa diupload</p>
+        </div>
 
+        <button type="submit" class="btn btn-default">Submit</button>
+      </form>
+    </div>
+    <div class="col-sm-8 no-padding">
+      <div id="print-map" class="container-map" style=" background-color:blue">
+        <openlayers ol-center="local.bandaAceh" ol-defaults="local.defaults" custom-layers="true">
+          <div id="marker" ng-show="local.isOpen" uib-popover-template="local.dynamicPopover.templateUrl" popover-title="{{local.dynamicPopover.content}}" popover-is-open="local.isOpen"></div>
+          <map-small-buttons></map-small-buttons>
+          <ol-layer ol-layer-properties="basemap" ng-repeat="basemap in local.basemaps|filter:{active:true}"></ol-layer>
+          <ol-layer ol-layer-properties="lokasi" ng-repeat="lokasi in local.lokasi">
+            <!-- <div id="legend">
+              <img src="http://bappeda.bandaacehkota.go.id/geoserver/wms?REQUEST=GetLegendGraphic&VERSION=1.0.0&FORMAT=image/png&WIDTH=20&HEIGHT=20&LAYER=uptb_gis_bna:lokasi_tabel">
+            </div> -->
+            <div id="map-legend">
+              {{local.lokasi[0].name}}
+              <img class="img-legend" style="height:100%;" src="http://bappeda.bandaacehkota.go.id/geoserver/wms?REQUEST=GetLegendGraphic&VERSION=1.0.0&FORMAT=image/png&WIDTH=20&HEIGHT=20&LAYER={{local.lokasi[0].layerName}}"/>
+            </div>
+
+          </ol-layer>
+          <ol-marker ol-marker-properties="local.isiLabel"></ol-marker>
+
+        </openlayers>
+      </div>
     </div>
   </div>
-</div>
 
-<div class="panel panel-default">
-  <div class="panel-body">
-    <div class="isi">
-      <table class="table table-striped">
-        <b>List Bank</b>
-        <thead>
-          <tr>
-            <th ng-repeat="array in local.getJsonBank[0]">
-              {{$index}}
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr ng-repeat="array in local.getJsonBank">
-            <td ng-repeat="item in array">
-              {{item}}
-            </td>
-          </tr>
-        </tbody>
+
+<script type="text/ng-template" id="myPopoverTemplate.html">
+    <div class="" ng-if="popUpData !== 'tidak ada data'">
+      <table class="table-striped table-bordered">
+        <tr>
+          <td>
+            Kecamatan
+          </td>
+          <td>
+            {{popUpData.kecamatan}}
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Desa
+          </td>
+          <td>
+            {{popUpData.kel_desa}}
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Keterangan
+          </td>
+          <td>
+            {{popUpData.landuse_1}}
+          </td>
+        </tr>
       </table>
-
     </div>
-  </div>
-</div>
-
-<openlayers ol-center="local.bandaAceh" ol-defaults="local.defaults" custom-layers="true" height="400">
-  <div id="popup"></div>
-  <ol-layer ol-layer-properties="lokasi" ng-repeat="lokasi in local.lokasi">
-    <!-- <div id="legend">
-      <img src="http://bappeda.bandaacehkota.go.id/geoserver/wms?REQUEST=GetLegendGraphic&VERSION=1.0.0&FORMAT=image/png&WIDTH=20&HEIGHT=20&LAYER=uptb_gis_bna:lokasi_tabel">
-    </div> -->
-    <div id="map-legend">
-      <img class="img-legend" style="height:100%;" src="http://bappeda.bandaacehkota.go.id/geoserver/wms?REQUEST=GetLegendGraphic&VERSION=1.0.0&FORMAT=image/png&WIDTH=20&HEIGHT=20&LAYER={{local.lokasi[0].layerName}}"/>
+    <div class="" ng-if="popUpData === 'tidak ada data'">
+      Tidak Ada Data
     </div>
-
-  </ol-layer>
-  <ol-marker ol-marker-properties="local.isiLabel"></ol-marker>
-  <!-- <ol-layer ol-layer-properties="static">
-    <img class="img-legend pull-right" style="position:absolute;" src="http://bappeda.bandaacehkota.go.id/geoserver/wms?REQUEST=GetLegendGraphic&VERSION=1.0.0&FORMAT=image/png&WIDTH=20&HEIGHT=20&LAYER={{local.lokasi[0].layerName}}">
-  </ol-layer> -->
-</openlayers>
-
-
-<div class="dsad" style="height:400px;">
-  <uib-accordion>
-    <div uib-accordion-group class="panel-default">
-      <uib-accordion-heading>
-        I can have markup, too!
-      </uib-accordion-heading>
-      This is just some content to illustrate fancy headings.
-    </div>
-    <div uib-accordion-group class="panel-default">
-      <uib-accordion-heading>
-        I can have markup, too!
-      </uib-accordion-heading>
-      This is just some content to illustrate fancy headings.
-    </div>
-  </uib-accordion>
-</div>
+</script>

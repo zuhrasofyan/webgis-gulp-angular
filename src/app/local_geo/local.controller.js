@@ -6,7 +6,7 @@
     .controller('LocalGeoController', LocalGeoController);
 
   /** @ngInject */
-  function LocalGeoController($scope, $http, olData) {
+  function LocalGeoController($scope, $http, olData, baseDataService, basemapDataService, lokasiService) {
 
     var vm = this;
 
@@ -14,129 +14,106 @@
     vm.isiLabel = {};
 
     //set base coordinate
-    vm.bandaAceh = {
-        lat: 5.551,
-        lon: 95.322,
-        zoom: 15,
-        label: {
-          message: vm.lengkap,
-          show: false,
-          showOnMouseOver: true
-        }
-    };
+    vm.bandaAceh = baseDataService.bandaAceh;
 
     //set default view configuration
-    vm.defaults = {
-      view: {
-          maxZoom: 20,
-          minZoom: 14,
-          extent: [10605714.11, 615365.85, 10617256.10, 625990.60]
-      },
-      events: {
-        map: ['singleclick']
+    vm.defaults = baseDataService.defaults;
+
+    vm.mousePosition = {};
+    vm.projection = baseDataService.projection;
+
+    //button controls on the map
+    vm.controls = baseDataService.controls;
+    //get other basemap layers from otherBasemapService
+    vm.basemaps = basemapDataService.data;
+    //get lokasi (Points) layer from lokasiService
+    vm.lokasi = lokasiService.data;
+
+    //popover button
+    vm.dynamicPopover = 'hello';
+    vm.isOpen = false;
+
+    //add mouse position listener
+    $scope.$on('openlayers.map.pointermove', function(event, data){
+      //console.log(data.coord);
+      if (vm.projection === data.projection) {
+        $scope.$apply(function(){
+          vm.mousePosition = data.coord;
+
+        });
+      } else {
+        vm.mousePosition = '000';
       }
-    };
 
-
-
-    //test get http data from API
-    $http.get('http://bappeda.bandaacehkota.go.id/webgis/autocomplete/test_api.php').then(function (response){
-      vm.getJson = response.data;
-    });
-    $http.get('http://bappeda.bandaacehkota.go.id/webgis/autocomplete/test_api_bank.php').then(function (response){
-      vm.getJsonBank = response.data;
     });
 
-    //separate point layer as different layer
-    vm.lokasi = [
-      {
-        name: 'lokasi',
-        desc: 'Lokasi',
-        layerName: 'uptb_gis_bna:lokasi_tabel2',
-        active: true,
-        source: {
-            type: 'TileWMS',
-            url: 'http://120.10.11.18:8080/geoserver/uptb_gis_bna/wms',
-            params:{"LAYERS": "uptb_gis_bna:lokasi_tabel2", "TILED": true}
-        },
-        zIndex: 11
-      }
-    ];
-
-    // var map = new ol.Map({
-    //   target: document.getElementById('angular-openlayers-map')
-    // });
+    olData.getMap().then(function(map){
+      //vm.pos = [10610852.11309153, 618996.6096818928];
+      var pos = [];
+      vm.marker = new ol.Overlay({
+        position: pos,
+        positioning: 'center-center',
+        element: document.getElementById('marker'),
+        stopEvent: false
+      });
 
 
 
-    var staticPosition = ol.proj.transform([ 10609085.704948753, 618922.4317438678 ], 'EPSG:3857', 'EPSG:3857').map(function(c) {
-        return c;
     });
 
+    vm.data = '';
 
     $scope.$on('openlayers.map.singleclick', function(event, data) {
 
-        //get projection data
+      olData.getMap().then(function(map){
         var prj = ol.proj.transform([ data.coord[0], data.coord[1] ], data.projection, 'EPSG:3857').map(function(c) {
             return c;
         });
-        var prettyCoord = ol.coordinate.toStringHDMS(prj);
+        vm.prj = prj;
+        //test displaying general information basemapDataService.separateBasemapData[1].source
+        var wmsLayers = new ol.source.TileWMS(basemapDataService.separateBasemapData[1].source);
 
-        //get lattitude and longitude coordinate. lat = latLon[1]; lon = latLon[0];
-        var latLon = ol.proj.transform(prj,'EPSG:3857', 'EPSG:4326');
-
-        //initialize manual map view to retrieve zoom level, resolution and then get the  feature info JSON data from geoserver url based on this coordinate
         var view = new ol.View({
             center: [0, 0],
             zoom: vm.bandaAceh.zoom
         });
         var viewResolution = /** @type {number} */ (view.getResolution());
-        var wmsLokasi = new ol.source.TileWMS({
-            url: 'http://120.10.11.18:8080/geoserver/uptb_gis_bna/wms',
-            params: {'LAYERS': 'uptb_gis_bna:lokasi_tabel', 'TILED': true},
-            serverType: 'geoserver'
-        });
 
-        var myurl = wmsLokasi.getGetFeatureInfoUrl(
-                prj, viewResolution, 'EPSG:3857',
-                {'INFO_FORMAT': 'application/json'});
-
-        vm.url=myurl;
-
-        $http.get(myurl).success(
-          function (data, status) {
-
-            //if there is data.features returned from geoserver then
-            if (data.features[0]) {
-
-              //show point data lengkap
-              var properties = data.features[0].properties;
-              var nama = properties.nama_lokas;
-              var desa = properties.desa;
-              vm.lengkap =  nama + '  ' + desa + '<br>' + prettyCoord;
-
-              //place the popup label on the map
-              vm.isiLabel = {
-                  lat: latLon[1],
-                  lon: latLon[0],
-                  label: {
-                    message: vm.lengkap,
-                    show: true,
-                    showOnMouseClick: true,
-                    showOnMouseHover: true
-                  }
-              };
-
-            } else {
-              vm.lengkap = 'no data';
-              vm.isiLabel = {};
-            }
-
+        var genUrl = wmsLayers.getGetFeatureInfoUrl(
+          prj, viewResolution, 'EPSG:3857',
+          {'INFO_FORMAT': 'application/json'}
+        );
+        $http.get(genUrl).success(
+          function (data, status){
+             if (data.features.length > 0) {
+               vm.data = data.features[0].properties;
+             } else {
+               vm.data = 'tidak ada data';
+             }
+             $scope.popUpData = vm.data;
           }
         );
 
-    });
 
+
+
+
+        //console.log(prj);
+        vm.marker.setPosition(prj);
+        vm.setPrj = prj;
+        map.addOverlay(vm.marker);
+      });
+      vm.isOpen = true;
+
+
+    });
+    vm.dynamicPopover = {
+      content: 'Informasi Koordinat',
+      templateUrl: 'myPopoverTemplate.html',
+      title: 'Title'
+    };
+
+    $scope.myData = {"name": "zuhra"};
   }
 
 })();
