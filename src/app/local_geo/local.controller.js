@@ -33,6 +33,25 @@
     vm.dynamicPopover = 'hello';
     vm.isOpen = false;
 
+    vm.perizinan = {
+      pilihanPerizinan: [
+        {id: 1, name: 'Surat Izin Tempat Usaha (SITU)'},
+        {id: 2, name: 'Surat Izin Usaha Perdagangan (SIUP)'},
+        {id: 3, name: 'Surat Izin Jasa Konstruksi (SIJK)'},
+        {id: 4, name: 'Izin Mendirikan Bangunan (IMB)'},
+        {id: 5, name: 'Tanda Daftar Perusahaan (TDP)'},
+        {id: 6, name: 'Tanda Daftar Industri (TDI)'},
+        {id: 7, name: 'Izin Gangguan (HO)'},
+        {id: 8, name: 'Surat Izin Trayek'},
+        {id: 9, name: 'Surat Izin Angkutan Barang'},
+        {id: 10, name: 'Surat Izin Angkutan Umum'},
+        {id: 11, name: 'Izin Pariwisata'},
+        {id: 12, name: 'Izin Prakter Dokter'},
+        {id: 13, name: 'Izin Praktek Bidan'}
+      ],
+      selectedPerizinan: {id: 1, name: 'Surat Izin Tempat Usaha (SITU)'}
+    };
+
     //add mouse position listener
     $scope.$on('openlayers.map.pointermove', function(event, data){
       //console.log(data.coord);
@@ -93,7 +112,6 @@
              $scope.popUpData = vm.data;
           }
         );
-
 
 
 

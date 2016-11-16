@@ -9,9 +9,7 @@
         <h3>Pengajuan Izin</h3>
         <div class="form-group">
           <label for="inputSelectJenis">Jenis Perizinan</label>
-          <select class="form-control" id="inputSelectJenis">
-            <option>Surat Izin Tempat Usaha (SITU)</option>
-            <option>Lainnya</option>
+          <select class="form-control" id="inputSelectJenis" ng-options="izin.name for izin in local.perizinan.pilihanPerizinan track by izin.id" ng-model="local.perizinan.selectedPerizinan">
           </select>
         </div>
         <div class="form-group">
@@ -19,7 +17,7 @@
           <input type="text" class="form-control" id="inputNama" placeholder="Nama Usaha/Perseorangan">
         </div>
         <div class="form-group">
-          <label for="inputLat">Ambil Koordinat</label>
+          <label for="inputLat">Koordinat Lokasi</label>
           <div class="row">
             <div class="col-xs-6">
               <input type="text" class="form-control col-xs-6" id="inputLat" placeholder="Garis Lintang" ng-model="local.prj[0]" disabled="disabled">
@@ -50,8 +48,10 @@
               <img src="http://bappeda.bandaacehkota.go.id/geoserver/wms?REQUEST=GetLegendGraphic&VERSION=1.0.0&FORMAT=image/png&WIDTH=20&HEIGHT=20&LAYER=uptb_gis_bna:lokasi_tabel">
             </div> -->
             <div id="map-legend">
-              {{local.lokasi[0].name}}
-              <img class="img-legend" style="height:100%;" src="http://bappeda.bandaacehkota.go.id/geoserver/wms?REQUEST=GetLegendGraphic&VERSION=1.0.0&FORMAT=image/png&WIDTH=20&HEIGHT=20&LAYER={{local.lokasi[0].layerName}}"/>
+              <!--img class="img-legend" style="height:100%;" src="http://bappeda.bandaacehkota.go.id/geoserver/wms?REQUEST=GetLegendGraphic&VERSION=1.0.0&FORMAT=image/png&WIDTH=20&HEIGHT=20&LAYER={{local.lokasi[0].layerName}}"/-->
+              <img class="img-legend" style="height:100%;"
+              src="http://bappeda.bandaacehkota.go.id/geoserver/ows?service=WMS&REQUEST=GetLegendGraphic&VERSION=1.0.0&FORMAT=image/png&WIDTH=20&HEIGHT=20&LAYER=uptb_gis_bna:lokasi_utama"/>
+
             </div>
 
           </ol-layer>
@@ -65,26 +65,26 @@
 
 <script type="text/ng-template" id="myPopoverTemplate.html">
     <div class="" ng-if="popUpData !== 'tidak ada data'">
-      <table class="table-striped table-bordered">
+      <table class="table-striped text-lowercase text-capitalize">
         <tr>
           <td>
-            Kecamatan
+            <b>Kecamatan:</b>&nbsp;
           </td>
           <td>
-            {{popUpData.kecamatan}}
+            {{popUpData.kecamatan |lowercase}}
           </td>
         </tr>
         <tr>
           <td>
-            Desa
+            <b>Desa:</b>&nbsp;
           </td>
           <td>
-            {{popUpData.kel_desa}}
+            {{popUpData.kel_desa | lowercase}}
           </td>
         </tr>
         <tr>
           <td>
-            Keterangan
+             <b>Keterangan:</b>&nbsp;
           </td>
           <td>
             {{popUpData.landuse_1}}
