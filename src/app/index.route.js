@@ -25,6 +25,12 @@
         templateUrl: 'app/local_geo/local.html',
         controller: 'LocalGeoController',
         controllerAs: 'local'
+      })
+      .state('testing', {
+        url: '/testing',
+        templateUrl: 'app/testing/testing.html',
+        controller: 'TestingController',
+        controllerAs: 'test'
       });
 
     $urlRouterProvider.otherwise('/');
