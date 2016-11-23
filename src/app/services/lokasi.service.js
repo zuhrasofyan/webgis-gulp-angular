@@ -21,6 +21,14 @@
       }
     ];
 
+    this.lokasiLain = [
+      {
+        name: 'ATM',
+        desc: 'Lokasi ATM',
+        active: false,
+        query_page: 'api_test_atm.php'
+      }
+    ];
   }
 
 })();

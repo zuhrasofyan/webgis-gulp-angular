@@ -1,0 +1,24 @@
+<div>
+  <acme-navbar></acme-navbar>
+</div>
+
+<div id="print-map" class="container-map" style=" height:92vh; background-color:blue">
+  <openlayers ol-center="test.bandaAceh" ol-defaults="test.defaults" custom-layers="true" height="100%">
+    <map-menu></map-menu>
+    <map-small-buttons></map-small-buttons>
+    <ol-marker name="London" lat="5.57500488022" lon="95.347" message="<h3>YOLO!!</h3>"></ol-marker>
+    <ol-layer ol-layer-properties="basemap" ng-repeat="basemap in test.basemaps|filter:{active:true}"></ol-layer>
+    <!--div class="" ng-repeat="markerATM in test.atm">
+      <ol-marker name="markerATM.NAMA" lat="markerATM.LINTANG" lon="markerATM.BUJUR" ol-style="test.atm_style" message="{{markerATM.NAMA}}"></ol-marker>
+    </div-->
+    <ol-marker ng-repeat="markerATM in ::test.atm" ol-marker-properties="::markerATM"></ol-marker>
+    <!--ol-marker ng-repeat="markerATM in test.atm" name="markerATM.NAMA" lat="markerATM.LINTANG" lon="markerATM.BUJUR" ol-marker-properties="markerATM"></ol-marker-->
+  </openlayers>
+</div>
+<pre>
+  {{test.atm}}
+</pre>
+<div class="" ng-repeat="marker in test.atm">
+  {{marker.name}}
+
+</div>
