@@ -48,19 +48,82 @@
         }
     ];
 
-    //List all basic layers land,perumahan,bangunan,laut,tambak,sungai,hutan,taman,lapangan,jalan,lokasi (use this if you want separate components to display the Bappeda Kota Basemap instead)
-    this.separateBasemapData = [
+    //peta dasar layer komponen untuk self service user preview data
+    this.dataDasar = [
       {
         name: 'land',
-        desc: 'Land',
-        active: true,
+        desc: 'Basemap Kosong',
+        active: false,
         source: {
             type: 'TileWMS',
             url: 'http://bappeda.bandaacehkota.go.id/geoserver/uptb_gis_bna/wms',
             params:{'LAYERS': 'uptb_gis_bna:bna_ab_merge', 'TILED': true}
         },
+        zIndex:1
+      },
+      {
+        name: 'jalan',
+        desc: 'Jalan Banda Aceh',
+        active: false,
+        source: {
+            type: 'TileWMS',
+            url: 'http://bappeda.bandaacehkota.go.id/geoserver/uptb_gis_bna/wms',
+            params:{'LAYERS': 'uptb_gis_bna:jalan_banda_aceh', 'TILED': true}
+        },
+        zIndex:1
+      },
+      {
+        name: 'batas_desa',
+        desc: 'Batas Desa',
+        active: false,
+        opacity: 1,
+        source: {
+            type: 'TileWMS',
+            url: 'http://bappeda.bandaacehkota.go.id/geoserver/uptb_gis_bna/wms',
+            params:{'LAYERS': 'uptb_gis_bna:batas_desa0', 'TILED': true}
+        },
         zIndex: 1
       },
+      {
+        name: 'batas_kecamatan',
+        desc: 'Batas Kecamatan',
+        active: false,
+        opacity: 1,
+        source: {
+            type: 'TileWMS',
+            url: 'http://bappeda.bandaacehkota.go.id/geoserver/uptb_gis_bna/wms',
+            params:{'LAYERS': 'uptb_gis_bna:Bna_kecamatan', 'TILED': true}
+        },
+        zIndex: 1
+      },
+      {
+        name: 'batas_kota',
+        desc: 'Batas Kota Banda Aceh',
+        active: false,
+        opacity: 1,
+        source: {
+            type: 'TileWMS',
+            url: 'http://bappeda.bandaacehkota.go.id/geoserver/uptb_gis_bna/wms',
+            params:{'LAYERS': 'uptb_gis_bna:batas_kota_banda_aceh', 'TILED': true}
+        },
+        zIndex: 1
+      },
+      {
+        name: 'kontur',
+        desc: 'Kontur Kota Banda Aceh',
+        active: false,
+        opacity: 1,
+        source: {
+            type: 'TileWMS',
+            url: 'http://bappeda.bandaacehkota.go.id/geoserver/uptb_gis_bna/wms',
+            params:{'LAYERS': 'uptb_gis_bna:kontur_bna', 'TILED': true}
+        },
+        zIndex: 1
+      }
+    ];
+
+    //List all basic layers land,perumahan,bangunan,laut,tambak,sungai,hutan,taman,lapangan,jalan,lokasi (use this if you want separate components to display the Bappeda Kota Basemap instead)
+    this.separateBasemapData = [
       {
         name: 'perumahan',
         desc: 'Perumahan',

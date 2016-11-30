@@ -33,15 +33,16 @@
 
     //get komponen peta layers from komponenPetaService
     //vm.layers = basemapDataService.data;
+    //get dasar component layers from basemapDataService
+    vm.dasar = basemapDataService.dataDasar;
     //get lokasi (Points) layer from lokasiService
     vm.lokasi = lokasiService.data;
     //get tematik peta layers from tematikService
     vm.tematik = tematikService.data;
     //get rencana peta layers from rencanaService
     vm.rencana = rencanaService.data;
-    //get other basemap layers from otherBasemapService
+    //get other basemap layers from basemapDataService
     vm.basemaps = basemapDataService.data;
-
 
     //add event onclick to show detail information for each point
     $scope.$on('openlayers.map.singleclick', function(event, data) {
@@ -127,7 +128,7 @@
 
               }
             ); //end http get
-          } 
+          }
         });
       });
 
