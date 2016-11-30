@@ -28,7 +28,7 @@
           name: 'Peta Dasar',
           active: true,
           open: false,
-          data: [],
+          data: basemapDataService.dataDasar,
           checkAll: false
         },
         {
