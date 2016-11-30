@@ -39,4 +39,4 @@ Webgis Bappeda Kota with swiip generator angular
 * angucomplete-alt
 * html2canvas
 
-copyright &copy; Bappeda Kota Banda Aceh 2016
+copyright &copy; Zuhra Sofyan for Bappeda Kota Banda Aceh 2016
