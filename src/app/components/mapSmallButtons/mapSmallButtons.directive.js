@@ -19,7 +19,7 @@
     return directive;
 
     /** @ngInject */
-    function MapSmallButtonsController($scope, baseDataService, html2canvasAngular) {
+    function MapSmallButtonsController($scope, olData, baseDataService, html2canvasAngular) {
       var vm = this;
       vm.bandaAceh = baseDataService.bandaAceh;
       vm.defaults = baseDataService.defaults;
@@ -58,26 +58,15 @@
       };
 
       //recenter the map functionality
-      vm.newCenter = '';
-      vm.proxyCenter = {
-        lat: 5.561,
-        lon: 95.330,
-        label: {
-            message: 'this is the default proxy center <br> of Banda Aceh',
-            show: true
-        }
-      };
-      vm.showMarker = false;
-
       function btnRecenter() {
-        if (vm.newCenter === '' ){
-          vm.newCenter = vm.proxyCenter;
-          vm.bandaAceh.lat = vm.newCenter.lat;
-          vm.bandaAceh.lon = vm.newCenter.lon;
-        } else {
-          vm.newCenter = '';
-        }
+        olData.getMap().then(function(map){
+          //this coordinate is coordinate of Mesjid Raya Baiturrahman
+          var latLon = [10610664.603506522,619192.4795668736];
+          map.getView().setCenter(latLon);
+          map.getView().setZoom(15);
+        });
       }
+
       vm.btnRecenter = btnRecenter;
 
       function btnZoomIn() {
