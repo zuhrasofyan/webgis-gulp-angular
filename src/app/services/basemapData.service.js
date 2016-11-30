@@ -54,6 +54,7 @@
         name: 'land',
         desc: 'Basemap Kosong',
         active: false,
+        opacity: 1,
         source: {
             type: 'TileWMS',
             url: 'http://bappeda.bandaacehkota.go.id/geoserver/uptb_gis_bna/wms',
@@ -65,6 +66,7 @@
         name: 'jalan',
         desc: 'Jalan Banda Aceh',
         active: false,
+        opacity: 1,
         source: {
             type: 'TileWMS',
             url: 'http://bappeda.bandaacehkota.go.id/geoserver/uptb_gis_bna/wms',
