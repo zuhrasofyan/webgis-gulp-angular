@@ -22,12 +22,12 @@
                 <div ng-repeat="data in vm.accordionList[$index].data">
                   <div class="cb-input">
                     <label>
-                      <input type="checkbox" name="response" ng-value="true" ng-model="data.active"> {{data.desc}}
+                      <input type="checkbox" name="response" ng-value="true" ng-model="data.active"> <b>{{data.desc}}</b>&nbsp;
                     </label>
                   </div>
                   <div class="btn-group btn-group-xs pull-right" role="group" aria-label="..." ng-if="data.active==true">
-                    <button type="button" title="Transparansi" name="btnShowTransparency" class="btn btn-info" ng-click="vm.showOpacity(data)" ng-if="data.showOpacity!==undefined">Transparansi</button>
-                    <button type="button" title="Legenda" name="btnShowLegend" class="btn btn-success" ng-click="vm.showLegend(data)" ng-if="data.showLegend!==undefined">Legenda</button>
+                    <button type="button"  uib-popover="Tampilkan pengaturan transparansi" popover-trigger="'mouseenter'" popover-placement="bottom-right" title="Transparansi" name="btnShowTransparency" class="btn btn-info" ng-click="vm.showOpacity(data)" ng-if="data.showOpacity!==undefined">Transparansi</button>
+                    <button type="button" uib-popover="Tampilkan legenda" popover-trigger="'mouseenter'" popover-placement="bottom-right" title="Legenda" name="btnShowLegend" class="btn btn-success" ng-click="vm.showLegend(data)" ng-if="data.showLegend!==undefined">Legenda</button>
                   </div>
                   <div class="well well-sm well-slider" ng-if="data.showOpacity==true&&data.active==true">
                     <span>Transparansi layer</span>
@@ -35,7 +35,7 @@
                   </div>
                   <div class="well well-sm" style="display:block" ng-if="data.showLegend==true&&data.active==true">
                     <span style="display:block; padding-bottom:3px;">Legenda {{data.desc}}</span>
-                    <img src="http://bappeda.bandaacehkota.go.id/geoserver/wms?REQUEST=GetLegendGraphic&VERSION=1.0.0&FORMAT=image/png&WIDTH=20&HEIGHT=20&LAYER={{data.source.params.LAYERS}}" alt="" ng-if="data.showLegend">
+                    <img src="http://bappeda.bandaacehkota.go.id/geoserver/ows?service=WMS&request=GetLegendGraphic&format=image%2Fpng&width=20&height=20&layer={{data.source.params.LAYERS}}" alt="" ng-if="data.showLegend">
                   </div>
                   <hr>
                 </div>
