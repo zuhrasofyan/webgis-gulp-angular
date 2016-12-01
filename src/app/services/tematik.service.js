@@ -14,6 +14,8 @@
         desc: 'Jumlah KK 2011',
         active: false,
         opacity: 1,
+        showLegend: false,
+        showOpacity:false,
         source: {
             type: 'TileWMS',
             url: 'http://bappeda.bandaacehkota.go.id/geoserver/uptb_gis_bna/wms',
@@ -26,6 +28,8 @@
         desc: 'Total Penduduk 2013',
         active: false,
         opacity: 1,
+        showLegend: false,
+        showOpacity:false,
         source: {
             type: 'TileWMS',
             url: 'http://bappeda.bandaacehkota.go.id/geoserver/uptb_gis_bna/wms',
@@ -38,6 +42,8 @@
         desc: 'Total Penduduk 2014',
         active: false,
         opacity: 1,
+        showLegend: false,
+        showOpacity:false,
         source: {
             type: 'TileWMS',
             url: 'http://bappeda.bandaacehkota.go.id/geoserver/uptb_gis_bna/wms',
@@ -50,6 +56,8 @@
         desc: 'Landuse 2011',
         active: false,
         opacity: 1,
+        showLegend: false,
+        showOpacity:false,
         source: {
             type: 'TileWMS',
             url: 'http://bappeda.bandaacehkota.go.id/geoserver/uptb_gis_bna/wms',

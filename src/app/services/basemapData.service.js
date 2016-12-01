@@ -13,6 +13,8 @@
         name: 'basemap_bappeda',
         desc: 'Basemap Bappeda Kota Banda Aceh',
         active: true,
+        showOpacity:false,
+        opacity: 1,
         source: {
             type: 'TileWMS',
             url: 'http://bappeda.bandaacehkota.go.id/geoserver/uptb_gis_bna/wms',
@@ -24,6 +26,7 @@
           name: 'bing',
           desc: 'Jalan (Bing Maps)',
           active: false,
+          showOpacity:false,
           opacity: 1,
           source: {
               name: 'Bing Maps',
@@ -37,6 +40,7 @@
           name: 'aerial_bing',
           desc: 'Satelit (Bing Maps)',
           active: false,
+          showOpacity:false,
           opacity: 1,
           source: {
               name: 'Bing Aerial Maps',
@@ -54,6 +58,7 @@
         name: 'land',
         desc: 'Basemap Kosong',
         active: false,
+        showOpacity:false,
         opacity: 1,
         source: {
             type: 'TileWMS',
@@ -66,6 +71,7 @@
         name: 'jalan',
         desc: 'Jalan Banda Aceh',
         active: false,
+        showOpacity:false,
         opacity: 1,
         source: {
             type: 'TileWMS',
@@ -78,6 +84,7 @@
         name: 'batas_desa',
         desc: 'Batas Desa',
         active: false,
+        showOpacity:false,
         opacity: 1,
         source: {
             type: 'TileWMS',
@@ -90,6 +97,8 @@
         name: 'batas_kecamatan',
         desc: 'Batas Kecamatan',
         active: false,
+        showLegend: false,
+        showOpacity:false,
         opacity: 1,
         source: {
             type: 'TileWMS',
@@ -102,6 +111,7 @@
         name: 'batas_kota',
         desc: 'Batas Kota Banda Aceh',
         active: false,
+        showOpacity:false,
         opacity: 1,
         source: {
             type: 'TileWMS',
@@ -114,6 +124,8 @@
         name: 'kontur',
         desc: 'Kontur Kota Banda Aceh',
         active: false,
+        showLegend: false,
+        showOpacity:false,
         opacity: 1,
         source: {
             type: 'TileWMS',

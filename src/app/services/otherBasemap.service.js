@@ -9,6 +9,7 @@
   function otherBasemapService() {
     //List all tematik layers jml_kk_2011, total_pddk_2013, total_pddk_2014,
     //List all perencanaan layers pola_ruang,kawasan_strategis,pusat_pelayanan
+    /*
     this.bing = [{
         name: 'bing',
         desc: 'Jalan',
@@ -36,8 +37,9 @@
         zIndex: 12
       }
     ];
+    */
 
-    
+
   }
 
 })();

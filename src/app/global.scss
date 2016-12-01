@@ -11,6 +11,11 @@ body {
 	//font-family: $lato;
 }
 
+.btn-circle {
+	font-size: 10px;
+  border-radius: 15px;
+}
+
 .angular-openlayers-map {
 	background-color: #6495ed;
 	position:relative;
@@ -247,6 +252,13 @@ body {
   }
 }
 
+//styling slider
+.well-slider {
+	.slider-selection {
+		background: #89cdef;
+	}
+}
+
 
 //override openlayers control style
 .ol-zoom {
@@ -290,7 +302,12 @@ body {
   }
 }
 
-
+.layer-data {
+	hr {
+		margin-top: 7px;
+		margin-bottom: 7px;
+	}
+}
 
 // .ol-control {
 //   background-color: rgba (255,255,255,0);

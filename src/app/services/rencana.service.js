@@ -12,8 +12,10 @@
     this.data = [
       {
         name: 'pola_ruang',
-        desc: 'Pola Ruang',
+        desc: 'Pola Ruang 2009-2029',
         active: false,
+        showLegend: false,
+        showOpacity:false,
         opacity: 1,
         source: {
             type: 'TileWMS',
@@ -24,8 +26,10 @@
       },
       {
         name: 'kawasan_strategis',
-        desc: 'Kawasan Strategis',
+        desc: 'Rencana Kawasan Strategis 2009-2029',
         active: false,
+        showLegend: false,
+        showOpacity:false,
         opacity: 1,
         source: {
             type: 'TileWMS',
@@ -38,6 +42,8 @@
         name: 'pusat_pelayanan',
         desc: 'Pusat Pelayanan',
         active: false,
+        showLegend: false,
+        showOpacity:false,
         opacity: 1,
         source: {
             type: 'TileWMS',
