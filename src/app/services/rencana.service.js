@@ -39,8 +39,22 @@
         zIndex: 2
       },
       {
+        name: 'jaringan_jalan',
+        desc: 'Rencana Jaringan Jalan 2009-2029',
+        active: false,
+        showLegend: false,
+        showOpacity:false,
+        opacity: 1,
+        source: {
+            type: 'TileWMS',
+            url: 'http://bappeda.bandaacehkota.go.id/geoserver/uptb_gis_bna/wms',
+            params:{'LAYERS': 'uptb_gis_bna:rencana_jaringan_jalan', 'TILED': true}
+        },
+        zIndex: 2
+      },
+      {
         name: 'pusat_pelayanan',
-        desc: 'Pusat Pelayanan',
+        desc: 'Rencana Pusat Pelayanan 2009-2029',
         active: false,
         showLegend: false,
         showOpacity:false,
