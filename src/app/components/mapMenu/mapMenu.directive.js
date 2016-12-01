@@ -159,7 +159,23 @@
         }
       };
 
+      //show legend
+      function showLegend(data){
+        if (data.hasOwnProperty('showLegend')){
+          data.showLegend = data.showLegend ? false : true;
+        }
 
+      }
+      vm.showLegend = showLegend;
+
+      //show opacity
+      function showOpacity(data){
+        if (data.hasOwnProperty('showOpacity')){
+          data.showOpacity = data.showOpacity ? false : true;
+        }
+
+      }
+      vm.showOpacity = showOpacity;
 
     }
   }
