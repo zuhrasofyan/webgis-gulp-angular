@@ -18,7 +18,7 @@
         showOpacity:false,
         source: {
             type: 'TileWMS',
-            url: 'http://bappeda.bandaacehkota.go.id/geoserver/uptb_gis_bna/wms',
+            url: 'https://bappeda.bandaacehkota.go.id/geoserver/uptb_gis_bna/wms',
             params:{'LAYERS': 'uptb_gis_bna:tematik_jml_kk', 'TILED': true}
         },
         zIndex: 2
@@ -32,7 +32,7 @@
         showOpacity:false,
         source: {
             type: 'TileWMS',
-            url: 'http://bappeda.bandaacehkota.go.id/geoserver/uptb_gis_bna/wms',
+            url: 'https://bappeda.bandaacehkota.go.id/geoserver/uptb_gis_bna/wms',
             params:{'LAYERS': 'uptb_gis_bna:total_pddk_2013', 'TILED': true}
         },
         zIndex: 2
@@ -46,7 +46,7 @@
         showOpacity:false,
         source: {
             type: 'TileWMS',
-            url: 'http://bappeda.bandaacehkota.go.id/geoserver/uptb_gis_bna/wms',
+            url: 'https://bappeda.bandaacehkota.go.id/geoserver/uptb_gis_bna/wms',
             params:{'LAYERS': 'uptb_gis_bna:total_pddk_2014', 'TILED': true}
         },
         zIndex: 2
@@ -60,7 +60,7 @@
         showOpacity:false,
         source: {
             type: 'TileWMS',
-            url: 'http://bappeda.bandaacehkota.go.id/geoserver/uptb_gis_bna/wms',
+            url: 'https://bappeda.bandaacehkota.go.id/geoserver/uptb_gis_bna/wms',
             params:{'LAYERS': 'uptb_gis_bna:landuse_20110', 'TILED': true}
         },
         zIndex: 2

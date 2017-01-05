@@ -17,7 +17,7 @@
         opacity: 1,
         source: {
             type: 'TileWMS',
-            url: 'http://bappeda.bandaacehkota.go.id/geoserver/uptb_gis_bna/wms',
+            url: 'https://bappeda.bandaacehkota.go.id/geoserver/uptb_gis_bna/wms',
             params:{'LAYERS': 'uptb_gis_bna_basemap_bappeda', 'TILED': true}
         },
         zIndex:-1
@@ -62,7 +62,7 @@
         opacity: 1,
         source: {
             type: 'TileWMS',
-            url: 'http://bappeda.bandaacehkota.go.id/geoserver/uptb_gis_bna/wms',
+            url: 'https://bappeda.bandaacehkota.go.id/geoserver/uptb_gis_bna/wms',
             params:{'LAYERS': 'uptb_gis_bna:bna_ab_merge', 'TILED': true}
         },
         zIndex:1
@@ -75,7 +75,7 @@
         opacity: 1,
         source: {
             type: 'TileWMS',
-            url: 'http://bappeda.bandaacehkota.go.id/geoserver/uptb_gis_bna/wms',
+            url: 'https://bappeda.bandaacehkota.go.id/geoserver/uptb_gis_bna/wms',
             params:{'LAYERS': 'uptb_gis_bna:jalan_banda_aceh', 'TILED': true}
         },
         zIndex:1
@@ -88,7 +88,7 @@
         opacity: 1,
         source: {
             type: 'TileWMS',
-            url: 'http://bappeda.bandaacehkota.go.id/geoserver/uptb_gis_bna/wms',
+            url: 'https://bappeda.bandaacehkota.go.id/geoserver/uptb_gis_bna/wms',
             params:{'LAYERS': 'uptb_gis_bna:batas_desa0', 'TILED': true}
         },
         zIndex: 1
@@ -102,7 +102,7 @@
         opacity: 1,
         source: {
             type: 'TileWMS',
-            url: 'http://bappeda.bandaacehkota.go.id/geoserver/uptb_gis_bna/wms',
+            url: 'https://bappeda.bandaacehkota.go.id/geoserver/uptb_gis_bna/wms',
             params:{'LAYERS': 'uptb_gis_bna:Bna_kecamatan', 'TILED': true}
         },
         zIndex: 1
@@ -115,7 +115,7 @@
         opacity: 1,
         source: {
             type: 'TileWMS',
-            url: 'http://bappeda.bandaacehkota.go.id/geoserver/uptb_gis_bna/wms',
+            url: 'https://bappeda.bandaacehkota.go.id/geoserver/uptb_gis_bna/wms',
             params:{'LAYERS': 'uptb_gis_bna:batas_kota_banda_aceh', 'TILED': true}
         },
         zIndex: 1
@@ -129,7 +129,7 @@
         opacity: 1,
         source: {
             type: 'TileWMS',
-            url: 'http://bappeda.bandaacehkota.go.id/geoserver/uptb_gis_bna/wms',
+            url: 'https://bappeda.bandaacehkota.go.id/geoserver/uptb_gis_bna/wms',
             params:{'LAYERS': 'uptb_gis_bna:kontur_bna', 'TILED': true}
         },
         zIndex: 1
@@ -144,7 +144,7 @@
         active: true,
         source: {
             type: 'TileWMS',
-            url: 'http://bappeda.bandaacehkota.go.id/geoserver/uptb_gis_bna/wms',
+            url: 'https://bappeda.bandaacehkota.go.id/geoserver/uptb_gis_bna/wms',
             params:{'LAYERS': 'uptb_gis_bna:perumahan_2011', 'TILED': true}
         },
         zIndex: 2
@@ -155,7 +155,7 @@
         active: true,
         source: {
             type: 'TileWMS',
-            url: 'http://bappeda.bandaacehkota.go.id/geoserver/uptb_gis_bna/wms',
+            url: 'https://bappeda.bandaacehkota.go.id/geoserver/uptb_gis_bna/wms',
             params:{'LAYERS': 'uptb_gis_bna:Bangunan_2011', 'TILED': true}
         },
         zIndex: 3
@@ -166,7 +166,7 @@
         active: true,
         source: {
             type: 'TileWMS',
-            url: 'http://bappeda.bandaacehkota.go.id/geoserver/uptb_gis_bna/wms',
+            url: 'https://bappeda.bandaacehkota.go.id/geoserver/uptb_gis_bna/wms',
             params:{'LAYERS': 'uptb_gis_bna:laut_2011_dissolve', 'TILED': true}
         },
         zIndex: 4
@@ -177,7 +177,7 @@
         active: true,
         source: {
             type: 'TileWMS',
-            url: 'http://bappeda.bandaacehkota.go.id/geoserver/uptb_gis_bna/wms',
+            url: 'https://bappeda.bandaacehkota.go.id/geoserver/uptb_gis_bna/wms',
             params:{'LAYERS': 'uptb_gis_bna:tambak_2011', 'TILED': true}
         },
         zIndex: 5
@@ -188,7 +188,7 @@
         active: true,
         source: {
             type: 'TileWMS',
-            url: 'http://bappeda.bandaacehkota.go.id/geoserver/uptb_gis_bna/wms',
+            url: 'https://bappeda.bandaacehkota.go.id/geoserver/uptb_gis_bna/wms',
             params:{'LAYERS': 'uptb_gis_bna:sungai_2011_dissolve', 'TILED': true}
         },
         zIndex: 6
@@ -199,7 +199,7 @@
         active: true,
         source: {
             type: 'TileWMS',
-            url: 'http://bappeda.bandaacehkota.go.id/geoserver/uptb_gis_bna/wms',
+            url: 'https://bappeda.bandaacehkota.go.id/geoserver/uptb_gis_bna/wms',
             params:{'LAYERS': 'uptb_gis_bna:hutan_kota_2011', 'TILED': true}
         },
         zIndex: 7
@@ -210,7 +210,7 @@
         active: true,
         source: {
             type: 'TileWMS',
-            url: 'http://bappeda.bandaacehkota.go.id/geoserver/uptb_gis_bna/wms',
+            url: 'https://bappeda.bandaacehkota.go.id/geoserver/uptb_gis_bna/wms',
             params:{'LAYERS': 'uptb_gis_bna:taman_2011', 'TILED': true}
         },
         zIndex: 8
@@ -221,7 +221,7 @@
         active: true,
         source: {
             type: 'TileWMS',
-            url: 'http://bappeda.bandaacehkota.go.id/geoserver/uptb_gis_bna/wms',
+            url: 'https://bappeda.bandaacehkota.go.id/geoserver/uptb_gis_bna/wms',
             params:{'LAYERS': 'uptb_gis_bna:lapangan_2011', 'TILED': true}
         },
         zIndex: 9
@@ -232,7 +232,7 @@
         active: true,
         source: {
             type: 'TileWMS',
-            url: 'http://bappeda.bandaacehkota.go.id/geoserver/uptb_gis_bna/wms',
+            url: 'https://bappeda.bandaacehkota.go.id/geoserver/uptb_gis_bna/wms',
             params:{'LAYERS': 'uptb_gis_bna:jalan_line_wgs0', 'TILED': true}
         },
         zIndex: 12
@@ -247,7 +247,7 @@
         opacity: 1,
         source: {
             type: 'TileWMS',
-            url: 'http://bappeda.bandaacehkota.go.id/geoserver/uptb_gis_bna/wms',
+            url: 'https://bappeda.bandaacehkota.go.id/geoserver/uptb_gis_bna/wms',
             params:{'LAYERS': 'uptb_gis_bna:WorldView-1_BandaAceh_15Jan2015_CD1', 'TILED': true}
         },
         zIndex: 11
@@ -259,7 +259,7 @@
         opacity: 1,
         source: {
             type: 'TileWMS',
-            url: 'http://bappeda.bandaacehkota.go.id/geoserver/uptb_gis_bna/wms',
+            url: 'https://bappeda.bandaacehkota.go.id/geoserver/uptb_gis_bna/wms',
             params:{'LAYERS': 'uptb_gis_bna:WorldView-1_BandaAceh_15Jan2015_CD2', 'TILED': true}
         },
         zIndex: 11

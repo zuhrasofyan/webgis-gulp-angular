@@ -17,7 +17,7 @@
                       anchorXUnits: 'fraction',
                       anchorYUnits: 'fraction',
                       opacity: 0.90,
-                      src: 'http://bappeda.bandaacehkota.go.id/webgis/icon/arrow.png'
+                      src: 'https://bappeda.bandaacehkota.go.id/webgis/icon/arrow.png'
                   }
               }
           };
@@ -41,7 +41,7 @@
 
     vm.atm_style = atm_style;
 
-    $http.get('http://bappeda.bandaacehkota.go.id/webgis/api/api_test_atm.php').then(function(response){
+    $http.get('https://bappeda.bandaacehkota.go.id/webgis/api/api_test_atm.php').then(function(response){
 
       var aa = response.data;
       var arr = []; var isi = {};
