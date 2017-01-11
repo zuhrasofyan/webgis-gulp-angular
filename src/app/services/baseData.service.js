@@ -32,7 +32,7 @@
         attribution: false
       },
       interactions: {
-                mouseWheelZoom: false
+                mouseWheelZoom: true
       }
     };
 
