@@ -11,14 +11,71 @@
     <!--div class="" ng-repeat="markerATM in test.atm">
       <ol-marker name="markerATM.NAMA" lat="markerATM.LINTANG" lon="markerATM.BUJUR" ol-style="test.atm_style" message="{{markerATM.NAMA}}"></ol-marker>
     </div-->
-    <ol-marker ng-repeat="markerATM in ::test.atm" ol-marker-properties="::markerATM"></ol-marker>
+    <!-- <ol-marker ng-repeat="markerATM in ::test.atm" ol-marker-properties="::markerATM"></ol-marker> -->
+    <!-- <ol-marker ng-repeat="markerATM in ::test.atm" ol-marker-properties="::markerATM"></ol-marker>
+    <ol-marker ng-repeat="markerKantor in ::test.kantor" ol-marker-properties="::markerKantor"></ol-marker>
+    <ol-marker ng-repeat="markerPasar in ::test.pasar" ol-marker-properties="::markerPasar"></ol-marker>
+    <ol-marker ng-repeat="markerPenginapan in ::test.penginapan" ol-marker-properties="::markerPenginapan"></ol-marker>
+    <ol-marker ng-repeat="markerSPBU in ::test.spbu" ol-marker-properties="::markerSPBU"></ol-marker> -->
+    <ol-marker ng-repeat="markerMesjid in ::test.mesjid" ol-marker-properties="::markerMesjid"></ol-marker>
+    <ol-marker ng-repeat="markerSaranaKesehatan in ::test.saranaKesehatan" ol-marker-properties="::markerSaranaKesehatan"></ol-marker>
+    <ol-marker ng-repeat="markerSaranaPendidikan in ::test.saranaPendidikan" ol-marker-properties="::markerSaranaPendidikan"></ol-marker>
+
+    <!-- <ol-marker ng-repeat="markerTravel in ::test.travel" ol-marker-properties="::markerTravel" ng-if="test.lokasiLain[1].active == true"></ol-marker> -->
     <!--ol-marker ng-repeat="markerATM in test.atm" name="markerATM.NAMA" lat="markerATM.LINTANG" lon="markerATM.BUJUR" ol-marker-properties="markerATM"></ol-marker-->
   </openlayers>
 </div>
-<pre>
-  {{test.atm}}
+
+<div id="map-lokasi-menu" class="panel panel-primary" style="top: 120px;">
+  <div class="panel-heading">Jenis Lokasi <div class="button pull-right fa fa-close"></div></div>
+  <div class="panel-footer">
+    <div class="sidebar sidebar-right">
+      <div class="panel-group panel-no-margin">
+        <uib-accordion>
+          <div uib-accordion-group class="panel-info" is-open="test.status.open">
+            <uib-accordion-heading>
+              Lokasi Dasar <i class="pull-right fa" ng-class="{'fa-chevron-down': test.status.open, 'fa-chevron-right': !test.status.open}"></i>
+            </uib-accordion-heading>
+            <div class="main-layer">
+              <div ng-repeat="lokasi in test.lokasiLain">
+                <label><input type="checkbox" name="response" ng-value="true" ng-model="lokasi.active" ng-change="test.showData()"> {{lokasi.desc}}</label>
+              </div>
+              <!--div ng-repeat="lokasiLain in vm.lokasiLain">
+                <label><input type="checkbox" name="response" ng-value="true" ng-model="lokasiLain.active"> {{lokasiLain.desc}}</label>
+              </div-->
+            </div>
+          </div>
+        </uib-accordion>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="">
+  {{test.pasar}}
+</div>
+<div class="">
+  {{test.penginapan}}
+</div>
+<div class="">
+  {{test.mesjid}}
+</div>
+<div class="">
+  {{test.saranaKesehatan}}
+</div>
+<div class="">
+  {{test.saranaPendidikan}}
+</div>
+<div class="">
+  {{test.spbu}}
+</div>
+<!-- <pre>
+  halo {{test.myAtm}}
 </pre>
-<div class="" ng-repeat="marker in test.atm">
+<pre>
+  kantor {{test.myKantor}}
+</pre> -->
+<!-- <div class="" ng-repeat="marker in test.atm">
   {{marker.name}}
 
-</div>
+</div> -->
