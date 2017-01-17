@@ -10,9 +10,9 @@
     var vm = this;
 
     //all lokasi in one place
-    // vm.lokasi = function(){
-    //   return $http.get('http://localhost:1337/lokasi');
-    // };
+    vm.lokasi = function(){
+      return $http.get('https://bappeda.bandaacehkota.go.id/service/lokasi');
+    };
 
     //different req for different point data
     vm.atm = function(){
