@@ -18,17 +18,20 @@
             params:{"LAYERS": "uptb_gis_bna:lokasi_utama", "TILED": true}
         },
         zIndex: 0
+      },
+      {
+        name: 'kantor',
+        desc: 'Lokasi Perkantoran',
+        active: false,
+        source: {
+            type: 'TileWMS',
+            url: 'https://bappeda.bandaacehkota.go.id/geoserver/uptb_gis_bna/wms',
+            params:{"LAYERS": "uptb_gis_bna:lokasi_kantor", "TILED": true}
+        },
+        zIndex: 0
       }
     ];
 
-    this.lokasiLain = [
-      {
-        name: 'ATM',
-        desc: 'Lokasi ATM',
-        active: false,
-        query_page: 'api_test_atm.php'
-      }
-    ];
   }
 
 })();
