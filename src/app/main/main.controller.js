@@ -81,28 +81,46 @@
           console.log(aa.get('name') + ' adalah layer paling atas dari : ' + (arrleng-1) + 'layer');
         }
 
+        // initialize wmsLokasi and url as array to store information for each location layer.
+        var wmsLokasi = [];
+        var url = [];
 
-        /*Tampilkan data yang diambil dari spesifik layer (layer 'lokasi')*/
-        //use this type of code to get data from each layer based on the name
+        /* Tampilkan data yang diambil dari spesifik layer (layer 'lokasi')*/
+        // use this type of code to get data from each layer based on the name
         layers.forEach(function(layer) {
           if (layer.get('name') === 'lokasi') {
-
+            vm.isiLabel = {};
             //hack location not using angular way to use OL3 getGetFeatureInfoUrl()
             //we can add array of active layers to list all getFeatureInfoUrl (but consider the data load when create new ol.source.TileWMS. so if possible find solution for this)
-            var wmsLokasi = new ol.source.TileWMS(vm.lokasi[0].source);
-            var myurl = wmsLokasi.getGetFeatureInfoUrl(
+            wmsLokasi[0] = new ol.source.TileWMS(vm.lokasi[0].source);
+            var myurl = wmsLokasi[0].getGetFeatureInfoUrl(
+                    prj, viewResolution, 'EPSG:3857',
+                    {'INFO_FORMAT': 'application/json'});
+            url[0]=myurl;
+          }
+
+          if (layer.get('name') === 'kantor') {
+            vm.isiLabel = {};
+            wmsLokasi[1] = new ol.source.TileWMS(vm.lokasi[1].source);
+            var myurlKantor = wmsLokasi[1].getGetFeatureInfoUrl(
                     prj, viewResolution, 'EPSG:3857',
                     {'INFO_FORMAT': 'application/json'});
 
-            vm.url=myurl;
+            url[1]=myurlKantor;
+          }
 
-            $http.get(myurl).success(
+        }); // end layers.forEach()
+
+        // For each url received, fill the vm.isiLabel.
+        // break looping of url.forEach when http.get received data.features[0](es) to avoid refilling vm.isiLabel from two or more overriden point from different layer.
+        var BreakException = {};
+        try {
+          url.forEach(function(entry){
+            $http.get(entry).success(
               function (data, status) {
                 var items = [];
-
                 //if there is data.features returned from geoserver then
-                if (data.features[0]) {
-
+                if (data.features[0] && angular.equals(vm.isiLabel, {})) {
                   //show point data lengkap
                   var properties = data.features[0].properties;
                   var nama = properties.nama_lokas;
@@ -116,23 +134,20 @@
                       label: {
                         message: vm.lengkap,
                         show: true,
-                        showOnMouseClick: true,
-                        showOnMouseHover: true
+                        showOnMouseClick: true
                       }
                   };
-
-                } else {
-                  vm.lengkap = 'no data';
-                  vm.isiLabel = {};
                 }
-
+                throw BreakException;
               }
-            ); //end http get
-          }
-        });
+            ); // end http get
+
+          }); //end rul.forEach
+        } catch (e) {
+          if (e !== BreakException) throw e;
+        }
+
       });
-
-
 
     }); //end onClick
 
