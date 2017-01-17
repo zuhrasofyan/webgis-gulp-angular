@@ -6,7 +6,7 @@
     .controller('TestingController', TestingController);
 
   /** @ngInject */
-  function TestingController($scope, $http, olData, baseDataService, basemapDataService, lokasiService, pointService) {
+  function TestingController($scope, $http, olData, baseDataService, basemapDataService, lokasiService, pointService, lodash) {
 
     var vm = this;
 
@@ -38,17 +38,143 @@
     // };
 
     /* move to point.service */
+    // all Style
     // ATM
     var atm_style = {
-              image: {
-                  icon: {
-                      anchor: [0.5, 1],
-                      anchorXUnits: 'fraction',
-                      anchorYUnits: 'fraction',
-                      src: 'assets/icons/atm.png'
-                  }
-              }
-          };
+        image: {
+            icon: {
+                anchor: [0.5, 1],
+                anchorXUnits: 'fraction',
+                anchorYUnits: 'fraction',
+                src: 'assets/icons/atm.png'
+            }
+        }
+    };
+    // Kantor
+    var kantor_style = {
+        image: {
+            icon: {
+                anchor: [0.5, 1],
+                anchorXUnits: 'fraction',
+                anchorYUnits: 'fraction',
+                src: 'assets/icons/kantor.png'
+            }
+        }
+    };
+    // Pasar
+    var pasar_style = {
+        image: {
+            icon: {
+                anchor: [0.5, 1],
+                anchorXUnits: 'fraction',
+                anchorYUnits: 'fraction',
+                src: 'assets/icons/market.png'
+            }
+        }
+    };
+    //Penginapan
+    var penginapan_style = {
+        image: {
+            icon: {
+                anchor: [0.5, 1],
+                anchorXUnits: 'fraction',
+                anchorYUnits: 'fraction',
+                src: 'assets/icons/hotel.png'
+            }
+        }
+    };
+    //Mesjid
+    var mesjid_style = {
+        image: {
+            icon: {
+                anchor: [0.5, 1],
+                anchorXUnits: 'fraction',
+                anchorYUnits: 'fraction',
+                src: 'assets/icons/mesjid.png'
+            }
+        }
+    };
+    // Sarana Kesehatan
+    var kesehatan_style = {
+        image: {
+            icon: {
+                anchor: [0.5, 1],
+                anchorXUnits: 'fraction',
+                anchorYUnits: 'fraction',
+                src: 'assets/icons/hospital.png'
+            }
+        }
+    };
+    // Sarana Pendidikan
+    var pendidikan_style = {
+        image: {
+            icon: {
+                anchor: [0.5, 1],
+                anchorXUnits: 'fraction',
+                anchorYUnits: 'fraction',
+                src: 'assets/icons/university.png'
+            }
+        }
+    };
+    // SPBU
+    var spbu_style = {
+        image: {
+            icon: {
+                anchor: [0.5, 1],
+                anchorXUnits: 'fraction',
+                anchorYUnits: 'fraction',
+                src: 'assets/icons/spbu.png'
+            }
+        }
+    };
+
+
+
+    // Call point service
+    pointService.lokasi().then(function(d){
+      vm.lokasi = d.data;
+      // var lokasi = d.data;
+      // var sehat = lodash.filter(lokasi, {'KATEGORI': 'Sarana Kesehatan'});
+      // var pendidikan = lodash.filter(lokasi, {'KATEGORI': 'Sarana Pendidikan'});
+      //
+      // var arrSehat = []; var isiSehat = {};
+      // lodash.each(lokasi, function(obj){
+      //   isiSehat = {
+      //     name: obj.NAMA,
+      //     lat: parseFloat(obj.LINTANG, 10),
+      //     lon: parseFloat(obj.BUJUR, 10),
+      //     label: {
+      //       message: obj.NAMA + ' ' + obj.LINTANG,
+      //       show: false,
+      //       showOnMouseClick: true
+      //     },
+      //     style: kesehatan_style
+      //   };
+      //   arrSehat.push(isiSehat);
+      // });
+      // vm.saranaKesehatan = arrSehat;
+
+      // var arrDidik = []; var isiDidik = {};
+      // lodash.each(pendidikan, function(obj){
+      //   isiDidik = {
+      //     name: obj.NAMA,
+      //     lat: parseFloat(obj.LINTANG, 10),
+      //     lon: parseFloat(obj.BUJUR, 10),
+      //     label: {
+      //       message: obj.NAMA + ' ' + obj.LINTANG,
+      //       show: false,
+      //       showOnMouseClick: true
+      //     },
+      //     style: pendidikan_style
+      //   };
+      //   arrDidik.push(isiDidik);
+      // });
+      // vm.saranaPendidikan = arrDidik;
+    });
+
+
+    // ATM
+    /*
     pointService.atm().then(function(d){
         var aa = d.data;
         var arr = []; var isi = {};
@@ -70,16 +196,6 @@
     });
 
     // Kantor
-    var kantor_style = {
-              image: {
-                  icon: {
-                      anchor: [0.5, 1],
-                      anchorXUnits: 'fraction',
-                      anchorYUnits: 'fraction',
-                      src: 'assets/icons/kantor.png'
-                  }
-              }
-          };
     pointService.kantor().then(function(d){
         var aa = d.data;
         var arr = []; var isi = {};
@@ -101,16 +217,6 @@
     });
 
     // Pasar
-    var pasar_style = {
-              image: {
-                  icon: {
-                      anchor: [0.5, 1],
-                      anchorXUnits: 'fraction',
-                      anchorYUnits: 'fraction',
-                      src: 'assets/icons/market.png'
-                  }
-              }
-          };
     pointService.pasar().then(function(d){
         var aa = d.data;
         var arr = []; var isi = {};
@@ -132,16 +238,6 @@
     });
 
     // Penginapan
-    var penginapan_style = {
-              image: {
-                  icon: {
-                      anchor: [0.5, 1],
-                      anchorXUnits: 'fraction',
-                      anchorYUnits: 'fraction',
-                      src: 'assets/icons/hotel.png'
-                  }
-              }
-          };
     pointService.penginapan().then(function(d){
         var aa = d.data;
         var arr = []; var isi = {};
@@ -163,16 +259,6 @@
     });
 
     // Mesjid
-    var mesjid_style = {
-              image: {
-                  icon: {
-                      anchor: [0.5, 1],
-                      anchorXUnits: 'fraction',
-                      anchorYUnits: 'fraction',
-                      src: 'assets/icons/mesjid.png'
-                  }
-              }
-          };
     pointService.mesjid().then(function(d){
         var aa = d.data;
         var arr = []; var isi = {};
@@ -194,16 +280,6 @@
     });
 
     // Sarana Kesehatan
-    var kesehatan_style = {
-              image: {
-                  icon: {
-                      anchor: [0.5, 1],
-                      anchorXUnits: 'fraction',
-                      anchorYUnits: 'fraction',
-                      src: 'assets/icons/hospital.png'
-                  }
-              }
-          };
     pointService.saranaKesehatan().then(function(d){
         var aa = d.data;
         var arr = []; var isi = {};
@@ -225,16 +301,6 @@
     });
 
     // Sarana Pendidikan
-    var pendidikan_style = {
-              image: {
-                  icon: {
-                      anchor: [0.5, 1],
-                      anchorXUnits: 'fraction',
-                      anchorYUnits: 'fraction',
-                      src: 'assets/icons/university.png'
-                  }
-              }
-          };
     pointService.saranaPendidikan().then(function(d){
         var aa = d.data;
         var arr = []; var isi = {};
@@ -256,16 +322,6 @@
     });
 
     // SPBU
-    var spbu_style = {
-              image: {
-                  icon: {
-                      anchor: [0.5, 1],
-                      anchorXUnits: 'fraction',
-                      anchorYUnits: 'fraction',
-                      src: 'assets/icons/spbu.png'
-                  }
-              }
-          };
     pointService.spbu().then(function(d){
         var aa = d.data;
         var arr = []; var isi = {};
@@ -285,6 +341,7 @@
         });
         vm.spbu = arr;
     });
+    */
 
     // vm.allData = [
     //   {

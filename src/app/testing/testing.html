@@ -17,12 +17,12 @@
     <ol-marker ng-repeat="markerPasar in ::test.pasar" ol-marker-properties="::markerPasar"></ol-marker>
     <ol-marker ng-repeat="markerPenginapan in ::test.penginapan" ol-marker-properties="::markerPenginapan"></ol-marker>
     <ol-marker ng-repeat="markerSPBU in ::test.spbu" ol-marker-properties="::markerSPBU"></ol-marker> -->
-    <ol-marker ng-repeat="markerMesjid in ::test.mesjid" ol-marker-properties="::markerMesjid"></ol-marker>
-    <ol-marker ng-repeat="markerSaranaKesehatan in ::test.saranaKesehatan" ol-marker-properties="::markerSaranaKesehatan"></ol-marker>
-    <ol-marker ng-repeat="markerSaranaPendidikan in ::test.saranaPendidikan" ol-marker-properties="::markerSaranaPendidikan"></ol-marker>
+    <!-- <ol-marker ng-repeat="markerMesjid in ::test.mesjid" ol-marker-properties="::markerMesjid"></ol-marker> -->
+    <!-- <ol-marker ng-repeat="markerSaranaKesehatan in ::test.saranaKesehatan" ol-marker-properties="::markerSaranaKesehatan"></ol-marker>
+    <ol-marker ng-repeat="markerSaranaPendidikan in ::test.saranaPendidikan" ol-marker-properties="::markerSaranaPendidikan"></ol-marker> -->
 
     <!-- <ol-marker ng-repeat="markerTravel in ::test.travel" ol-marker-properties="::markerTravel" ng-if="test.lokasiLain[1].active == true"></ol-marker> -->
-    <!--ol-marker ng-repeat="markerATM in test.atm" name="markerATM.NAMA" lat="markerATM.LINTANG" lon="markerATM.BUJUR" ol-marker-properties="markerATM"></ol-marker-->
+    <ol-marker ng-repeat="markerATM in test.lokasi" name="markerATM.NAMA" lat="markerATM.LINTANG" lon="markerATM.BUJUR"></ol-marker>
   </openlayers>
 </div>
 
@@ -51,7 +51,7 @@
   </div>
 </div>
 
-<div class="">
+<!-- <div class="">
   {{test.pasar}}
 </div>
 <div class="">
@@ -59,16 +59,16 @@
 </div>
 <div class="">
   {{test.mesjid}}
-</div>
+</div> -->
 <div class="">
   {{test.saranaKesehatan}}
 </div>
 <div class="">
   {{test.saranaPendidikan}}
 </div>
-<div class="">
-  {{test.spbu}}
-</div>
+<!-- <div class="">
+  {{test.lalala}}
+</div> -->
 <!-- <pre>
   halo {{test.myAtm}}
 </pre>
