@@ -14,6 +14,7 @@
 
     //set base coordinate
     vm.bandaAceh = baseDataService.bandaAceh;
+    vm.myPos = baseDataService.myPosition;
     //set default view configuration
     vm.defaults = baseDataService.defaults;
     vm.projection = baseDataService.projection;

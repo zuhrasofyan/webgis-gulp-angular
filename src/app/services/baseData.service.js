@@ -17,6 +17,17 @@
             show: false
         }
     };
+    // detect my location
+    this.myPosition = {
+      lat: 0,
+      lon: 0,
+      zoom: 1,
+      autodiscover: true,
+      label: {
+        message: 'my position',
+        show: true
+      }
+    };
     //set default view configuration
     this.defaults = {
       view: {
