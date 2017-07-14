@@ -109,6 +109,16 @@
             url[1]=myurlKantor;
           }
 
+          if (layer.get('name') === 'mini_market_2016') {
+            vm.isiLabel = {};
+            wmsLokasi[1] = new ol.source.TileWMS(vm.lokasi[2].source);
+            var myurlMiniMarket = wmsLokasi[1].getGetFeatureInfoUrl(
+                    prj, viewResolution, 'EPSG:3857',
+                    {'INFO_FORMAT': 'application/json'});
+
+            url[2]=myurlMiniMarket;
+          }
+
         }); // end layers.forEach()
 
         // For each url received, fill the vm.isiLabel.
@@ -117,15 +127,25 @@
         try {
           url.forEach(function(entry){
             $http.get(entry).success(
-              function (data, status) {
+              function (res, status) {
                 var items = [];
                 //if there is data.features returned from geoserver then
-                if (data.features[0] && angular.equals(vm.isiLabel, {})) {
-                  //show point data lengkap
-                  var properties = data.features[0].properties;
-                  var nama = properties.nama_lokas;
-                  var desa = properties.desa;
-                  vm.lengkap =  nama + '  ' + desa + '<br>' + prj;
+                if (res.features[0] && angular.equals(vm.isiLabel, {})) {
+                  if (res.features[0].properties.nama_lokas) { //if features is formatted using the same feature column from lokasi_utama
+                    //show point data lengkap
+                    var properties = res.features[0].properties;
+                    var nama = properties.nama_lokas;
+                    var desa = properties.desa;
+                    vm.lengkap =  nama + '  ' + desa + '<br>' + latLon[1] + ', ' + latLon[0];  
+                  } else if (res.features[0].properties.Nama_Objek) { //if features formatted using column from mini_market (that contain Nama_Objek)
+                    var properties = res.features[0].properties;
+                    var nama = properties.Nama_Objek;
+                    var alamat = properties.Alamat + ' ' + properties.Gampong + '<br>' + properties.Kecamatan;
+                    vm.lengkap =  nama + '<br>' + alamat + '<br>' + latLon[1] + ', ' + latLon[0];
+                  } else { //if undefined, show latlon in marker
+                    vm.lengkap = latLon[1] + ', ' + latLon[0];
+                  }
+                  
 
                   //place the popup label on the map
                   vm.isiLabel = {
@@ -142,7 +162,7 @@
               }
             ); // end http get
 
-          }); //end rul.forEach
+          }); //end url.forEach
         } catch (e) {
           if (e !== BreakException) throw e;
         }
