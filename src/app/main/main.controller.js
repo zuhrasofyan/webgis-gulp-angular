@@ -120,6 +120,16 @@
             url[2]=myurlMiniMarket;
           }
 
+          if (layer.get('name') === 'baliho_2016') {
+            vm.isiLabel = {};
+            wmsLokasi[2] = new ol.source.TileWMS(vm.lokasi[3].source);
+            var myurlBaliho = wmsLokasi[2].getGetFeatureInfoUrl(
+                    prj, viewResolution, 'EPSG:3857',
+                    {'INFO_FORMAT': 'application/json'});
+
+            url[3]=myurlBaliho;
+          }
+
         }); // end layers.forEach()
 
         // For each url received, fill the vm.isiLabel.
@@ -130,6 +140,7 @@
             $http.get(entry).success(
               function (res, status) {
                 var items = [];
+
                 //if there is data.features returned from geoserver then
                 if (res.features[0] && angular.equals(vm.isiLabel, {})) {
                   if (res.features[0].properties.nama_lokas) { //if features is formatted using the same feature column from lokasi_utama
@@ -141,8 +152,13 @@
                   } else if (res.features[0].properties.Nama_Objek) { //if features formatted using column from mini_market (that contain Nama_Objek)
                     var properties = res.features[0].properties;
                     var nama = properties.Nama_Objek;
-                    var alamat = properties.Alamat + ' ' + properties.Gampong + '<br>' + properties.Kecamatan;
-                    vm.lengkap =  nama + '<br>' + alamat + '<br>' + latLon[1] + ', ' + latLon[0];
+                    if (!properties.Alamat) { //if features formatted using column from baliho (no alamat)
+                      vm.lengkap =  nama + '<br>' + latLon[1] + ', ' + latLon[0];
+                    } else if (properties.Alamat) {
+                      var alamat = properties.Alamat + ' ' + properties.Gampong + '<br>' + properties.Kecamatan;
+                      vm.lengkap =  nama + '<br>' + alamat + '<br>' + latLon[1] + ', ' + latLon[0];
+                    }
+                    
                   } else { //if undefined, show latlon in marker
                     vm.lengkap = latLon[1] + ', ' + latLon[0];
                   }
