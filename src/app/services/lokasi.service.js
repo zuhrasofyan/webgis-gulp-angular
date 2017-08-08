@@ -12,6 +12,7 @@
         name: 'lokasi',
         desc: 'Lokasi Penting',
         active: true,
+        canOpen: true,
         source: {
             type: 'TileWMS',
             url: 'https://bappeda.bandaacehkota.go.id/geoserver/uptb_gis_bna/wms',
@@ -23,6 +24,7 @@
         name: 'kantor',
         desc: 'Lokasi Perkantoran',
         active: false,
+        canOpen: true,
         source: {
             type: 'TileWMS',
             url: 'https://bappeda.bandaacehkota.go.id/geoserver/uptb_gis_bna/wms',
@@ -34,6 +36,7 @@
         name: 'mini_market_2016',
         desc: 'Lokasi Mini Market Survey Bappeda 2016',
         active: false,
+        canOpen: true,
         source: {
             type: 'TileWMS',
             url: 'https://bappeda.bandaacehkota.go.id/geoserver/uptb_gis_bna/wms',

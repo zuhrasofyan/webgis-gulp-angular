@@ -29,6 +29,12 @@
 
     vm.lokasiLain = lokasiService.lokasiLain;
 
+    vm.single = baseDataService.singleLayer;
+
+    function loadSingle() {
+      vm.single[0].desc = 'Pindah Ke layer Single'
+    }
+    vm.loadSingle = loadSingle;
 
     //use this if you want to implement additional info when you click a marker, and use it accordingly use ng-click for example: ng-click="test.showDetails(markerATM)
     // vm.showDetails = function (marker) {

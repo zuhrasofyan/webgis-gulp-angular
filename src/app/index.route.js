@@ -32,6 +32,12 @@
         templateUrl: 'app/testing/testing.html',
         controller: 'TestingController',
         controllerAs: 'test'
+      })
+      .state('single', {
+        url: '/single-map',
+        templateUrl: 'app/single_map/single.html',
+        controller: 'SingleController',
+        controllerAs: 'vm'
       });
 
     $urlRouterProvider.otherwise('/');

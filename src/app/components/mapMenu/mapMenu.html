@@ -25,6 +25,9 @@
                       <input type="checkbox" name="response" ng-value="true" ng-model="data.active"> <b>{{data.desc}}</b>&nbsp;
                     </label>
                   </div>
+
+                  <a type="button"  uib-popover="Buka di halaman baru untuk melihat detail data" popover-trigger="'mouseenter'" popover-placement="bottom-right" title="Buka" name="btnShowLayer" class="btn btn-xs btn-info pull-right" ng-click="vm.editSingleLayer(data)" ng-if="data.canOpen" ui-sref="single">Lihat Detil Data</a>
+
                   <div class="btn-group btn-group-xs pull-right" role="group" aria-label="..." ng-if="data.active==true">
                     <button type="button"  uib-popover="Tampilkan pengaturan transparansi" popover-trigger="'mouseenter'" popover-placement="bottom-right" title="Transparansi" name="btnShowTransparency" class="btn btn-info" ng-click="vm.showOpacity(data)" ng-if="data.showOpacity!==undefined">Transparansi</button>
                     <button type="button" uib-popover="Tampilkan legenda" popover-trigger="'mouseenter'" popover-placement="bottom-right" title="Legenda" name="btnShowLegend" class="btn btn-success" ng-click="vm.showLegend(data)" ng-if="data.showLegend!==undefined">Legenda</button>
@@ -96,9 +99,13 @@
             <uib-accordion-heading>
               Lokasi Dasar <i class="pull-right fa" ng-class="{'fa-chevron-down': vm.status.open, 'fa-chevron-right': !vm.status.open}"></i>
             </uib-accordion-heading>
-            <div class="main-layer">
+            <div class="layer-data">
               <div ng-repeat="lokasi in vm.lokasi">
+              <div class="cb-input"> 
                 <label><input type="checkbox" name="response" ng-value="true" ng-model="lokasi.active"> {{lokasi.desc}}</label>
+              </div>
+                <a type="button"  uib-popover="Buka di halaman baru untuk melihat detail data" popover-trigger="'mouseenter'" popover-placement="bottom-right" title="Buka" name="btnShowLayer" class="btn btn-xs btn-info pull-right" ng-click="vm.editSingleLayer(lokasi)" ng-if="lokasi.canOpen" ui-sref="single">Lihat Detil Data</a>
+                <hr>
               </div>
               <!--div ng-repeat="lokasiLain in vm.lokasiLain">
                 <label><input type="checkbox" name="response" ng-value="true" ng-model="lokasiLain.active"> {{lokasiLain.desc}}</label>

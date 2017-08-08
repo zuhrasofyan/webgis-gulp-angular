@@ -14,6 +14,7 @@
         desc: 'Jumlah KK 2011',
         active: false,
         opacity: 1,
+        canOpen: true,
         showLegend: false,
         showOpacity:false,
         source: {
@@ -28,6 +29,7 @@
         desc: 'Total Penduduk 2013',
         active: false,
         opacity: 1,
+        canOpen: true,
         showLegend: false,
         showOpacity:false,
         source: {
@@ -42,6 +44,7 @@
         desc: 'Total Penduduk 2014',
         active: false,
         opacity: 1,
+        canOpen: true,
         showLegend: false,
         showOpacity:false,
         source: {
@@ -56,6 +59,7 @@
         desc: 'Landuse 2011',
         active: false,
         opacity: 1,
+        canOpen: true,
         showLegend: false,
         showOpacity:false,
         source: {

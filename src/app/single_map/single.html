@@ -1,0 +1,40 @@
+<div id="print-map" class="container-map">
+
+	<div class="row">
+		<div class="col-xs-8">
+			<openlayers ol-center="vm.bandaAceh" ol-defaults="vm.defaults" custom-layers="true" height="480px" width="100%">
+		    	<!-- <map-small-buttons></map-small-buttons> -->
+		    	<ol-layer ol-layer-properties="single" ng-repeat="single in vm.single"></ol-layer>
+		    	<ol-layer ol-layer-properties="basemap" ng-repeat="basemap in vm.basemaps|filter:{active:true}"></ol-layer>
+			</openlayers>
+		</div>
+		<div class="col-xs-4">
+			<div class="row" style="padding-right: 10px; padding-top: 10px;">
+				<div class="col-xs-12">
+					<div class="well well-sm">
+						<span style="display:block; padding-bottom:3px;">Legenda {{vm.single[0].desc}}</span>
+						<img src="https://bappeda.bandaacehkota.go.id/geoserver/ows?service=WMS&request=GetLegendGraphic&format=image%2Fpng&width=20&height=20&layer={{vm.single[0].source.params.LAYERS}}" alt="">
+					</div>
+				</div>
+				<div class="col-xs-12">
+					<div class="well well-sm" ng-if="vm.isiTabel">
+						<i class="fa fa-info-circle" title="Do you like my fa-coq icon?"></i> Petunjuk: klik pada bagian peta yang berisi gambar untuk mendapatkan detail data
+					</div>
+					<table class="table table-striped">
+						<tbody>
+							<tr ng-repeat="(key, value) in vm.isiTabel">
+								<th>{{key}}</th>
+								<td>{{value}}</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<div class="col-xs-12">
+					<a ui-sref="main" class="btn btn-block btn-primary">Kembali ke halaman utama</a>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	
+</div>

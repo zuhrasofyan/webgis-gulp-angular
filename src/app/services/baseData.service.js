@@ -59,6 +59,22 @@
         {name: 'zoomtoextent', active: false}
     ];
 
+    // Set a template layer to display in single map
+    this.singleLayer = [{
+          name: 'singleLayer',
+          desc: 'A Single Layer',
+          active: false,
+          showLegend: false,
+          showOpacity:false,
+          opacity: 1,
+          source: {
+              type: 'TileWMS',
+              url: 'https://bappeda.bandaacehkota.go.id/geoserver/uptb_gis_bna/wms',
+              params:{'LAYERS': 'uptb_gis_bna:struktur_ruang', 'TILED': true}
+          },
+          zIndex: 2
+        }];
+
   }
 
 })();

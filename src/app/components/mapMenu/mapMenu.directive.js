@@ -176,6 +176,16 @@
       }
       vm.showOpacity = showOpacity;
 
+      // Enable filling and dynamically change data to display in a single layer
+      vm.thisLayer = baseDataService.singleLayer;
+
+      function editSingleLayer(data) {
+        vm.thisLayer[0].desc = data.desc;
+        vm.thisLayer[0].source.params = data.source.params;
+      }
+
+      vm.editSingleLayer = editSingleLayer;
+
     }
   }
 

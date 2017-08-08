@@ -17,6 +17,7 @@
         showLegend: false,
         showOpacity:false,
         opacity: 1,
+        canOpen: true,
         source: {
             type: 'TileWMS',
             url: 'https://bappeda.bandaacehkota.go.id/geoserver/uptb_gis_bna/wms',
@@ -31,6 +32,7 @@
         showLegend: false,
         showOpacity:false,
         opacity: 1,
+        canOpen: true,
         source: {
             type: 'TileWMS',
             url: 'https://bappeda.bandaacehkota.go.id/geoserver/uptb_gis_bna/wms',
@@ -45,6 +47,7 @@
         showLegend: false,
         showOpacity:false,
         opacity: 1,
+        canOpen: true,
         source: {
             type: 'TileWMS',
             url: 'https://bappeda.bandaacehkota.go.id/geoserver/uptb_gis_bna/wms',
@@ -59,6 +62,7 @@
         showLegend: false,
         showOpacity:false,
         opacity: 1,
+        canOpen: true,
         source: {
             type: 'TileWMS',
             url: 'https://bappeda.bandaacehkota.go.id/geoserver/uptb_gis_bna/wms',

@@ -23,6 +23,32 @@
         zIndex:-1
       },
       {
+        name: 'basemap_ikonos_2005',
+        desc: 'Basemap IKONOS 2005',
+        active: false,
+        showOpacity:false,
+        opacity: 1,
+        source: {
+            type: 'TileWMS',
+            url: 'https://bappeda.bandaacehkota.go.id/geoserver/uptb_gis_bna/wms',
+            params:{'LAYERS': 'uptb_gis_bna:Ikonos_Jan2005_V2', 'TILED': true}
+        },
+        zIndex:-1
+      },
+      {
+        name: 'basemap_ikonos_2002',
+        desc: 'Basemap IKONOS 2002',
+        active: false,
+        showOpacity:false,
+        opacity: 1,
+        source: {
+            type: 'TileWMS',
+            url: 'https://bappeda.bandaacehkota.go.id/geoserver/uptb_gis_bna/wms',
+            params:{'LAYERS': 'uptb_gis_bna:Ikonos_2002', 'TILED': true}
+        },
+        zIndex:-1
+      },
+      {
           name: 'bing',
           desc: 'Jalan (Bing Maps)',
           active: false,
