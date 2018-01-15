@@ -56,6 +56,18 @@
         },
         zIndex: 0
       },
+      {
+        name: 'fiber_optic_2017',
+        desc: 'Titik Fiber Optic Tower - Dinas Perhubungan Banda Aceh 2017',
+        active: false,
+        canOpen: true,
+        source: {
+            type: 'TileWMS',
+            url: 'https://bappeda.bandaacehkota.go.id/geoserver/uptb_gis_bna/wms',
+            params:{"LAYERS": "uptb_gis_bna:tiang_fo_jenis_tinggi_tiang_dengan_style", "TILED": true}
+        },
+        zIndex: 0
+      },
     ];
 
   }
