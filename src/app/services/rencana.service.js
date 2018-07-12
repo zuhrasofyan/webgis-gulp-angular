@@ -12,6 +12,21 @@
     this.data = [
       {
         name: 'pola_ruang',
+        desc: 'Pola Ruang 2009-2029 Revisi 2016',
+        active: false,
+        showLegend: false,
+        showOpacity:false,
+        opacity: 1,
+        canOpen: true,
+        source: {
+            type: 'TileWMS',
+            url: 'https://bappeda.bandaacehkota.go.id/geoserver/uptb_gis_bna/wms',
+            params:{'LAYERS': 'uptb_gis_bna:polaruangbandaaceh', 'TILED': true}
+        },
+        zIndex: 2
+      },
+      {
+        name: 'pola_ruang',
         desc: 'Pola Ruang 2009-2029',
         active: false,
         showLegend: false,
@@ -67,6 +82,36 @@
             type: 'TileWMS',
             url: 'https://bappeda.bandaacehkota.go.id/geoserver/uptb_gis_bna/wms',
             params:{'LAYERS': 'uptb_gis_bna:struktur_ruang', 'TILED': true}
+        },
+        zIndex: 2
+      },
+      {
+        name: 'rupm_2018_kawasan',
+        desc: 'Lokasi RUPM Kota Banda Aceh',
+        active: false,
+        showLegend: false,
+        showOpacity:false,
+        opacity: 1,
+        canOpen: true,
+        source: {
+            type: 'TileWMS',
+            url: 'https://bappeda.bandaacehkota.go.id/geoserver/uptb_gis_bna/wms',
+            params:{'LAYERS': 'uptb_gis_bna:rupmlokasi2018', 'TILED': true}
+        },
+        zIndex: 2
+      },
+      {
+        name: 'rupm_2018_lokasi',
+        desc: 'Kawasan RUPM Kota Banda Aceh',
+        active: false,
+        showLegend: false,
+        showOpacity:false,
+        opacity: 1,
+        canOpen: true,
+        source: {
+            type: 'TileWMS',
+            url: 'https://bappeda.bandaacehkota.go.id/geoserver/uptb_gis_bna/wms',
+            params:{'LAYERS': 'uptb_gis_bna:rupmkawasan2018', 'TILED': true}
         },
         zIndex: 2
       }
