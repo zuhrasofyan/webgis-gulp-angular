@@ -68,6 +68,21 @@
             params:{'LAYERS': 'uptb_gis_bna:landuse_20110', 'TILED': true}
         },
         zIndex: 2
+      },
+      {
+        name: 'resiko_tsunami',
+        desc: 'Resiko Tsunami',
+        active: false,
+        opacity: 1,
+        canOpen: true,
+        showLegend: false,
+        showOpacity:false,
+        source: {
+            type: 'TileWMS',
+            url: 'https://bappeda.bandaacehkota.go.id/geoserver/uptb_gis_bna/wms',
+            params:{'LAYERS': 'uptb_gis_bna:resiko_tsunami', 'TILED': true}
+        },
+        zIndex: 2
       }
     ];
 
