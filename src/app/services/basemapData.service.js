@@ -110,8 +110,10 @@
         name: 'batas_desa',
         desc: 'Batas Desa',
         active: false,
+        showLegend: true,
         showOpacity:false,
         opacity: 1,
+        canOpen: true,
         source: {
             type: 'TileWMS',
             url: 'https://bappeda.bandaacehkota.go.id/geoserver/uptb_gis_bna/wms',
@@ -120,16 +122,47 @@
         zIndex: 1
       },
       {
+        name: 'batas_desa_2018',
+        desc: 'Batas Desa 2018',
+        active: false,
+        showLegend: true,
+        showOpacity:false,
+        opacity: 1,
+        canOpen: true,
+        source: {
+            type: 'TileWMS',
+            url: 'https://bappeda.bandaacehkota.go.id/geoserver/uptb_gis_bna/wms',
+            params:{'LAYERS': 'uptb_gis_bna:administrasi_gampong_bappedabna_2018_full', 'TILED': true}
+        },
+        zIndex: 1
+      },
+      {
         name: 'batas_kecamatan',
         desc: 'Batas Kecamatan',
         active: false,
-        showLegend: false,
+        showLegend: true,
         showOpacity:false,
         opacity: 1,
+        canOpen: true,
         source: {
             type: 'TileWMS',
             url: 'https://bappeda.bandaacehkota.go.id/geoserver/uptb_gis_bna/wms',
             params:{'LAYERS': 'uptb_gis_bna:Bna_kecamatan', 'TILED': true}
+        },
+        zIndex: 1
+      },
+      {
+        name: 'batas_kecamatan_2018',
+        desc: 'Batas Kecamatan 2018',
+        active: false,
+        showLegend: false,
+        showOpacity:false,
+        opacity: 1,
+        canOpen: true,
+        source: {
+            type: 'TileWMS',
+            url: 'https://bappeda.bandaacehkota.go.id/geoserver/uptb_gis_bna/wms',
+            params:{'LAYERS': 'uptb_gis_bna:administrasi_kecamatan_bappedabna_2018', 'TILED': true}
         },
         zIndex: 1
       },
@@ -147,12 +180,56 @@
         zIndex: 1
       },
       {
+        name: 'batas_kota_2018',
+        desc: 'Batas Kota Banda Aceh 2018',
+        active: false,
+        showOpacity:false,
+        opacity: 1,
+        source: {
+            type: 'TileWMS',
+            url: 'https://bappeda.bandaacehkota.go.id/geoserver/uptb_gis_bna/wms',
+            params:{'LAYERS': 'uptb_gis_bna:administrasi_kota_bandaaceh_bappedabna_q', 'TILED': true}
+        },
+        zIndex: 1
+      },
+      {
+        name: 'sungai_2018',
+        desc: 'Sungai 2018',
+        active: false,
+        showLegend: true,
+        showOpacity:false,
+        opacity: 1,
+        canOpen: true,
+        source: {
+            type: 'TileWMS',
+            url: 'https://bappeda.bandaacehkota.go.id/geoserver/uptb_gis_bna/wms',
+            params:{'LAYERS': 'uptb_gis_bna:sungai_2018', 'TILED': true}
+        },
+        zIndex: 1
+      },
+      {
+        name: 'garis_pantai_2018',
+        desc: 'Garis Pantai 2018',
+        active: false,
+        showLegend: false,
+        showOpacity:false,
+        opacity: 1,
+        canOpen: false,
+        source: {
+            type: 'TileWMS',
+            url: 'https://bappeda.bandaacehkota.go.id/geoserver/uptb_gis_bna/wms',
+            params:{'LAYERS': 'uptb_gis_bna:garispantai_bappeda_2018_q', 'TILED': true}
+        },
+        zIndex: 1
+      },
+      {
         name: 'kontur',
         desc: 'Kontur Kota Banda Aceh',
         active: false,
         showLegend: false,
         showOpacity:false,
         opacity: 1,
+        canOpen: true,
         source: {
             type: 'TileWMS',
             url: 'https://bappeda.bandaacehkota.go.id/geoserver/uptb_gis_bna/wms',
