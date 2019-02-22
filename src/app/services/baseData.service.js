@@ -32,7 +32,7 @@
     this.defaults = {
       view: {
           maxZoom: 20,
-          minZoom: 14,
+          minZoom: 12,
           extent: [10605714.11, 615365.85, 10617256.10, 625990.60]
       },
       events: {
