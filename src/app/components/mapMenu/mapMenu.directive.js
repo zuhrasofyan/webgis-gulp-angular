@@ -147,7 +147,7 @@
         vm.cariMenuIsVisible = vm.cariMenuIsVisible ? false: true;
         // only request and load api_lokasi to vm.lokasiList array after button showMapCariMenu for the first time clicked
         if (vm.lokasiList.length === 0) {
-          $http.get('https://bappeda.bandaacehkota.go.id/webgis/api/api_lokasi.php', {cache: true}).then(function (response){
+          $http.get('https://bappeda.bandaacehkota.go.id/webgis_lama/api/api_lokasi.php', {cache: true}).then(function (response){
             vm.lokasiList = response.data;
             //convert array of array response.data as array of object (not needed anymore since already processed into array of object in API)
             //vm.bankList = [];

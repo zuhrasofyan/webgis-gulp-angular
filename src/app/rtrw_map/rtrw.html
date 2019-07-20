@@ -1,0 +1,40 @@
+<div id="print-map" class="container-map">
+
+	<div class="row">
+		<div class="col-xs-10">
+			<openlayers ol-center="vm.bandaAceh" ol-defaults="vm.defaults" custom-layers="true" height="100%">
+		    	<!-- <map-small-buttons></map-small-buttons> -->
+		    	<ol-layer ol-layer-properties="rtrw" ng-repeat="rtrw in vm.rtrw">
+            <ol-marker ol-marker-properties="vm.isiTabel"></ol-marker>
+          </ol-layer>
+		    	<ol-layer ol-layer-properties="basemap" ng-repeat="basemap in vm.basemaps|filter:{active:true}"></ol-layer>
+			</openlayers>
+		</div>
+		<div class="col-xs-2">
+			<div class="row" style="padding-right: 10px; padding-top: 10px;">
+        <div class="col-xs-12">
+          <div class="well well-sm" ng-if="vm.isiTabel">
+            <i class="fa fa-info-circle" title="Do you like my fa-coq icon?"></i> Petunjuk: klik pada bagian peta yang berisi gambar untuk mendapatkan detail data
+          </div>
+        </div>
+
+        <div class="col-xs-12">
+          <div class="well well-sm well-slider">
+            <span>Transparansi layer RTRW</span>
+            <slider ng-model="vm.rtrw[0].opacity" min="0" step="0.01" max="1"></slider>
+          </div>
+        </div>
+
+				<div class="col-xs-12">
+					<div class="well well-sm pre-scrollable">
+						<span style="display:block; padding-bottom:3px;">Legenda {{vm.rtrw[0].desc}}</span>
+						<img src="https://bappeda.bandaacehkota.go.id/geoserver/ows?service=WMS&request=GetLegendGraphic&format=image%2Fpng&width=20&height=20&layer={{vm.rtrw[0].source.params.LAYERS}}" alt="">
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+
+
+</div>

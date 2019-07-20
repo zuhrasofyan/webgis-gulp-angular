@@ -38,6 +38,12 @@
         templateUrl: 'app/single_map/single.html',
         controller: 'SingleController',
         controllerAs: 'vm'
+      })
+      .state('rtrw', {
+        url: '/rtrw-map',
+        templateUrl: 'app/rtrw_map/rtrw.html',
+        controller: 'RtrwController',
+        controllerAs: 'vm'
       });
 
     $urlRouterProvider.otherwise('/');

@@ -12,7 +12,7 @@
     this.data = [
       {
         name: 'pola_ruang',
-        desc: 'Pola Ruang 2009-2029 Revisi 2016',
+        desc: 'Pola Ruang RTRW Revisi',
         active: false,
         showLegend: false,
         showOpacity:false,
