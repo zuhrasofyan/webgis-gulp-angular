@@ -21,7 +21,7 @@
         source: {
             type: 'TileWMS',
             url: 'https://bappeda.bandaacehkota.go.id/geoserver/uptb_gis_bna/wms',
-            params:{'LAYERS': 'uptb_gis_bna:polaruangbandaaceh', 'TILED': true}
+            params:{'LAYERS': 'uptb_gis_bna:prrtrwsimtaru', 'TILED': true}
         },
         zIndex: 2
       },
