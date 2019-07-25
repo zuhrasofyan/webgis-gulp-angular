@@ -59,7 +59,7 @@
           source: {
               type: 'TileWMS',
               url: 'https://bappeda.bandaacehkota.go.id/geoserver/uptb_gis_bna/wms',
-              params:{'LAYERS': 'uptb_gis_bna:polaruangbandaaceh', 'TILED': true}
+              params:{'LAYERS': 'uptb_gis_bna:prrtrwsimtaru', 'TILED': true}
           },
           zIndex: 0
         }];
@@ -114,7 +114,7 @@
                 // place the features into isiTabel object
                 properties = res.features[0].properties;
                 console.log(properties);
-                var isian = '<table class="table table-striped"><tbody><tr><th>Keterangan</th><td>'+properties.keterangan+'</td></tr><tr><th>Peruntukan</th><td>'+properties.kelasiii+'</td></tr><tr><th>Luas (HA)</th><td>'+properties.luasha+'</td></tr></tbody></table>';
+                var isian = '<table class="table table-striped"><tbody><tr><th>Keterangan</th><td>'+properties.keterangan+'</td></tr><tr><th>Sifat</th><td>'+properties.sifat+'</td></tr><tr><th>Luas (HA)</th><td>'+properties.luas+'</td></tr></tbody></table>';
 
                 //place the popup label on the map
                 vm.isiTabel = {
