@@ -19,6 +19,19 @@ $fa-font-path: "../../bower_components/font-awesome/fonts";
   margin-bottom: 0px;
 }
 
+.dropdown-menu {
+  background-color: black!important;
+}
+
+.dropdown-menu > li > a {
+  background-color: black;
+  color: white!important;
+}
+.dropdown-menu > li > a:hover{
+    background-color: #333333;
+    color: white!important;
+}
+
 .browsehappy {
   margin: 0.2em 0;
   background: #ccc;
