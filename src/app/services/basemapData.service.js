@@ -75,6 +75,45 @@
               imagerySet: 'Aerial'
           },
           zIndex: -1
+        },
+        {
+          name: 'stamen',
+          desc: 'Stamen Map (Terrain)',
+          active: false,
+          showOpacity:false,
+          opacity: 1,
+          source: {
+              name: 'Stamen',
+              type: 'Stamen',
+              layer: 'terrain'
+          },
+          zIndex: -1
+        },
+        {
+          name: 'stamen2',
+          desc: 'Stamen Map (Watercolor)',
+          active: false,
+          showOpacity:false,
+          opacity: 1,
+          source: {
+              name: 'Stamen Watercolor',
+              type: 'Stamen',
+              layer: 'watercolor'
+          },
+          zIndex: -1
+        },
+        {
+          name: 'stamen3',
+          desc: 'Stamen Map (Toner)',
+          active: false,
+          showOpacity:false,
+          opacity: 1,
+          source: {
+              name: 'Stamen Toner',
+              type: 'Stamen',
+              layer: 'toner'
+          },
+          zIndex: -1
         }
     ];
 
