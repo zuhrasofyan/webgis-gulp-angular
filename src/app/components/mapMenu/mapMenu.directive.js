@@ -19,7 +19,7 @@
     return directive;
 
     /** @ngInject */
-    function MapMenuController($scope, $location, $http, baseDataService, tematikService, rencanaService, basemapDataService, lokasiService) {
+    function MapMenuController($scope, $location, $http, baseDataService, tematikService, rencanaService, basemapDataService, lokasiService, cuacaService) {
       var vm = this;
       vm.bandaAceh = baseDataService.bandaAceh;
 
@@ -43,6 +43,13 @@
           active: true,
           open: false,
           data: rencanaService.data,
+          checkAll: false
+        },
+        {
+          name: 'Peta Cuaca (Open Weathers Map)',
+          active: true,
+          open: false,
+          data: cuacaService.data,
           checkAll: false
         },
         {

@@ -6,7 +6,7 @@
     .controller('MainController', MainController);
 
   /** @ngInject */
-  function MainController($scope, $http, olData, lokasiService, basemapDataService, tematikService, rencanaService, baseDataService, html2canvasAngular) {
+  function MainController($scope, $http, olData, lokasiService, basemapDataService, tematikService, rencanaService, baseDataService, cuacaService, html2canvasAngular) {
     var vm = this;
 
     //set initial data for popup-label
@@ -44,6 +44,8 @@
     vm.rencana = rencanaService.data;
     //get other basemap layers from basemapDataService
     vm.basemaps = basemapDataService.data;
+    //get cuaca layer from cuacaService
+    vm.cuaca = cuacaService.data;
 
     //add event onclick to show detail information for each point
     $scope.$on('openlayers.map.singleclick', function(event, data) {
@@ -148,7 +150,7 @@
                     var properties = res.features[0].properties;
                     var nama = properties.nama_lokas;
                     var desa = properties.desa;
-                    vm.lengkap =  nama + '  ' + desa + '<br>' + latLon[1] + ', ' + latLon[0];  
+                    vm.lengkap =  nama + '  ' + desa + '<br>' + latLon[1] + ', ' + latLon[0];
                   } else if (res.features[0].properties.Nama_Objek) { //if features formatted using column from mini_market (that contain Nama_Objek)
                     var properties = res.features[0].properties;
                     var nama = properties.Nama_Objek;
@@ -158,11 +160,11 @@
                       var alamat = properties.Alamat + ' ' + properties.Gampong + '<br>' + properties.Kecamatan;
                       vm.lengkap =  nama + '<br>' + alamat + '<br>' + latLon[1] + ', ' + latLon[0];
                     }
-                    
+
                   } else { //if undefined, show latlon in marker
                     vm.lengkap = latLon[1] + ', ' + latLon[0];
                   }
-                  
+
 
                   //place the popup label on the map
                   vm.isiLabel = {

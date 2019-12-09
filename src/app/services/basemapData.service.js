@@ -114,19 +114,6 @@
               layer: 'toner'
           },
           zIndex: -1
-        },
-        {
-          name: 'openWeatherMap',
-          desc: 'Open Weather Map',
-          active: false,
-          showOpacity:false,
-          opacity: 1,
-          source: {
-              name: 'Open Weather Map',
-              type: 'XYZ',
-              url: "https://tile.openweathermap.org/map/clouds_new/{z}/{x}/{y}.png?appid=1f40d5ffca78c0d1699432083bfe24fc"
-          },
-          zIndex: 10
         }
     ];
 
