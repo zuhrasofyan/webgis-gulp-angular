@@ -1,11 +1,12 @@
 # webgis-gulp-angular
 Webgis Bappeda Kota with swiip generator angular
-<h1>Pre-requisites</h1>
+
+## Pre-requisites
 * npm installed
 * bower
 * gulp and gulp-cli
 
-<h1>HOW TO</h1>
+# HOW TO
 1. clone or download repo, then browse to the folder
 2. `npm install`
 3. `bower install`
@@ -14,7 +15,7 @@ Webgis Bappeda Kota with swiip generator angular
     * `gulp build` to build dist (production-ready) content
     * `gulp serve:dist` to run from production resources
 
-<h1>Libraries installed</h1>
+# Libraries installed
 * angular 1.5.x
 * angular-animate
 * angular-cookies
